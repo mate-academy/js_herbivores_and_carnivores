@@ -4,7 +4,6 @@ class Animal {
   constructor(name) {
     this.name = name;
     this.health = 100;
-    this.hidden = false;
 
     Animal.alive.push(this);
   }
@@ -13,6 +12,12 @@ class Animal {
 Animal.alive = [];
 
 class Herbivore extends Animal {
+  // eslint-disable-next-line constructor-super
+  constructor(name) {
+    super(name);
+    this.hidden = false;
+  }
+
   hide() {
     this.hidden = true;
   }
@@ -20,7 +25,7 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(victim) {
-    if (victim instanceof Herbivore && victim.hidden === false) {
+    if (victim instanceof Herbivore && !victim.hidden) {
       victim.health -= 50;
     }
 
