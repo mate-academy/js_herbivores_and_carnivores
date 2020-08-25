@@ -3,7 +3,6 @@
 class Animal {
   constructor(name) {
     this.name = name;
-    this.hidden = true;
     this.health = 100;
     Animal.alive.push(this);
   }
@@ -18,15 +17,17 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    this.hidden = true;
+    if (!this.hidden) {
+      this.hidden = true;
+    } else {
+      this.hidden = false;
+    }
   }
 }
 
 class Carnivore extends Animal {
   bite(animal) {
-    if (animal.hidden) {
-      animal.health = 100;
-    } else {
+    if (animal.hasOwnProperty('hidden') && animal.hidden === false) {
       animal.health -= 50;
     }
 
