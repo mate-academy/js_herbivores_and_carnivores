@@ -41,15 +41,6 @@ class Carnivore extends Animal {
   }
 }
 
-const tiger = new Carnivore('Tiger');
-const zebra = new Herbivore('Zebra');
-
-tiger.bite(zebra);
-tiger.bite(zebra);
-
-expect(Animal.alive.includes(zebra))
-  .toBe(false);
-
 module.exports = {
   Animal,
   Herbivore,
