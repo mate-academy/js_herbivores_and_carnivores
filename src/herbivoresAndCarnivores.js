@@ -24,14 +24,15 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(herbivore) {
-    // eslint-disable-next-line max-len
-    if (herbivore.constructor.name === 'Herbivore' && herbivore.hidden === false) {
+    if (herbivore.constructor.name === 'Herbivore'
+    && herbivore.hidden === false) {
       herbivore.health -= 50;
     }
 
     if (herbivore.health === 0) {
-      // eslint-disable-next-line max-len
-      Animal.alive.sort((currentAnimal, nextAnimal) => nextAnimal.health - currentAnimal.health).pop();
+      Animal.alive.sort(
+        (currentAnimal, nextAnimal) =>
+          nextAnimal.health - currentAnimal.health).pop();
     }
   }
 }
