@@ -46,8 +46,3 @@ module.exports = {
   Herbivore,
   Carnivore,
 };
-
-const carn = new Carnivore('Tiger');
-const herb = new Herbivore('Zebra');
-
-carn.bite(herb);
