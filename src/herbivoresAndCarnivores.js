@@ -14,6 +14,7 @@ Animal.alive = [];
 class Herbivore extends Animal {
   constructor(name) {
     super(name);
+    
     this.hidden = false;
   }
 
@@ -28,7 +29,7 @@ class Carnivore extends Animal {
       target.health -= 50;
     }
 
-    if (target.health <= 0) {
+    if (!target.health) {
       Animal.alive.splice(Animal.alive.indexOf(target), 1);
     }
   }
