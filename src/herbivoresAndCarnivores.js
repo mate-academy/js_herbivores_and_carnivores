@@ -1,18 +1,10 @@
 'use strict';
 
 class Animal {
-  static method() {
-    for (let i = 0; i < Animal.alive.length; i++) {
-      if (Animal.alive[i].name === this.name) {
-        return;
-      }
-    }
-    Animal.alive.push(this);
-  }
   constructor(name) {
     this.name = name;
     this.health = 100;
-    Animal.method.call(this);
+    Animal.alive.push(this);
   }
 }
 
@@ -37,9 +29,9 @@ class Carnivore extends Animal {
     }
 
     if (animal.health <= 0) {
-      const eaten = Animal.alive.findIndex(elem => elem.name === animal.name);
+      const eaten = Animal.alive.findIndex(elem => elem === animal);
 
-      Animal.alive.splice((eaten - 1), 1);
+      Animal.alive.splice((eaten), 1);
     }
   }
 }
