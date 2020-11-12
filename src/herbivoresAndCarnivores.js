@@ -31,12 +31,12 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(animal) {
-    if (Object.getPrototypeOf(animal) !== Carnivore.prototype
-    && animal.hidden !== true) {
+    if (!(animal instanceof Carnivore)
+    && !animal.hidden) {
       animal.health -= 50;
     }
 
-    if (animal.health === 0) {
+    if (animal.health <= 0) {
       const eaten = Animal.alive.findIndex(elem => elem.name === animal.name);
 
       Animal.alive.splice((eaten - 1), 1);
