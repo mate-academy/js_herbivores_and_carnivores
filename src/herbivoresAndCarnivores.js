@@ -25,28 +25,28 @@ class Herbivore extends Animal {
     this.hidden = false;
     Animal.add(this);
   }
-}
 
-Herbivore.prototype.hide = function() {
-  this.hidden = !this.hidden;
-};
+  hide() {
+    this.hidden = !this.hidden;
+  };
+}
 
 class Carnivore extends Animal {
   constructor(name) {
     super(name);
     Animal.add(this);
   }
+
+  bite(victim) {
+    if (victim instanceof Herbivore && victim.hidden === false) {
+      victim.health -= 50;
+    }
+
+    if (victim.health <= 0) {
+      Animal.delete(victim.name);
+    }
+  };
 }
-
-Carnivore.prototype.bite = function(victim) {
-  if (victim instanceof Herbivore && victim.hidden === false) {
-    victim.health -= 50;
-  }
-
-  if (victim.health <= 0) {
-    Animal.delete(victim.name);
-  }
-};
 
 module.exports = {
   Animal,
