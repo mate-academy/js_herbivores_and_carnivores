@@ -18,13 +18,21 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    this.hidden = true;
+    if (this.hidden === false) {
+      this.hidden = true;
+
+      return;
+    }
+
+    if (this.hidden === true) {
+      this.hidden = false;
+    }
   }
 };
 
 class Carnivore extends Animal {
   bite(animal) {
-    if (animal.__proto__ === Herbivore.prototype
+    if (animal instanceof Herbivore
       && animal.hidden === false) {
       animal.health -= 50;
     }
