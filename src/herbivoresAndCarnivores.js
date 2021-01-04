@@ -4,11 +4,7 @@ class Animal {
   constructor(name, health = 100) {
     this.name = name;
     this.health = health;
-    Animal.pushing(this);
-  }
-
-  static pushing(creature) {
-    this.alive.push(creature);
+    Animal.alive.push(this);
   }
 
   static removing(creature) {
