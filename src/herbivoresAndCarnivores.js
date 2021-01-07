@@ -16,16 +16,11 @@ class Herbivore extends Animal {
     this.hidden = false;
   }
   hide() {
-    this.hidden = true;
+    this.hidden = !this.hidden;
   }
 }
 
 class Carnivore extends Animal {
-  // eslint-disable-next-line no-useless-constructor
-  constructor(name) {
-    super(name);
-  }
-
   bite(anim) {
     if (anim.hidden === false) {
       anim.health -= 50;
