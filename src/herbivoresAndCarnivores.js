@@ -1,9 +1,9 @@
 'use strict';
 
 class Animal {
-  constructor(_name, _health = 100) {
-    this.name = _name;
-    this.health = _health;
+  constructor(name, health = 100) {
+    this.name = name;
+    this.health = health;
     Animal.alive.push(this);
   }
 }
@@ -26,13 +26,8 @@ class Carnivore extends Animal {
     }
 
     if (animal.health === 0) {
-      let animalName;
+      const animalName = Animal.alive.indexOf(died => died.health === 0);
 
-      Animal.alive.some((herbivore, index) => {
-        if (herbivore.name === animal.name) {
-          animalName = index;
-        }
-      });
       Animal.alive.splice(animalName, 1);
     }
   }
