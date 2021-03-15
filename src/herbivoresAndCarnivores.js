@@ -25,7 +25,7 @@ class Carnivore extends Animal {
   bite(animal) {
     const DEMAGE_OF_BITING = 50;
 
-    if (!(animal instanceof Carnivore) && !animal.hidden) {
+    if (animal instanceof Herbivore && !animal.hidden) {
       animal.health -= DEMAGE_OF_BITING;
     }
 
