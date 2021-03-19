@@ -2,8 +2,8 @@
 
 class Animal {
   // write your code here
-  constructor(name, health = 100) {
-    this.name = name;
+  constructor(animal, health = 100) {
+    this.animal = animal;
     this.health = health;
     Animal.alive.push(this);
   }
@@ -24,13 +24,13 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   // write your code here
-  bite(name) {
-    if (name instanceof Herbivore && !name.hidden) {
-      name.health -= 50;
+  bite(animal) {
+    if (animal instanceof Herbivore && !animal.hidden) {
+      animal.health -= 50;
 
-      if (name.health === 0) {
+      if (animal.health === 0) {
         const index = Animal.alive
-          .findIndex(nextAnimal => nextAnimal === name);
+          .findIndex(nextAnimal => nextAnimal === animal);
 
         if (index !== -1) {
           Animal.alive.splice(index, 1);
