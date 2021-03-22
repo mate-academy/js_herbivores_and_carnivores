@@ -17,18 +17,21 @@ class Herbivore extends Animal {
   }
 
   hide() {
+    if (this.hidden === true) {
+      this.hidden = false;
+    }
     this.hidden = true;
   }
 }
 
 class Carnivore extends Animal {
-  bite(victim) {
-    if (victim instanceof Herbivore && !victim.hidden) {
-      victim.health -= 50;
+  bite(name) {
+    if (name instanceof Herbivore && !name.hidden) {
+      name.health -= 50;
     }
 
-    if (victim.health <= 0) {
-      const indexOfAnimal = Animal.alive.indexOf(victim);
+    if (name.health <= 0) {
+      const indexOfAnimal = Animal.alive.indexOf(name);
 
       Animal.alive.splice(indexOfAnimal, 1);
     }
