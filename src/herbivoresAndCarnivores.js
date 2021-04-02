@@ -13,7 +13,6 @@ Animal.addToAlive = (animal) => Animal.alive.push(animal);
 Animal.updateAliveAnimals = function() {
   const filteredAnimals = Animal.alive.filter(animal => animal.health > 0);
 
-  Animal.alive.length = 0;
   Animal.alive = [...filteredAnimals];
 };
 
@@ -29,7 +28,7 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(herbivore) {
-    if (herbivore.hidden === false) {
+    if (herbivore instanceof Herbivore && !herbivore.hidden) {
       herbivore.health -= 50;
     }
     Animal.updateAliveAnimals();
