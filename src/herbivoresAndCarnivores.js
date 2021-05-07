@@ -22,11 +22,14 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  bite(prey) {
-    const biteDamage = 50;
+  constructor(name) {
+    super(name);
+    this.biteDamage = 50;
+  }
 
+  bite(prey) {
     if (prey instanceof Herbivore && !prey.hidden) {
-      prey.health = prey.health - biteDamage;
+      prey.health = prey.health - this.biteDamage;
     }
 
     if (prey.health <= 0) {
