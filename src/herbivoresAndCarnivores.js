@@ -1,8 +1,6 @@
 'use strict';
 
 class Animal {
-  static alive = []; // eslint-disable-line no-use-before-define
-
   constructor(name, health = 100) {
     this.name = name;
     this.health = health;
@@ -10,14 +8,17 @@ class Animal {
   }
 }
 
+Animal.alive = [];
+
 class Herbivore extends Animal {
-  hidden = false;
   constructor(name, health = 100) {
-    super(name, health = 100);
+    super(name, health);
+    this.hidden = false;
   }
 
   hide() {
     this.hidden = !this.hidden;
+
     return this.hidden;
   }
 }
@@ -28,7 +29,7 @@ class Carnivore extends Animal {
       animal.health = animal.health - 50;
     }
 
-    Animal.alive = Animal.alive.filter( element => element.health > 0)
+    Animal.alive = Animal.alive.filter(element => element.health > 0);
   }
 }
 
