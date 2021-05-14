@@ -4,7 +4,6 @@ class Animal {
   constructor(name, health = 100) {
     this.name = name;
     this.health = health;
-    this.hidden = false;
     Animal.alive.push(this);
   };
 }
