@@ -12,21 +12,21 @@ Animal.alive = [];
 
 class Herbivore extends Animal {
   hide() {
-    this.hidden
-      ? this.hidden = false
-      : this.hidden = true;
+    this.hidden = !this.hidden;
   }
 }
 // other options linter blocks
 Herbivore.prototype.hidden = false;
 
 class Carnivore extends Animal {
-  bite(herbivore) {
-    if (herbivore instanceof Herbivore && herbivore.hidden !== true) {
-      herbivore.health -= 50;
+  bite(beast) {
+    if (beast instanceof Herbivore && !beast.hidden) {
+      beast.health -= 50;
 
-      if (herbivore.health === 0) {
-        Animal.alive.splice(Animal.alive.indexOf(herbivore), 1);
+      if (!beast.health) {
+        const beastIndex = Animal.alive.indexOf(beast);
+
+        Animal.alive.splice(beastIndex, 1);
       }
     }
   }
