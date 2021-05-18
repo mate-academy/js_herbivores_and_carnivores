@@ -21,8 +21,6 @@ class Herbivore extends Animal {
   }
 }
 
-Herbivore.prototype.hidden = false;
-
 class Carnivore extends Animal {
   bite(animal) {
     if (animal instanceof Herbivore && animal.hidden !== true) {
