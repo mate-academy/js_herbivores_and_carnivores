@@ -11,19 +11,21 @@ class Animal {
 Animal.alive = [];
 
 class Herbivore extends Animal {
+  constructor(name) {
+    super(name);
+    this.hidden = false;
+  }
   hide() {
     this.hidden = !this.hidden;
   }
 }
-
-Herbivore.prototype.hidden = false;
 
 class Carnivore extends Animal {
   bite(beast) {
     if (beast instanceof Herbivore && !beast.hidden) {
       beast.health -= 50;
 
-      if (!beast.health) {
+      if (beast.health <= 0) {
         const beastIndex = Animal.alive.indexOf(beast);
 
         Animal.alive.splice(beastIndex, 1);
