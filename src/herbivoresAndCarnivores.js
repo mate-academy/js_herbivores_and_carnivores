@@ -18,18 +18,18 @@ class Herbivore extends Animal {
 
   hide() {
     this.hidden = true;
+    setTimeout(() => (this.hidden = false), 30000);
   };
 };
 
 class Carnivore extends Animal {
   constructor(name) {
     super(name);
-    this.carnivore = true;
     Animal.alive.push(this);
   };
 
   bite(victim) {
-    if (!victim.hidden && !victim.carnivore) {
+    if (!victim.hidden && !(victim instanceof Carnivore)) {
       victim.health -= 50;
     };
 
