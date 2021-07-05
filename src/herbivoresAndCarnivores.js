@@ -25,10 +25,7 @@ class Carnivore extends Animal {
     if (target.__proto__ === Herbivore.prototype && !target.hidden) {
       target.health -= 50;
     }
-
-    if (target.health <= 0) {
-      Animal.alive = Animal.alive.filter(isAlive => isAlive.health !== 0);
-    }
+    Animal.alive = Animal.alive.filter(isAlive => isAlive.health !== 0);
   }
 }
 
