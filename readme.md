@@ -37,9 +37,9 @@ Animal.alive === [
   {name: 'Max', health: 100},
 ];
 
-panther.bite(deer);
-rabbit.hide();
-panther.bite(rabbit);
+  panther.bite(deer);
+  rabbit.hide();
+  panther.bite(rabbit);
 
 Animal.alive === [
   {name: 'Bagira', health: 100},
