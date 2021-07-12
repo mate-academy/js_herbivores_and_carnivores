@@ -1,10 +1,7 @@
 'use strict';
 
 class Animal {
-  // write your code here
   static alive = [];
-
-  // console.dir(animalAlive);
 
   constructor(name, health = 100) {
     this.name = name;
@@ -14,7 +11,6 @@ class Animal {
 }
 
 class Herbivore extends Animal {
-  // write your code here
   constructor(name, health) {
     super(name, health);
 
@@ -27,7 +23,6 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  // write your code here
   bite(animal) {
     if (animal instanceof Herbivore && animal.hidden === false) {
       animal.health -= 50;
