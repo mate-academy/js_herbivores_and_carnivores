@@ -17,14 +17,14 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    this.hidden = true;
+    this.hidden = !this.hidden;
   }
 }
 
 class Carnivore extends Animal {
-  bite(obj) {
-    if (obj instanceof Herbivore && obj.hidden === false) {
-      obj.health -= 50;
+  bite(victim) {
+    if (victim instanceof Herbivore && victim.hidden === false) {
+      victim.health -= 50;
     }
 
     Animal.alive = Animal.alive.filter(item => item.health !== 0);
