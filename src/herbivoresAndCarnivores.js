@@ -26,7 +26,7 @@ class Carnivore extends Animal {
     }
 
     if (animal.health === 0) {
-      Animal.alive.pop();
+      Animal.alive = Animal.alive.filter(hamster => hamster.health > 0);
     }
   }
 }
