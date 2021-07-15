@@ -2,17 +2,17 @@
 
 class Animal {
   static get alive() {
-    return Animal.aliveArray.filter(a => a.health > 0);
+    return Animal.allAnimal.filter(a => a.health > 0);
   }
 
   constructor(name) {
     this.name = name;
     this.health = 100;
-    Animal.aliveArray.push(this);
+    Animal.allAnimal.push(this);
   }
 }
 
-Animal.aliveArray = [];
+Animal.allAnimal = [];
 
 class Herbivore extends Animal {
   constructor(name) {
