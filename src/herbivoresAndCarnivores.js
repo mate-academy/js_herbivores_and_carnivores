@@ -9,10 +9,9 @@ class Animal {
     this.alive.splice(animalIndex, 1);
   }
 
-  health = 100;
-
   constructor(name) {
     this.name = name;
+    this.health = 100;
     Animal.alive.push(this);
   }
 }
