@@ -24,8 +24,8 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  constructor(name, health) {
-    super(name, health);
+  constructor(name) {
+    super(name);
 
     this.kind = 'carnivore';
   }
