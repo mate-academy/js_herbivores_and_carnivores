@@ -4,7 +4,7 @@ class Animal {
   static alive = [];
 
   static removeDeadAnimals() {
-    this.alive = this.alive.filter(animal => animal.health < 0);
+    this.alive = this.alive.filter(animal => animal.health > 0);
   }
 
   constructor(name) {
