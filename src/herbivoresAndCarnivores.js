@@ -25,7 +25,7 @@ class Carnivore extends Animal {
     }
 
     if (animal.health <= 0) {
-      Animal.alive.sort((a, b) => b.health - a.health).pop();
+      Animal.alive = Animal.alive.filter(item => item.health > 0);
     }
   }
 }
