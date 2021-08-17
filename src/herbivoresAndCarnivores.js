@@ -23,16 +23,12 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  bite() {
-    function callback(animal) {
-      if (animal.hidden === false) {
-        animal.health = animal.health - 50;
-      }
-
-      return animal.health !== 0;
+  bite(animalBittenOff) {
+    if (animalBittenOff.hidden === false) {
+      animalBittenOff.health = animalBittenOff.health - 50;
     }
 
-    Animal.alive = Animal.alive.map(callback);
+    Animal.alive = Animal.alive.map(animal => animal.health !== 0);
   }
 }
 
