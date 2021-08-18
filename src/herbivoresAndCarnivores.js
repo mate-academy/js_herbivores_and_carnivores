@@ -2,9 +2,11 @@
 
 class Animal {
   // write your code here
+  health = 100;
+  static alive = [];
+
   constructor(name) {
     this.name = name;
-    this.health = 100;
 
     Animal.alive.push(this);
   }
@@ -25,14 +27,9 @@ class Carnivore extends Animal {
     if (animal instanceof Herbivore && animal.hidden === false) {
       animal.health -= 50;
     }
-
-    if (animal.health === 0) {
-      Animal.alive.splice(Animal.alive.indexOf(animal));
-    }
+    Animal.alive = Animal.alive.filter(beast => beast.health > 0);
   }
 }
-
-Animal.alive = [];
 
 module.exports = {
   Animal,
