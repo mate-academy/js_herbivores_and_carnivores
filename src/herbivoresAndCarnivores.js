@@ -2,7 +2,7 @@
 
 class Animal {
   static alive = [];
-  static isLive() {
+  static healthChecker() {
     this.alive = this.alive.filter(anim => anim.health > 0);
   }
 
@@ -28,7 +28,7 @@ class Carnivore extends Animal {
       creature.health -= 50;
 
       if (creature.health === 0) {
-        Animal.isLive();
+        Animal.healthChecker();
       }
     }
   }
