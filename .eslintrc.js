@@ -8,5 +8,4 @@ module.exports = {
   },
   plugins: ['jest'],
   parser: "babel-eslint",
-  parser: "babel-eslint"
 };
