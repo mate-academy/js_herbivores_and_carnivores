@@ -29,7 +29,7 @@ class Carnivore extends Animal {
       animal.health -= 50;
 
       if (animal.health === 0) {
-        Animal.alive.pop();
+        Animal.alive.splice((Animal.alive.indexOf(animal)), 1);
       }
     }
   }
