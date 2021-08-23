@@ -1,7 +1,7 @@
 'use strict';
 
 class Animal {
-  static alive = [].sort((b, a) => b.health - a.health);
+  static alive = [];
   constructor(name) {
     this.name = name;
     this.health = 100;
@@ -22,10 +22,7 @@ class Carnivore extends Animal {
     if (animal.hidden === false) {
       animal.health -= 50;
     }
-
-    if (animal.health === 0) {
-      Animal.alive.pop();
-    }
+    Animal.alive = Animal.alive.filter(x => x.health > 0);
   }
 }
 
