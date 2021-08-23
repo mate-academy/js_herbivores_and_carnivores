@@ -8,8 +8,8 @@ class Animal {
     this.alive.push(animal);
   }
 
-  static removeAnimal(animal) {
-    this.alive.splice(this.alive.indexOf(animal.name), 1);
+  static removeAnimal() {
+    this.alive = this.alive.filter(animal => animal.health > 0);
   }
 
   constructor(name) {
