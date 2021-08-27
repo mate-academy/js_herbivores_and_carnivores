@@ -16,9 +16,8 @@ class Herbivore extends Animal {
     super(name);
     this.hidden = false;
 
+    // eslint-disable-next-line no-unused-vars
     const victim = this;
-
-    return victim;
   }
 }
 
@@ -28,8 +27,8 @@ class Carnivore extends Animal {
       victim.health = victim.health - 50;
     }
 
-    if (victim.health === 0) {
-      Animal.alive.pop(victim);
+    if (victim.health <= 0) {
+      Animal.alive = Animal.alive.filter((item) => item !== victim);
     }
   }
 }
