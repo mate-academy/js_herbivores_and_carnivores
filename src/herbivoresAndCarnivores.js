@@ -9,15 +9,12 @@ class Animal {
 }
 Animal.alive = [];
 class Herbivore extends Animal {
-  hide(hidden = false) {
-    this.hidden = !hidden;
+  hide() {
+    this.hidden = !this.hidden;
   }
   constructor(name) {
     super(name);
     this.hidden = false;
-
-    // eslint-disable-next-line no-unused-vars
-    const victim = this;
   }
 }
 
