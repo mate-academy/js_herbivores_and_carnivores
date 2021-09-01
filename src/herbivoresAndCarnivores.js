@@ -6,36 +6,23 @@ class Animal {
   constructor(name) {
     this.name = name;
     this.health = 100;
-  }
-
-  addAnimalToData(objToAdd) {
-    Animal.alive.push(objToAdd);
+    Animal.alive.push(this);
   }
 }
 
 class Herbivore extends Animal {
-  constructor(name) {
-    super(name);
-    this.hidden = false;
+  hidden = false;
 
-    super.addAnimalToData(this);
-  }
   hide() {
     this.hidden = true;
   }
 }
 
 class Carnivore extends Animal {
-  constructor(name) {
-    super(name);
-
-    super.addAnimalToData(this);
-  }
-
   bite(targetObj) {
     const animalIndex = Animal.alive.findIndex((animalObj) => {
       if (animalObj === targetObj
-        && targetObj.__proto__.constructor.name === 'Herbivore'
+        && targetObj instanceof Herbivore
         && animalObj.hidden === false) {
         animalObj.health -= 50;
 
