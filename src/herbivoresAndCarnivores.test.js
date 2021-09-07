@@ -95,22 +95,22 @@ describe('Animal', () => {
     }
   );
 
-  it(`Carnivores and Herbivores should be in 'Animal.alive' array`, () => {
+  it(`Carnivores and Herbivores should be in 'Animal.exist' array`, () => {
     const bear = new Carnivore('Bear');
     const pig = new Carnivore('Pig');
     const rabbit = new Herbivore('Rabbit');
 
-    expect(Animal.alive.includes(bear))
+    expect(Animal.exist.includes(bear))
       .toBe(true);
 
-    expect(Animal.alive.includes(pig))
+    expect(Animal.exist.includes(pig))
       .toBe(true);
 
-    expect(Animal.alive.includes(rabbit))
+    expect(Animal.exist.includes(rabbit))
       .toBe(true);
   });
 
-  it(`Herbivores should be removed from 'Animal.alive' array, 
+  it(`Herbivores should be removed from 'Animal.exist' array, 
   when their health is 0`, () => {
     const tiger = new Carnivore('Tiger');
     const zebra = new Herbivore('Zebra');
@@ -118,7 +118,7 @@ describe('Animal', () => {
     tiger.bite(zebra);
     tiger.bite(zebra);
 
-    expect(Animal.alive.includes(zebra))
+    expect(Animal.exist.includes(zebra))
       .toBe(false);
   });
 });
