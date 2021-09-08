@@ -11,8 +11,8 @@ Carnivore has a `bite` method, which takes a herbivore object and decreases the 
 
 `Herbivore` and `Сarnivore` should extend an `Animal` class.
 
-All alive animals should be in the static `Animal.alive` array.
-If the health of the animal reaches 0, the beast dies and it should be removed from the static array `Animals.alive`.
+All exist animals should be in the static `Animal.exist` array.
+If the health of the animal reaches 0, the beast dies and it should be removed from the static array `Animals.exist`.
 
 Example:
 ```
@@ -21,7 +21,7 @@ const panther = new Carnivore('Bagira');
 const lion = new Carnivore('King');
 const rabbit = new Herbivore('Max');
 
-Animal.alive === [
+Animal.exist === [
   {name: 'Bembi', health: 100, hidden: false},
   {name: 'Bagira', health: 100},
   {name: 'King', health: 100},
@@ -30,7 +30,7 @@ Animal.alive === [
 
 lion.bite(deer);
 panther.bite(lion);
-Animal.alive === [
+Animal.exist === [
   {name: 'Bembi', health: 50},
   {name: 'Bagira', health: 100},
   {name: 'King', health: 100},
@@ -41,7 +41,7 @@ panther.bite(deer);
 rabbit.hide();
 panther.bite(rabbit);
 
-Animal.alive === [
+Animal.exist === [
   {name: 'Bagira', health: 100},
   {name: 'King', health: 100},
   {name: 'Max', health: 100, hidden: true},
