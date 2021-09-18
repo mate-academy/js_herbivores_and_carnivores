@@ -1,15 +1,40 @@
+/* eslint-disable no-console */
 'use strict';
 
 class Animal {
-  // write your code here
+  static alive = [];
+  static deadAnimal(animalName) {
+    Animal.alive = Animal.alive.filter(el => el.name !== animalName);
+  }
+  health = 100;
+
+  constructor() {
+    Animal.alive.push(this);
+  }
 }
 
 class Herbivore extends Animal {
-  // write your code here
+  constructor() {
+    super();
+
+    this.hidden = false;
+  }
+
+  hide() {
+    this.hidden = !this.hidden;
+  }
 }
 
 class Carnivore extends Animal {
-  // write your code here
+  bite(animalBite) {
+    if (!animalBite.hidden && animalBite instanceof Herbivore) {
+      animalBite.health -= 50;
+
+      if (animalBite.health === 0) {
+        Animal.deadAnimal(animalBite.name);
+      }
+    }
+  }
 }
 
 module.exports = {
