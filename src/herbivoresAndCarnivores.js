@@ -3,7 +3,7 @@
 
 class Animal {
   static alive = [];
-  static deadAnimal(animalName) {
+  static deadAnimal() {
     Animal.alive = Animal.alive.filter(el => el.health > 0);
   }
 
