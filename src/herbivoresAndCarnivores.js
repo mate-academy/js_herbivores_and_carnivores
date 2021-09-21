@@ -4,18 +4,20 @@
 class Animal {
   static alive = [];
   static deadAnimal(animalName) {
-    Animal.alive = Animal.alive.filter(el => el.name !== animalName);
+    Animal.alive = Animal.alive.filter(el => el.health > 0);
   }
-  health = 100;
 
-  constructor() {
+  constructor(name) {
+    this.health = 100;
+    this.name = name;
+
     Animal.alive.push(this);
   }
 }
 
 class Herbivore extends Animal {
-  constructor() {
-    super();
+  constructor(name) {
+    super(name);
 
     this.hidden = false;
   }
