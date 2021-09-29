@@ -1,11 +1,11 @@
 'use strict';
 
 class Animal {
-  static someoneDied() {
-    const indexOfDeadAnimal = this.alive
-      .findIndex(animal => animal.health <= 0);
+  static checkingIsAlive() {
+    const aliveAnimals = this.alive.filter(animal => animal.health > 0);
 
-    this.alive.splice(indexOfDeadAnimal, 1); // R.I.P.
+    this.alive.length = 0;
+    this.alive = [...aliveAnimals];
   }
 
   constructor(name) {
@@ -33,9 +33,7 @@ class Carnivore extends Animal {
     if (!(obj instanceof Carnivore) && obj.hidden === false) {
       obj.health -= 50;
 
-      if (obj.health <= 0) {
-        Animal.someoneDied();
-      }
+      Animal.checkingIsAlive();
     }
   }
 }
