@@ -2,10 +2,7 @@
 
 class Animal {
   static checkingIsAlive() {
-    const aliveAnimals = this.alive.filter(animal => animal.health > 0);
-
-    this.alive.length = 0;
-    this.alive = [...aliveAnimals];
+    this.alive = this.alive.filter(animal => animal.health > 0);
   }
 
   constructor(name) {
