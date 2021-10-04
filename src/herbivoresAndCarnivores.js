@@ -1,10 +1,7 @@
 'use strict';
 
 class Animal {
-  // write your code here
-  // static alive = []; /* Parsing error: Unexpected token = */
-
-  static AliveArr() {
+  static getAliveAnimals() {
     this.alive = this.alive.filter(animal => animal.health > 0);
   }
 
@@ -19,7 +16,6 @@ class Animal {
 Animal.alive = [];
 
 class Herbivore extends Animal {
-  // write your code here
   constructor(name, hide) {
     super(name);
 
@@ -32,12 +28,11 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  // write your code here
   bite(animal) {
-    if (!(animal instanceof Carnivore) && animal.hidden === false) {
+    if (animal instanceof Herbivore && animal.hidden === false) {
       animal.health -= 50;
 
-      Animal.AliveArr();
+      Animal.getAliveAnimals();
     }
   }
 }
