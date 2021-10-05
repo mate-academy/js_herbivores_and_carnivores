@@ -1,7 +1,7 @@
 'use strict';
 
 class Animal {
-  static isAlive() {
+  static aliveAnimals() {
     this.alive = this.alive.filter(animal => animal.health > 0);
   }
 
@@ -21,20 +21,16 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    if (this.hidden === false) {
-      this.hidden = true;
-    } else {
-      this.hidden = false;
-    }
+    this.hidden = !this.hidden;
   }
 }
 
 class Carnivore extends Animal {
   bite(animal) {
-    if (!(animal instanceof Carnivore) && animal.hidden === false) {
+    if (animal instanceof Herbivore && !animal.hidden) {
       animal.health -= 50;
 
-      Animal.isAlive();
+      Animal.aliveAnimals();
     }
   }
 }
