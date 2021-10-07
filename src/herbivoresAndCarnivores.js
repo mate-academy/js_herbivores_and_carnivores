@@ -14,11 +14,6 @@ class Animal {
 class Herbivore extends Animal {
   hidden = false;
 
-  // eslint-disable-next-line no-useless-constructor
-  constructor(name) {
-    super(name);
-  }
-
   hide() {
     if (this.hidden === false) {
       this.hidden = true;
@@ -29,18 +24,13 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  // eslint-disable-next-line no-useless-constructor
-  constructor(name) {
-    super(name);
-  }
-
-  bite(animal) {
-    Animal.alive.map((person, index) => {
+  bite(aim) {
+    Animal.alive.map((an, index) => {
       // eslint-disable-next-line max-len
-      if (person === animal && animal.constructor.name === 'Herbivore' && person.hidden !== true) {
-        person.health -= 50;
+      if (an === aim && aim.constructor.name === 'Herbivore' && an.hidden !== true) {
+        an.health -= 50;
 
-        if (person.health === 0) {
+        if (an.health === 0) {
           Animal.alive.splice(index);
         }
       }
