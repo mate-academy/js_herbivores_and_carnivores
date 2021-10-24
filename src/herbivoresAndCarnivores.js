@@ -7,9 +7,8 @@ class Animal {
     this.health = 100;
     Animal.alive.push(this);
   }
-/* eslint-disable no-use-before-define */
+
   static alive = [];
-/* eslint-enable no-use-before-define */ 
 }
 
 class Herbivore extends Animal {
