@@ -17,7 +17,7 @@ describe('Animal', () => {
       .toBeInstanceOf(Carnivore);
   });
 
-  it(`Herbivore should has falsy 'hidden' property`, () => {
+  it(`Herbivore should have falsy 'hidden' property`, () => {
     const animal = new Herbivore('Zebra');
 
     expect(animal.hidden)
