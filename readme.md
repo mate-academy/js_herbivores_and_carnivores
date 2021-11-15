@@ -14,20 +14,6 @@ Carnivore has a `bite` method, which takes a herbivore object and decreases the 
 All alive animals should be in the static `Animal.alive` array.
 If the health of the animal reaches 0, the beast dies and it should be removed from the static array `Animals.alive`.
 
-Все экземпляры класса Animal должны иметь здоровье и имя.
-По умолчанию здоровье 100.
-
-Создайте класс травоядных.
-У травоядных есть метод `hide`, который изменяет скрытое свойство зверя на противоположное значение и помогает спрятаться от хищников.
-
-Создайте класс "Карнивор".
-У Carnivore есть метод укуса, который берет объект травоядного и снижает его здоровье на 50. Метод не работает, если это другое животное или травоядное животное в данный момент прячется.
-
-«Herbivore» и «Carnivore» должны расширять класс «Animal».
-
-Все живые животные должны быть в статическом массиве Animal.alive.
-Если здоровье животного достигает 0, зверь умирает, и его следует удалить из статического массива Animals.alive.
-
 Example:
 ```
 const deer = new Herbivore('Bembi');
