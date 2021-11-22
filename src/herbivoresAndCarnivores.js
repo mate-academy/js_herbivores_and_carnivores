@@ -25,7 +25,7 @@ class Carnivore extends Animal {
       harbivore.health -= 50;
     }
 
-    if (harbivore.health <= 0) {
+    if (harbivore.health <= 0 && Animal.alive.includes(harbivore)) {
       Animal.alive.splice(Animal.alive.indexOf(harbivore), 1);
     }
   }
