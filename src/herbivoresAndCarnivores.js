@@ -11,7 +11,10 @@ class Animal {
 Animal.alive = [];
 
 class Herbivore extends Animal {
-  hidden = false;
+  constructor(name) {
+    super(name);
+    this.hidden = false;
+  }
 
   hide() {
     this.hidden = !this.hidden;
