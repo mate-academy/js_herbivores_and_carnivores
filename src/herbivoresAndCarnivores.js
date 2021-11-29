@@ -29,14 +29,12 @@ class Carnivore extends Animal {
   }
 
   bite(obj) {
-    if (obj instanceof Herbivore) {
-      if (obj.hidden === false) {
-        obj.health -= 50;
+    if (obj instanceof Herbivore && !obj.hidden) {
+      obj.health -= 50;
+    }
 
-        if (obj.health <= 0) {
-          Animal.alive = Animal.alive.filter(animal => animal !== obj);
-        }
-      }
+    if (obj.health <= 0) {
+      Animal.alive = Animal.alive.filter(animal => animal !== obj);
     }
   }
 }
