@@ -1,9 +1,9 @@
 'use strict';
 
 class Animal {
-  constructor(name) {
+  constructor(name, health = 100) {
     this.name = name;
-    this.health = 100;
+    this.health = health;
   };
 };
 
@@ -12,16 +12,13 @@ Animal.alive = [];
 class Herbivore extends Animal {
   constructor(name, health, hidden) {
     super(name);
-
-    if (hidden === undefined) {
-      this.hidden = false;
-    };
+    this.hidden = false;
 
     Animal.alive.push(this);
   };
 
   hide() {
-    this.hidden = true;
+    this.hidden = !this.hidden;
   };
 };
 
@@ -32,12 +29,12 @@ class Carnivore extends Animal {
     Animal.alive.push(this);
   };
 
-  bite(herb) {
-    if (herb.hidden === false) {
-      herb.health = herb.health - 50;
+  bite(animal) {
+    if (animal.hidden === false) {
+      animal.health = animal.health - 50;
     };
 
-    Animal.alive = Animal.alive.filter(a => a.health !== 0);
+    Animal.alive = Animal.alive.filter(a => a.health > 0);
   };
 };
 
