@@ -23,7 +23,7 @@ const rabbit = new Herbivore('Max');
 
 Animal.alive === [
   {name: 'Bembi', health: 100, hidden: false},
-  {name: 'Bagira', health: 100},
+  {name: 'Bagira', health: 100}
   {name: 'King', health: 100},
   {name: 'Max', health: 100, hidden: false},
 ];
