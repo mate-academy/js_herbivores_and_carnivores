@@ -3,7 +3,7 @@
 class Animal {
   constructor(name, health) {
     this.health = health || 100;
-    this.neme = name;
+    this.name = name;
     Animal.alive.push(this);
   }
 }
