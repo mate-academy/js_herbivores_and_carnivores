@@ -14,10 +14,7 @@ class Herbivore extends Animal {
     this.hidden = false;
   }
   hide() {
-    if (this.hidden === true) {
-      this.hidden = false;
-    }
-    this.hidden = true;
+    this.hidden = !this.hiden;
   }
 }
 
@@ -27,16 +24,10 @@ class Carnivore extends Animal {
   }
 
   bite(herbivore) {
-    if (herbivore.__proto__ !== Carnivore.prototype && !herbivore.hidden) {
+    if (herbivore instanceof Herbivore && !herbivore.hidden) {
       herbivore.health -= 50;
     }
-
-    if (herbivore.health <= 0) {
-      const index = Animal.alive.indexOf(herbivore);
-
-      Animal.alive[index] = Animal.alive[Animal.alive.length - 1];
-      Animal.alive.pop();
-    }
+    Animal.alive = Animal.alive.filter(beast => beast > 0);
   }
 }
 
