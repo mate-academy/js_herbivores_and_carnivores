@@ -13,12 +13,13 @@ Animal.alive = [];
 class Herbivore extends Animal {
   constructor(name) {
     super(name);
+
     this.hidden = false;
   }
 
   hide() {
     this.hidden = !this.hidden;
-  }
+  };
 }
 
 class Carnivore extends Animal {
@@ -28,9 +29,9 @@ class Carnivore extends Animal {
     }
 
     if (animal.health <= 0) {
-      Animal.alive = Animal.alive.filter(item => item.healt > 0);
+      Animal.alive = Animal.alive.filter(brute => brute.health > 0);
     }
-  }
+  };
 }
 
 module.exports = {
