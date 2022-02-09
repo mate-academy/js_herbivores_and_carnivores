@@ -17,11 +17,9 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    this.hidden = true;
+    this.hidden = !this.hidden;
   }
 }
-
-Herbivore.hidden = false;
 
 class Carnivore extends Animal {
   bite(prey) {
