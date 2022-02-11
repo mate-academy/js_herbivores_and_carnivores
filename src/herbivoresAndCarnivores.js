@@ -4,16 +4,16 @@ class Animal {
   constructor(name) {
     this.name = name;
     this.health = 100;
+    this.hidden = false;
+    Animal.alive.push(this);
   }
 }
 
 Animal.alive = [];
 
 class Herbivore extends Animal {
-  constructor(name, health = 100) {
-    super(name, health);
-    this.hidden = false;
-    Animal.alive.push(this);
+  constructor(name, health = 100, hidden) {
+    super(name, health, hidden);
   }
   hide() {
     this.hidden = !this.hidden;
@@ -23,18 +23,18 @@ class Herbivore extends Animal {
 class Carnivore extends Animal {
   constructor(name, health = 100) {
     super(name, health);
-    Animal.alive.push(this);
   }
   bite(herbivore) {
-    if ((herbivore.hidden === false)) {
+    if ((herbivore.hidden === false
+      && herbivore.constructor.name === 'Herbivore')) {
       herbivore.health -= 50;
 
       if (herbivore.health <= 0) {
-        for (let i = 0; i < Animal.alive.length; i++) {
-          if (Animal.alive[i] === herbivore) {
-            Animal.alive.splice(i, 1);
+        Animal.alive = Animal.alive.map(el => {
+          if (el === herbivore) {
+            Animal.alive.splice(el, 1);
           }
-        }
+        });
       }
     }
   }
