@@ -19,21 +19,17 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    if (this.hidden) {
-      this.hidden = false;
-    } else {
-      this.hidden = true;
-    }
+    this.hidden = true;
   }
 }
 
 class Carnivore extends Animal {
   bite(herbivore) {
-    if (herbivore && herbivore.hidden === false) {
+    if (herbivore.hidden === false) {
       herbivore.health -= 50;
     }
 
-    if (herbivore.health <= 0) {
+    if (herbivore.health === 0) {
       Animal.alive = Animal.alive.filter(({ health }) => health);
     }
   }
