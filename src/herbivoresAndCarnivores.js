@@ -8,6 +8,7 @@ class Animal {
     Animal.alive.push(this);
   };
 }
+Animal.alive = [];
 class Herbivore extends Animal {
   constructor(name, health) {
     super(name, health);
