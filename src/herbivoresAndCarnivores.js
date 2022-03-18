@@ -22,16 +22,11 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  bite(prey) {
-    if (prey.hidden === false
-      && prey instanceof Herbivore) {
-      prey.health -= 50;
+  bite(animal) {
+    if (!animal.hidden && animal instanceof Herbivore) {
+      animal.health -= 50;
 
-      for (let i = 0; i < Animal.alive.length; i++) {
-        if (Animal.alive[i].health === 0) {
-          Animal.alive.splice(i, 1);
-        }
-      }
+      Animal.alive = Animal.alive.filter((x) => x.health !== 0);
     }
   }
 };
@@ -41,3 +36,7 @@ module.exports = {
   Herbivore,
   Carnivore,
 };
+
+// for (let i = 0; i < Animal.alive.length; i++) {
+//   if (Animal.alive[i].health === 0) {
+//     Animal.alive.splice(i, 1);
