@@ -3,7 +3,6 @@ class Animal {
   constructor(name) {
     this.health = 100;
     this.name = name;
-    this.hidden = false;
 
     Animal.alive.push(this);
   }
@@ -12,6 +11,11 @@ class Animal {
 Animal.alive = [];
 
 class Herbivore extends Animal {
+  constructor(name) {
+    super(name);
+    this.hidden = false;
+  }
+
   hide() {
     this.hidden = true;
   }
