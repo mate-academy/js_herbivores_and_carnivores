@@ -15,8 +15,8 @@ class Herbivore extends Animal {
     super(name, health);
     this.hidden = false;
   }
-  changeHideStatus() {
-    this.hidden = !this.hidden;
+  hide() {
+    this.hidden = true;
   }
 }
 
