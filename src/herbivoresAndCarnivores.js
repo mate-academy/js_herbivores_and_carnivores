@@ -26,10 +26,10 @@ class Carnivore extends Animal {
   bite(target) {
     if (target.hidden !== undefined && target.hidden !== true) {
       target.health -= 50;
-    }
 
-    if (target.health <= 0) {
-      Animal.alive.splice(Animal.alive.indexOf(target), 1);
+      if (target.health <= 0) {
+        Animal.alive.splice(Animal.alive.indexOf(target), 1);
+      }
     }
   }
 }
