@@ -16,13 +16,13 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    this.hidden = true;
+    this.hidden = !this.hidden;
   }
 }
 
 class Carnivore extends Animal {
   bite(target) {
-    if (target.hasOwnProperty('hidden') && target.hidden === false) {
+    if (target instanceof Herbivore && target.hidden === false) {
       target.health -= 50;
 
       const deadAnimal = Animal.alive.findIndex(animal => animal.health <= 0);
