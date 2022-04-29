@@ -4,9 +4,11 @@ class Animal {
   constructor(name) {
     this.name = name;
     this.health = 100;
+
+    Animal.alive.push(this);
   }
 
-  static deathAlive(animal) {
+  static removeDeadAnimal(animal) {
     for (let i = 0; i < Animal.alive.length; i++) {
       if (Animal.alive[i] === animal) {
         delete Animal.alive[i];
@@ -21,28 +23,21 @@ class Herbivore extends Animal {
   constructor(name, health, hidden = false) {
     super(name);
     this.hidden = hidden;
-
-    Animal.alive.push(this);
   }
 
   hide() {
-    this.hidden = true;
+    this.hidden = !this.hidden;
   }
 }
 
 class Carnivore extends Animal {
-  constructor(name) {
-    super(name);
-    Animal.alive.push(this);
-  }
-
   bite(animal) {
-    if (!animal.hidden && !(animal instanceof Carnivore)) {
+    if (!animal.hidden && animal instanceof Herbivore) {
       animal.health -= 50;
     }
 
     if (animal.health <= 0) {
-      Animal.deathAlive(animal);
+      Animal.removeDeadAnimal(animal);
     }
   }
 }
