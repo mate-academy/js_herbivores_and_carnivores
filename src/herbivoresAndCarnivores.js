@@ -28,14 +28,14 @@ class Carnivore extends Animal {
 
     if (isHerbivore && isNotHidden) {
       const biteDamage = 50;
-      const isDead = animal.health - biteDamage === 0;
-      const removeFromAlive = () => {
-        Animal.alive = Animal.alive.filter(beast => beast.health <= 0);
-      };
 
-      isDead
-        ? removeFromAlive()
-        : animal.health -= biteDamage;
+      animal.health -= biteDamage;
+    }
+
+    if (animal.health <= 0) {
+      Animal.alive = Animal.alive.filter(
+        beast => beast.health > 0
+      );
     }
   }
 }
