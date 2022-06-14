@@ -3,16 +3,31 @@ Nature is well suited to reflect the principles of Object Oriented Programming.
 All instances of the `Animal` class must have health and a name.
 Health is 100 by default.
 
+Природа хорошо подходит для отражения принципов объектно-ориентированного программирования.
+Все экземпляры класса Animal должны иметь health и name.
+Здоровье 100 по умолчанию.
+
 Create a `Herbivore` class.
 Herbivore has a method of `hide`, which changes the hidden property of the beast to the opposite value and helps to hide from carnivores.
+
+Создайте класс «Herbivore».
+У травоядных есть метод `hide`, который изменяет скрытое свойство зверя на противоположное значение и помогает прятаться от плотоядных.
 
 Create a `Сarnivore` class.
 Carnivore has a `bite` method, which takes a herbivore object and decreases the object's health by 50. The method does not work if it is another сarnivore, or the herbivore is currently hiding.
 
+Создайте класс Carnivore.
+У плотоядного есть метод «укус»bite, который берет объект травоядного и снижает его здоровье на 50. Метод не работает, если это другой хищник или травоядное в данный момент прячется.
+
 `Herbivore` and `Сarnivore` should extend an `Animal` class.
+
+`Herbivore` и `Carnivore` должны расширять класс `Animal`.
 
 All alive animals should be in the static `Animal.alive` array.
 If the health of the animal reaches 0, the beast dies and it should be removed from the static array `Animals.alive`.
+
+Все живые животные должны находиться в статическом массиве Animal.alive.
+Если здоровье животного достигает 0, зверь умирает и его следует удалить из статического массива `Animals.alive`.
 
 Example:
 ```
