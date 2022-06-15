@@ -8,6 +8,8 @@ class Animal {
   }
 }
 
+Animal.alive = [];
+
 class Herbivore extends Animal {
   constructor(name) {
     super(name);
@@ -16,11 +18,7 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    if (this.hidden === true) {
-      this.hidden = false;
-    } else {
-      this.hidden = true;
-    }
+    this.hidden = !this.hidden;
   }
 }
 
@@ -35,8 +33,6 @@ class Carnivore extends Animal {
     }
   }
 }
-
-Animal.alive = [];
 
 module.exports = {
   Animal,
