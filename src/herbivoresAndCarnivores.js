@@ -23,8 +23,8 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   kill(herbivore) {
-    Animal.alive.splice(Animal.alive.findIndex(({ health }) =>
-      health === 0), 1);
+    Animal.alive = Animal.alive.filter(({ health }) =>
+      health > 0);
   }
 
   bite(herbivore) {
