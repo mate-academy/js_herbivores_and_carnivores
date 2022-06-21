@@ -4,12 +4,12 @@ class Animal {
   static alive = [];
 
   static removeAnimal(animal) {
-    delete this.alive[this.alive.indexOf(animal)];
+    delete Animal.alive[Animal.alive.indexOf(animal)];
   }
 
-  constructor(name, health = 100) {
+  constructor(name) {
     this.name = name;
-    this.health = health;
+    this.health = 100;
     Animal.alive.push(this);
   }
 }
@@ -30,7 +30,7 @@ class Carnivore extends Animal {
     if (!hebrivore.hidden && hebrivore instanceof Herbivore) {
       hebrivore.health -= 50;
 
-      if (hebrivore.health === 0) {
+      if (!hebrivore.health) {
         Animal.removeAnimal(hebrivore);
       }
     }
