@@ -11,8 +11,8 @@ class Animal {
 Animal.alive = [];
 
 class Herbivore extends Animal {
-  constructor() {
-    super();
+  constructor(name) {
+    super(name);
 
     this.hidden = false;
   }
@@ -28,7 +28,9 @@ class Carnivore extends Animal {
       brute.health -= 50;
     }
 
-    Animal.alive = Animal.alive.filter(beast => beast.health);
+    if (!brute.health) {
+      Animal.alive = Animal.alive.filter(beast => beast.health);
+    }
   }
 }
 
