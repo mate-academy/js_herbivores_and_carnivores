@@ -7,6 +7,10 @@ class Animal {
 
     Animal.alive.push(this);
   }
+
+  static removeAnimal(animal) {
+    Animal.alive = Animal.alive.map(alive => alive.health);
+  }
 }
 
 Animal.alive = [];
@@ -28,7 +32,7 @@ class Carnivore extends Animal {
       victim.health -= 50;
 
       if (!victim.health) {
-        Animal.alive.splice(Animal.alive.indexOf(victim), 1);
+        Animal.removeAnimal(victim);
       }
     }
   }
