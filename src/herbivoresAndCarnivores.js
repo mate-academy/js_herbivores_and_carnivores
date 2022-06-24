@@ -2,12 +2,14 @@
 
 class Animal {
   constructor(name) {
-    Animal.alive = [];
     this.name = name;
     this.health = 100;
+
+    if (Animal.alive === undefined) {
+      Animal.alive = [];
+    }
   }
 }
-
 class Herbivore extends Animal {
   constructor(name) {
     super(name);
