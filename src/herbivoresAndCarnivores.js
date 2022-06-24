@@ -8,7 +8,7 @@ class Animal {
     Animal.alive.push(this);
   }
 
-  static removeAnimal(animal) {
+  static removeDeadAnimals() {
     Animal.alive = Animal.alive.map(alive => alive.health);
   }
 }
@@ -32,7 +32,7 @@ class Carnivore extends Animal {
       victim.health -= 50;
 
       if (!victim.health) {
-        Animal.removeAnimal(victim);
+        Animal.removeDeadAnimals();
       }
     }
   }
