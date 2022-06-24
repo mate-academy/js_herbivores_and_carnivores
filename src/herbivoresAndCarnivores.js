@@ -1,10 +1,6 @@
 'use strict';
 
 class Animal {
-  static deleteAnimal(animal) {
-    delete Animal.alive[Animal.alive.indexOf(animal)];
-  }
-
   constructor(name) {
     this.name = name;
     this.health = 100;
@@ -14,24 +10,24 @@ class Animal {
 Animal.alive = [];
 
 class Herbivore extends Animal {
-  constructor(name, health, hidden = false) {
-    super(name, health);
-    this.hidden = hidden;
+  constructor(name) {
+    super(name);
+    this.hidden = false;
   }
 
   hide() {
-    this.hidden = true;
+    this.hidden = !this.hidden;
   }
 }
 
 class Carnivore extends Animal {
-  bite(hebrivore) {
-    if (!hebrivore.hidden && hebrivore instanceof Herbivore) {
-      hebrivore.health -= 50;
+  bite(herbivore) {
+    if (!herbivore.hidden && herbivore instanceof Herbivore) {
+      herbivore.health -= 50;
+    }
 
-      if (!hebrivore.health) {
-        Animal.deleteAnimal(hebrivore);
-      }
+    if (!herbivore.health) {
+      Animal.alive = Animal.alive.filter(animal => animal.health);
     }
   }
 }
