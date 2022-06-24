@@ -27,7 +27,7 @@ class Carnivore extends Animal {
     if (!(victim instanceof Carnivore) && !victim.hidden) {
       victim.health -= 50;
 
-      if (victim.health === 0) {
+      if (!victim.health) {
         Animal.alive.splice(Animal.alive.indexOf(victim), 1);
       }
     }
