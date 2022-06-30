@@ -20,11 +20,11 @@ class Herbivore extends Animal {
 
     Animal.alive.push(this);
   }
-  hide() {
-    if (this.hidden !== undefined) {
-      this.hidden = this.hidden === false;
+  hide(lurk = this) {
+    if (lurk.hidden !== undefined) {
+      lurk.hidden = lurk.hidden === false;
     } else {
-      this.hidden = true;
+      lurk.hidden = true;
     }
   }
 }
@@ -44,6 +44,11 @@ class Carnivore extends Animal {
         Animal.nature();
       }
     }
+  }
+  hide() {
+    const lurk = this;
+
+    Herbivore.prototype.hide(lurk);
   }
 }
 
