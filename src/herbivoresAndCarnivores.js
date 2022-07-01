@@ -14,18 +14,14 @@ Animal.alive = [];
 
 class Herbivore extends Animal {
   // write your code here
-  constructor(name, health = 100) {
+  constructor(name, health) {
     super(name, health);
     this.hidden = false;
 
     Animal.alive.push(this);
   }
-  hide(lurk = this) {
-    if (lurk.hidden !== undefined) {
-      lurk.hidden = lurk.hidden === false;
-    } else {
-      lurk.hidden = true;
-    }
+  hide() {
+    this.hidden = this.hidden === false;
   }
 }
 
@@ -37,18 +33,13 @@ class Carnivore extends Animal {
     Animal.alive.push(this);
   }
   bite(victim) {
-    if (victim.hidden === false || undefined) {
+    if (victim instanceof Herbivore && victim.hidden === false) {
       victim.health -= 50;
 
       if (victim.health === 0) {
         Animal.nature();
       }
     }
-  }
-  hide() {
-    const lurk = this;
-
-    Herbivore.prototype.hide(lurk);
   }
 }
 
