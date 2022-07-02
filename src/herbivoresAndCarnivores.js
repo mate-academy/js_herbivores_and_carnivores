@@ -6,7 +6,7 @@ class Animal {
     this.health = 100;
     this.hidden = false;
 
-    if (Animal.alive === undefined) {
+    if (!Animal.alive) {
       Animal.alive = [];
     }
     Animal.alive.push(this);
