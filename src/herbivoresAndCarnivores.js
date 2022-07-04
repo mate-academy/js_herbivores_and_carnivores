@@ -6,7 +6,7 @@ class Animal {
     this.health = 100;
     this.hidden = false;
 
-    if (Animal.alive === undefined) {
+    if (!Animal.alive) {
       Animal.alive = [];
     }
     Animal.alive.push(this);
@@ -21,7 +21,7 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(target) {
-    if (target instanceof Herbivore && target.hidden === false) {
+    if (target instanceof Herbivore && !target.hidden) {
       target.health -= 50;
     }
     Animal.alive = Animal.alive.filter(element => element.health !== 0);
