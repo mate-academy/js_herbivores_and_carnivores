@@ -3,8 +3,8 @@
 class Animal {
   // write your code here
   constructor(name, health) {
-    this.health = health || 100;
     this.name = name;
+    this.health = health || 100;
   }
 }
 
