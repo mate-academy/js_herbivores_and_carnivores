@@ -9,13 +9,14 @@ class Animal {
   constructor(name, health = 100) {
     this.name = name;
     this.health = health;
+    Animal.increase(this);
   }
 }
 
 class Herbivore extends Animal {
   constructor(name, health) {
     super(name, health);
-    Animal.increase(this);
+
     this.hidden = false;
   }
 
@@ -31,7 +32,7 @@ class Carnivore extends Animal {
   }
 
   bite(beast) {
-    if (beast.hidden === true || beast.__proto__ === Carnivore.prototype) {
+    if (beast.hidden === true || beast instanceof Carnivore) {
       return beast.health;
     } else {
       beast.health -= 50;
