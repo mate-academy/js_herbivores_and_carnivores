@@ -6,6 +6,10 @@ class Animal {
     this.health = health;
     Animal.alive.push(this);
   }
+
+  updateAnimalList() {
+    Animal.alive = Animal.alive.filter(animal => animal.health > 0);
+  }
 }
 
 Animal.alive = [];
@@ -17,7 +21,7 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    this.hidden = !(this.hidden);
+    this.hidden = true;
   }
 }
 
@@ -28,7 +32,7 @@ class Carnivore extends Animal {
     }
 
     if (someone.health === 0) {
-      Animal.alive = Animal.alive.filter(animal => animal.health > 0);
+      this.updateAnimalList();
     }
   }
 }
