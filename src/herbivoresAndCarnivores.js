@@ -4,6 +4,7 @@ class Animal {
   constructor(name, health = 100) {
     this.health = health;
     this.name = name;
+    Animal.alive.push(this);
   }
 
   updateAlivesList() {
@@ -14,11 +15,10 @@ class Animal {
 Animal.alive = [];
 
 class Herbivore extends Animal {
-  constructor(name, health) {
+  constructor(name) {
     super(name);
 
     this.hidden = false;
-    Animal.alive.push(this);
   }
 
   hide() {
@@ -27,12 +27,6 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  constructor(name, health) {
-    super(name);
-
-    Animal.alive.push(this);
-  }
-
   bite(enemy) {
     if (enemy instanceof Herbivore && !enemy.hidden) {
       enemy.health -= 50;
