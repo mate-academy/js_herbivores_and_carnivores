@@ -4,6 +4,11 @@ class Animal {
   constructor(name) {
     this.name = name;
     this.health = 100;
+    Animal.alive.push(this);
+  }
+
+  updateAlivesList(target) {
+    Animal.alive.splice(Animal.alive.indexOf(target), 1);
   }
 }
 
@@ -14,28 +19,21 @@ class Herbivore extends Animal {
     super();
 
     this.hidden = false;
-    Animal.alive.push(this);
   }
 
   hide() {
-    this.hidden = !this.hidden;
+    this.hidden = true;
   }
 }
 
 class Carnivore extends Animal {
-  constructor() {
-    super();
-
-    Animal.alive.push(this);
-  };
-
   bite(target) {
     if (target instanceof Herbivore && !target.hidden) {
       target.health -= 50;
     }
 
     if (!target.health) {
-      Animal.alive.splice(Animal.alive.indexOf(target), 1);
+      this.updateAlivesList(target);
     }
   }
 }
