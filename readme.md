@@ -1,4 +1,4 @@
-# Herbivores and Сarnivores
+# Herbivores and Сarnivores 
 Nature is well suited to reflect the principles of Object Oriented Programming.
 All instances of the `Animal` class must have health and a name.
 Health is 100 by default.
