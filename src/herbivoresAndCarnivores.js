@@ -10,7 +10,6 @@ class Animal {
 Animal.alive = [];
 
 class Herbivore extends Animal {
-  // write your code here
   constructor(name, health = 100) {
     super(name, health);
     this.hidden = false;
@@ -31,18 +30,16 @@ class Carnivore extends Animal {
   }
 
   bite(victim) {
-    if (victim.hidden === false) {
+    if (victim.hidden === false && victim instanceof Herbivore) {
       victim.health -= 50;
 
-      if (victim.health === 0) {
-        Animal.alive = Animal.alive.filter(el => {
-          if (el.name === victim.name) {
-            return false;
-          }
+      Animal.alive = Animal.alive.filter(el => {
+        if (el.name === victim.name) {
+          return false;
+        }
 
-          return true;
-        });
-      }
+        return true;
+      });
     }
   }
 }
