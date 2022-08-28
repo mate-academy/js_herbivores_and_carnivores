@@ -1,10 +1,6 @@
 'use strict';
 
 class Animal {
-  static removeAnimal() {
-    Animal.alive.splice(Animal.alive.indexOf(this.name), 1);
-  }
-
   constructor(name) {
     this.name = name;
     this.health = 100;
