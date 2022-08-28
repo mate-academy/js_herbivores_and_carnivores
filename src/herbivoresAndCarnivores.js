@@ -8,8 +8,6 @@ class Animal {
   }
 }
 
-Animal.alive = [];
-
 class Herbivore extends Animal {
   constructor(name) {
     super(name);
@@ -30,6 +28,8 @@ class Carnivore extends Animal {
     Animal.alive = Animal.alive.filter(({ health }) => health > 0);
   }
 }
+
+Animal.alive = [];
 
 module.exports = {
   Animal,
