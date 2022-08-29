@@ -22,6 +22,11 @@ class Herbivore extends Animal {
 class Carnivore extends Animal {
   bite(animals) {
     const findAnimal = Animal.alive.find(item => item === animals);
+
+    if (findAnimal === undefined) {
+      return;
+    };
+
     const whereIsAnimal = Animal.alive.indexOf(findAnimal);
 
     if (animals.hidden !== true && animals instanceof Herbivore) {
