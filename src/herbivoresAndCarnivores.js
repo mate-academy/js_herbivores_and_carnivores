@@ -14,29 +14,22 @@ class Herbivore extends Animal {
   constructor(name) {
     super(name);
 
-    this.type = 'herbivore';
     this.hidden = false;
   }
 
   hide() {
-    this.hidden = true;
+    this.hidden = !this.hidden;
   }
 }
 
 class Carnivore extends Animal {
-  constructor(name) {
-    super(name);
-
-    this.type = 'carnivore';
-  }
-
   bite(target) {
-    if (target.type !== 'carnivore' && target.hidden !== true) {
+    if (target instanceof Herbivore && !target.hidden) {
       target.health -= 50;
     }
 
     if (target.health === 0) {
-      Animal.alive.splice(Animal.alive.indexOf(target));
+      Animal.alive = Animal.alive.filter(animal => animal.health !== 0);
     }
   }
 }
