@@ -6,11 +6,8 @@ class Animal {
   }
 
   static removeAlive(animal) {
-    for (let i = 0; i < this.alive.length; i++) {
-      if (this.alive[i].name === animal.name) {
-        this.alive.splice(i, 1);
-      }
-    }
+    this.alive.splice(this.alive.findIndex(item =>
+      item.name === animal.name && item.health <= 0), 1);
   }
 
   constructor(name) {
@@ -38,7 +35,7 @@ class Carnivore extends Animal {
     if (herbivoreAnimal.hidden === false) {
       herbivoreAnimal.health -= 50;
 
-      if (herbivoreAnimal.health === 0) {
+      if (herbivoreAnimal.health <= 0) {
         Animal.removeAlive(herbivoreAnimal);
       }
     }
