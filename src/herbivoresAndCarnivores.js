@@ -6,8 +6,7 @@ class Animal {
   }
 
   static removeAlive(animal) {
-    this.alive.splice(this.alive.findIndex(item =>
-      item.name === animal.name && item.health <= 0), 1);
+    Animal.alive = this.alive.filter(item => item.health > 0);
   }
 
   constructor(name) {
