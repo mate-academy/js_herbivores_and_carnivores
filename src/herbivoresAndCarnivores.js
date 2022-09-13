@@ -1,15 +1,32 @@
 'use strict';
 
 class Animal {
-  // write your code here
+  constructor(health, name) {
+    this.health = 100;
+    this.name = name;
+  }
 }
 
 class Herbivore extends Animal {
-  // write your code here
+  constructor(health, name, hidden) {
+    super(health, name, hidden);
+    this.hidden = false;
+  }
+
+  hide() {
+    this.hidden = true;
+  }
 }
 
 class Carnivore extends Animal {
-  // write your code here
+  constructor(health, name, hidden) {
+    super(health, name, hidden);
+    this.hidden = hidden;
+  }
+
+  bite(health) {
+    Herbivore.health -= 50;
+  }
 }
 
 module.exports = {
