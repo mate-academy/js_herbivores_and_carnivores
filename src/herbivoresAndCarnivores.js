@@ -38,7 +38,7 @@ class Carnivore extends Animal {
       && !beast.hidden) {
       beast.health -= 50;
 
-      if (beast.health === 0) {
+      if (beast.health <= 0) {
         Carnivore.dead();
       }
     }
