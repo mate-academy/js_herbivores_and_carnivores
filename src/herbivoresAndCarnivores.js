@@ -21,12 +21,11 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(target) {
-    const victim = Animal.alive.find(animal => animal === target);
-    const checkPrototype = victim.__proto__.constructor.name === 'Herbivore';
+    const checkPrototype = target instanceof Herbivore && !target.hidden;
 
-    victim.health = checkPrototype && !victim.hidden
-      ? victim.health - 50
-      : victim.health;
+    target.health = checkPrototype
+      ? target.health - 50
+      : target.health;
     Animal.alive = Animal.alive.filter(animal => animal.health > 0);
   }
 }
