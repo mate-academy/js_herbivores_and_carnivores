@@ -26,7 +26,9 @@ class Carnivore extends Animal {
     target.health = checkPrototype
       ? target.health - 50
       : target.health;
-    Animal.alive = Animal.alive.filter(animal => animal.health > 0);
+
+    Animal.alive = Animal.alive
+      .filter(animal => animal.health > 0);
   }
 }
 
