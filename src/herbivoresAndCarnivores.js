@@ -23,12 +23,12 @@ class Carnivore extends Animal {
   bite(target) {
     const checkPrototype = target instanceof Herbivore && !target.hidden;
 
-    target.health = checkPrototype
-      ? target.health - 50
-      : target.health;
+    if (checkPrototype) {
+      target.health -= 50;
 
-    Animal.alive = Animal.alive
-      .filter(animal => animal.health > 0);
+      Animal.alive = Animal.alive
+        .filter(animal => animal.health > 0);
+    }
   }
 }
 
