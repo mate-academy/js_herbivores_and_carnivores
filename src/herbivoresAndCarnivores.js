@@ -15,7 +15,7 @@ class Herbivore extends Animal {
   hidden = false;
 
   hide() {
-    this.hidden = this.hidden ? false : true;
+    this.hidden = !this.hidden;
   }
 }
 
