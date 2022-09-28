@@ -30,8 +30,7 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(animal) {
-    const nutritionMode = Object.getPrototypeOf(animal);
-    const isHerbivore = nutritionMode === Herbivore.prototype;
+    const isHerbivore = animal instanceof Herbivore;
 
     if (!animal.hidden && isHerbivore) {
       animal.health -= 50;
