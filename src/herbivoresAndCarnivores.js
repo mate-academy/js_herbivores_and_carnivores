@@ -4,20 +4,22 @@ class Animal {
   constructor(name) {
     this.name = name;
     this.health = 100;
-    this.hidden = false;
     Animal.alive.push(this);
   };
 
   static died(animal) {
-    const index = Animal.alive.indexOf(animal);
-
-    Animal.alive.splice(index, 1);
+    Animal.alive = Animal.alive.filter(herbivore => herbivore !== animal);
   };
 };
 
 Animal.alive = [];
 
 class Herbivore extends Animal {
+  constructor() {
+    super();
+    this.hidden = false;
+  };
+
   hide() {
     this.hidden = true;
   }
