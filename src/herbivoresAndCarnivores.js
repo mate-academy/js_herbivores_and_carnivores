@@ -2,7 +2,7 @@
 
 class Animal {
   static removeDeads(dead) {
-    Animal.alive = Animal.alive.filter(animal => animal.name !== dead.name);
+    Animal.alive = Animal.alive.filter(animal => animal !== dead);
   };
 
   constructor(name) {
