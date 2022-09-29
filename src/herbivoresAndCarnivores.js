@@ -12,9 +12,9 @@ class Animal {
 }
 
 class Herbivore extends Animal {
-  constructor(health, name, hidden = false) {
+  constructor(name) {
     super(name);
-    this.hidden = hidden;
+    this.hidden = false;
   }
 
   hide() {
@@ -23,31 +23,14 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  constructor(health, name, hidden = false) {
-    super(health, name);
-  }
-
   bite(herbivore) {
     if (herbivore instanceof Carnivore === false && !herbivore.hidden) {
       herbivore.health -= 50;
     }
 
-    if (herbivore.health === 0) {
-      Animal.alive.splice(herbivore);
-    }
+    Animal.alive = Animal.alive.filter(animal => animal.health > 0);
   }
 }
-
-/*
-Create a Сarnivore class. Carnivore has a bite method, which
-takes a herbivore object and decreases the object's health
-by 50. The method does not work if it is another сarnivore,
-or the herbivore is currently hiding.
-
-All alive animals should be in the static Animal.alive array.
-If the health of the animal reaches 0, the beast dies and
-it should be removed from the static array Animals.alive.
-*/
 
 module.exports = {
   Animal,
