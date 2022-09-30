@@ -2,15 +2,14 @@
 /* eslint-disable */
 
 class Animal {
-  static newBeast(contecst) {
-    this.alive.push(contecst)
+  static newBeast(newAnimal) {
+    this.alive.push(newAnimal)
   }
   constructor(name, health = 100) {
     this.name = name;
     this.health = health;
     Animal.newBeast(this);
   }
-  // write your code here
 }
 
 Animal.alive = [];
@@ -21,17 +20,21 @@ class Herbivore extends Animal {
     super(name, health);
     this.hidden = hidden;
   }
+
   hide() {
     this.hidden = true;
   }
 }
 
 class Carnivore extends Animal {
+
   bite(beast) {
-    if (!beast.hidden && beast instanceof Carnivore === false) {
+    if (beast instanceof Herbivore && !beast.hidden) {
       beast.health -= 50;
+      if (beast.health <= 0) {
+        Animal.alive = Animal.alive.filter(animal => animal.health > 0);
+      }
     }
-    Animal.alive = Animal.alive.filter(animal => animal.health > 0)
   }
 }
 
