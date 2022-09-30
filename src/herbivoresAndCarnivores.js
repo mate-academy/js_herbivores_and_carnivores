@@ -1,9 +1,9 @@
 'use strict';
 
 class Animal {
-  constructor(name) {
+  constructor(name, health = 100) {
     this.name = name;
-    this.health = 100;
+    this.health = health;
     Animal.alive.push(this);
   }
 
@@ -19,8 +19,8 @@ class Animal {
 
 
 class Herbivore extends Animal {
-  constructor(name) {
-    super(name);
+  constructor(name, health) {
+    super(name, health);
     this.hidden = false;
   }
   hide() {
@@ -39,7 +39,7 @@ class Carnivore extends Animal {
     }
   }
 }
-
+/* eslint-disable */
 module.exports = {
   Animal,
   Herbivore,
