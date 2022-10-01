@@ -33,19 +33,9 @@ class Carnivore extends Animal {
     animal.health -= 50;
 
     if (animal.health <= 0) {
-      Animal.alive = removeItemOnce(Animal.alive, animal);
+      Animal.alive = Animal.alive.filter(el => el.health > 0);
     }
   }
-}
-
-function removeItemOnce(arr, value) {
-  const index = arr.indexOf(value);
-
-  if (index > -1) {
-    arr.splice(index, 1);
-  }
-
-  return arr;
 }
 
 module.exports = {
