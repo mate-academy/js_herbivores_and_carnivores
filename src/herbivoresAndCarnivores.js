@@ -8,12 +8,6 @@ class Animal {
 
     Animal.alive.push(this);
   }
-
-  static died(animal) {
-    const diedAnimalIndex = this.alive.indexOf(animal);
-
-    this.alive.splice(diedAnimalIndex, 1);
-  }
 }
 
 Animal.alive = [];
@@ -26,21 +20,19 @@ class Herbivore extends Animal {
   };
 
   hide() {
-    this.hidden = true;
+    this.hidden = !this.hidden;
   }
 };
 
 class Carnivore extends Animal {
   // write your code here
   bite(herbivore) {
-    if (!herbivore.hidden && herbivore.hasOwnProperty('hidden')) {
+    if (!herbivore.hidden && herbivore instanceof Herbivore) {
       herbivore.health -= 50;
     }
 
-    Animal.alive = Array.from(new Set(Animal.alive));
-
-    if (herbivore.health === 0) {
-      Animal.died(herbivore);
+    if (herbivore.health <= 0) {
+      Animal.alive = Animal.alive.filter(animal => animal.health > 0);
     }
   }
 }
