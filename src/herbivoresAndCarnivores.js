@@ -31,7 +31,7 @@ class Carnivore extends Animal {
       prey.health -= 50;
     }
 
-    if (prey.health === 0) {
+    if (prey.health <= 0) {
       Animal.died(prey);
     }
   }
