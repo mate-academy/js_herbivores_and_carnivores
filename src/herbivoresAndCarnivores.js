@@ -8,6 +8,10 @@ class Animal {
     this.health = health;
     Animal.alive.push(this);
   }
+
+  static murder(animal) {
+    this.alive = this.alive.filter(beast => beast !== animal);
+  }
 }
 
 class Herbivore extends Animal {
@@ -31,10 +35,8 @@ class Carnivore extends Animal {
       beast.health -= 50;
     }
 
-    const index = Animal.alive.indexOf(beast);
-
-    if (beast.health <= 0 && index) {
-      Animal.alive.splice(index, 1);
+    if (beast.health <= 0) {
+      Animal.murder(beast);
     }
   }
 }
