@@ -34,8 +34,7 @@ describe('Animal', () => {
 
       expect(carn)
         .toHaveProperty('health', 100);
-    }
-  );
+    });
 
   it(`Herbivore should have 'hide' method which inverts 'hidden' property`,
     () => {
@@ -45,8 +44,7 @@ describe('Animal', () => {
 
       expect(animal.hidden)
         .toBe(true);
-    }
-  );
+    });
 
   it(`Herbivores 'hide' method should be inherited`, () => {
     const animal = new Herbivore('Zebra');
@@ -54,7 +52,7 @@ describe('Animal', () => {
     expect(animal.hasOwnProperty('hide')).toBe(false);
   });
 
-  it(`Сarnivore should have 'bite' method, 
+  it(`Сarnivore should have 'bite' method,
   which decrease 'health' property of the herbivores`, () => {
     const carn = new Carnivore('Tiger');
     const herb = new Herbivore('Zebra');
@@ -92,8 +90,7 @@ describe('Animal', () => {
 
       expect(tiger.health)
         .toBe(100);
-    }
-  );
+    });
 
   it(`Carnivores and Herbivores should be in 'Animal.alive' array`, () => {
     const bear = new Carnivore('Bear');
@@ -110,7 +107,7 @@ describe('Animal', () => {
       .toBe(true);
   });
 
-  it(`Herbivores should be removed from 'Animal.alive' array, 
+  it(`Herbivores should be removed from 'Animal.alive' array,
   when their health is 0`, () => {
     const tiger = new Carnivore('Tiger');
     const zebra = new Herbivore('Zebra');
