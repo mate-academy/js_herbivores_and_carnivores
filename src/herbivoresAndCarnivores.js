@@ -1,6 +1,10 @@
 'use strict';
 
 class Animal {
+  static removeDeathAnimal() {
+    Animal.alive = Animal.alive.filter(someAnimal => someAnimal.health > 0);
+  }
+
   constructor(name) {
     this.name = name;
     this.health = 100;
@@ -27,7 +31,8 @@ class Carnivore extends Animal {
       return;
     }
     victim.health -= 50;
-    Animal.alive = Animal.alive.filter(someAnimal => someAnimal.health > 0);
+
+    Animal.removeDeathAnimal();
   }
 }
 
