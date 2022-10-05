@@ -7,12 +7,6 @@ class Animal {
 
     Animal.alive.push(this);
   }
-
-  static died(target) {
-    const index = this.alive.indexOf(target);
-
-    this.alive.splice(index, 1);
-  }
 }
 
 Animal.alive = [];
@@ -24,7 +18,7 @@ class Herbivore extends Animal {
     this.hidden = false;
   }
   hide() {
-    this.hidden = !this.hidden;
+    this.hidden = true;
   }
 }
 
