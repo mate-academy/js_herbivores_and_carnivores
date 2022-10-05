@@ -9,8 +9,9 @@ class Animal {
 
   destroy() {
     const i = Animal.alive.indexOf(this);
-
-    Animal.alive.splice(i, 1);
+    if (i !== -1) {
+      Animal.alive.splice(i, 1);
+    }
   }
 
   static alive = []
@@ -39,7 +40,7 @@ class Carnivore extends Animal {
     }
   }
 }
-/* eslint-disable */
+
 module.exports = {
   Animal,
   Herbivore,
