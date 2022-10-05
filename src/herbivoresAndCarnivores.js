@@ -29,7 +29,7 @@ class Carnivore extends Animal {
     }
 
     if (herbivore.health <= 0) {
-      delete Animal.alive[Animal.alive.indexOf(herbivore)];
+      Animal.alive.splice(Animal.alive.indexOf(herbivore), 1);
     }
   }
 }
