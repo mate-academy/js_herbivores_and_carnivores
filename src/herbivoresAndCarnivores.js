@@ -5,6 +5,7 @@ class Animal {
   constructor(name, health = 100) {
     this.name = name;
     this.health = health;
+
     Animal.alive.push(this);
   }
 }
@@ -12,6 +13,7 @@ class Animal {
 class Herbivore extends Animal {
   constructor(name) {
     super(name);
+
     this.hidden = false;
   }
 
@@ -26,8 +28,8 @@ class Carnivore extends Animal {
       victum.health -= 50;
     }
 
-    if (victum.health === 0) {
-      Animal.alive.splice(Animal.alive.indexOf(victum), 1);
+    if (victum.health <= 0) {
+      Animal.alive = Animal.alive.filter(someAnimal => someAnimal.health > 0);
     }
   }
 }
