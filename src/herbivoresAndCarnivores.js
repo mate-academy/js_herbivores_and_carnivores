@@ -25,7 +25,7 @@ class Carnivore extends Animal {
     if (creature.hasOwnProperty('hidden') && creature.hidden !== true) {
       creature.health -= 50;
 
-      Animal.alive = Animal.alive.filter(unit => unit.health > 0);
+      Animal.alive = Animal.alive.filter(animal => animal.health > 0);
     }
   }
 }
