@@ -22,7 +22,7 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(creature) {
-    if (creature.hasOwnProperty('hidden') && creature.hidden !== true) {
+    if (creature instanceof Herbivore && !creature.hidden) {
       creature.health -= 50;
 
       Animal.alive = Animal.alive.filter(animal => animal.health > 0);
