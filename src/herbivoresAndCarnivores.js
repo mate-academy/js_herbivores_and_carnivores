@@ -8,10 +8,7 @@ class Animal {
   }
 
   destroy() {
-    const i = Animal.alive.indexOf(this);
-    if (i !== -1) {
-      Animal.alive.splice(i, 1);
-    }
+    Animal.alive = Animal.alive.filter(animal => animal.name !== this.name)
   }
 
   static alive = []
