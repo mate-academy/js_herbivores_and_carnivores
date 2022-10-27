@@ -2,21 +2,16 @@
 
 class Animal {
   constructor(name) {
-    this.health = 100;
     this.name = name;
+    this.health = 100;
 
-    let shouldInclude = true;
+    const indexFound = Animal.alive.findIndex(
+      (animal) => animal.name === this.name,
+    );
 
-    for (const animal of Animal.alive) {
-      if (animal.name === this.name) {
-        shouldInclude = false;
-      }
-    }
-
-    if (shouldInclude === true) {
+    if (indexFound === -1) {
       Animal.alive.push(this);
     }
-    Animal.alive.sort((a, b) => b.health - a.health);
   }
 }
 
@@ -39,13 +34,17 @@ class Carnivore extends Animal {
     this.hidden = false;
   }
 
-  bite(obj) {
-    if (obj instanceof Herbivore && obj.hidden === false) {
-      obj.health -= 50;
+  bite(victim) {
+    if (!(victim instanceof Herbivore)) {
+      return;
     }
 
-    if (obj instanceof Herbivore && obj.health <= 0) {
-      Animal.alive.pop();
+    if (!victim.hidden) {
+      victim.health -= 50;
+    }
+
+    if (!victim.health) {
+      Animal.alive = Animal.alive.filter(x => x.name !== victim.name);
     }
   }
 }
