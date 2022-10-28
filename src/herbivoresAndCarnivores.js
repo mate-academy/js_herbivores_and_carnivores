@@ -1,8 +1,6 @@
 'use strict';
 
 class Animal {
-  // static alive = []; --> should look like this. but lint...
-
   static addAnimal(animal) {
     Animal.alive.push(animal);
   }
