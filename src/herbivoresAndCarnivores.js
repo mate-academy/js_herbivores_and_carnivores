@@ -11,8 +11,11 @@ class Animal {
   static removeAnimal(animal) {
     const indexOfAnimal = this.alive.indexOf(animal);
 
-    this.alive.splice(indexOfAnimal, 1);
+    if (indexOfAnimal !== -1) {
+      this.alive.splice(indexOfAnimal, 1);
+    }
   }
+
   constructor(name) {
     this.name = name;
     this.health = 100;
