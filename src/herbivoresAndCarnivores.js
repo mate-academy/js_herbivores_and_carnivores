@@ -6,9 +6,7 @@ class Animal {
   }
 
   static removeAnimal(animal) {
-    const index = Animal.alive.indexOf(animal);
-
-    Animal.alive.splice(index, 1);
+    Animal.alive = Animal.alive.filter(creature => creature !== animal);
   }
 
   constructor(name) {
