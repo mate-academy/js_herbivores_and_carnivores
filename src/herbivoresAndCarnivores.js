@@ -1,8 +1,7 @@
 'use strict';
 
 class Animal {
-  // static alive = []; there was an Error from Linter
-  // I couldn`t fix it with npm or plugins
+  static alive = [];
 
   static addToAlive(animal) {
     this.alive.push(animal);
@@ -45,8 +44,6 @@ class Carnivore extends Animal {
     }
   }
 }
-
-Animal.alive = [];
 
 module.exports = {
   Animal,
