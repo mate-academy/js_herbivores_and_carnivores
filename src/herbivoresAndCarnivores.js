@@ -5,11 +5,7 @@ class Animal {
     this.name = name;
     this.health = 100;
 
-    const indexFound = Animal.alive.findIndex(
-      (animal) => animal.name === this.name,
-    );
-
-    if (indexFound === -1) {
+    if (Animal.alive.findIndex(animal => animal.name === this.name) === -1) {
       Animal.alive.push(this);
     }
   }
@@ -44,7 +40,7 @@ class Carnivore extends Animal {
     }
 
     if (!victim.health) {
-      Animal.alive = Animal.alive.filter(x => x.name !== victim.name);
+      Animal.alive = Animal.alive.filter(({ name }) => name !== victim.name);
     }
   }
 }
