@@ -6,5 +6,9 @@ module.exports = {
   rules: {
     'no-proto': 0
   },
-  plugins: ['jest']
+  plugins: ['jest'],
+  "parser": "babel-eslint",
+parserOptions: {
+  ecmaVersion: 2022,
+}
 };
