@@ -1,10 +1,6 @@
 'use strict';
 
 class Animal {
-  static pushAnimal(animal) {
-    Animal.alive.push(animal);
-  }
-
   static deleteAnimal(animal) {
     Animal.alive = Animal.alive.filter(beast => beast !== animal);
   }
@@ -13,7 +9,7 @@ class Animal {
     this.health = 100;
     this.name = name;
 
-    Animal.pushAnimal(this);
+    Animal.alive.push(this);
   }
 }
 
@@ -30,13 +26,13 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  bite(herb) {
-    if (herb instanceof Herbivore && !herb.hidden) {
-      herb.health -= 50;
+  bite(animal) {
+    if (animal instanceof Herbivore && !animal.hidden) {
+      animal.health -= 50;
     }
 
-    if (herb.health === 0) {
-      Animal.deleteAnimal(herb);
+    if (animal.health === 0) {
+      Animal.deleteAnimal(animal);
     }
   }
 }
