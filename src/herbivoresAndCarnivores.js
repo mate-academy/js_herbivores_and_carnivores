@@ -9,9 +9,7 @@ class Animal {
 
   static removeFromAlive(animal) {
     if (this.alive.includes(animal)) {
-      const indexOfAnimal = this.alive.indexOf(animal);
-
-      this.alive.splice(indexOfAnimal);
+      this.alive = this.alive.filter(beast => beast !== animal);
     }
   }
 
@@ -35,11 +33,11 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(animal) {
-    if (animal instanceof Herbivore) {
-      animal.health = animal.hidden ? animal.health : animal.health - 50;
+    if (animal instanceof Herbivore && !animal.hidden) {
+      animal.health -= 50;
     }
 
-    if (animal instanceof Herbivore && animal.health === 0) {
+    if (animal.health === 0) {
       Animal.removeFromAlive(animal);
     }
   }
