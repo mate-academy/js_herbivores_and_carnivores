@@ -35,6 +35,10 @@ class Carnivore extends Animal {
     if (prey instanceof Herbivore && !prey.hidden) {
       prey.health -= 50;
     }
+
+    if (prey.health === 0) {
+      Animal.removeAnimal(prey);
+    }
   }
 }
 
