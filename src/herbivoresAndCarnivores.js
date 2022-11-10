@@ -5,9 +5,13 @@ class Animal {
     Animal.alive.push(animal);
   }
 
-  constructor(name, health = 100) {
+  static removeFromAlive(alive) {
+    Animal.alive = Animal.alive.filter(animal => animal.health > 0);
+  }
+
+  constructor(name) {
     this.name = name;
-    this.health = health;
+    this.health = 100;
 
     Animal.addToAlive(this);
   }
@@ -32,8 +36,8 @@ class Carnivore extends Animal {
       herbivore.health -= 50;
     }
 
-    if (herbivore.health === 0) {
-      Animal.alive = Animal.alive.filter(animal => animal.health > 0);
+    if (herbivore.health <= 0) {
+      Animal.removeFromAlive(Animal.alive);
     }
   }
 }
