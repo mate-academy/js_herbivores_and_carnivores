@@ -5,7 +5,7 @@ class Animal {
     Animal.alive.push(animal);
   }
 
-  static removeAnimal(alive) {
+  static remove(alive) {
     Animal.alive = Animal.alive.filter(animal => animal.health > 0);
   }
 
@@ -37,7 +37,7 @@ class Carnivore extends Animal {
     }
 
     if (herbivore.health <= 0) {
-      Animal.removeAnimal(Animal.alive);
+      Animal.remove(Animal.alive);
     }
   }
 }
