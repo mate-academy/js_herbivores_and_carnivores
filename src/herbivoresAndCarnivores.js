@@ -14,7 +14,8 @@ class Animal {
   }
 
   static removeAnimal(animal) {
-    Animal.alive = Animal.alive.filter(item => item.name !== animal.name);
+    Animal.alive = Animal.alive.filter(creature =>
+      creature.name !== animal.name);
   }
 }
 
