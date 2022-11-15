@@ -18,8 +18,6 @@ class Herbivore extends Animal {
   }
   hide() {
     this.hidden = true;
-
-    return this;
   }
 }
 
@@ -30,13 +28,8 @@ class Carnivore extends Animal {
     }
 
     if (!victim.health) {
-      const findVictim = Animal.alive
-        .findIndex(animal => animal.name === victim.name);
-
-      Animal.alive.splice(findVictim);
+      Animal.alive = Animal.alive.filter(animal => animal.health > 0);
     }
-
-    return this;
   }
 }
 
