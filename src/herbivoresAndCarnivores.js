@@ -4,14 +4,14 @@ class Animal {
   constructor(name) {
     this.name = name;
     this.health = 100;
-    this.birth();
+    this.getBirth();
   }
 
-  birth() {
+  getBirth() {
     Animal.alive.push(this);
   }
 
-  death() {
+  getDeath() {
     Animal.alive = Animal.alive.filter(animal => animal.health > 0);
   }
 }
@@ -36,7 +36,7 @@ class Carnivore extends Animal {
     };
 
     if (victim.health === 0) {
-      this.death();
+      this.getDeath();
     }
   }
 }
