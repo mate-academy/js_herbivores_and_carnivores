@@ -26,9 +26,11 @@ class Carnivore extends Animal {
   }
 
   bite(herbivore) {
-    if (herbivore.hidden !== true
+    const isPossibleBite = herbivore.hidden !== true
       && herbivore instanceof Herbivore
-      && herbivore.health >= 50) {
+      && herbivore.health >= 50
+
+    if (isPossibleBite) {
       herbivore.health -= 50;
     }
 
