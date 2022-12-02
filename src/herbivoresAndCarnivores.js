@@ -11,14 +11,22 @@ class Animal {
 }
 
 class Herbivore extends Animal {
-  hidden = false;
+  constructor(name) {
+    super(name);
+    this.hidden = false;
+  }
 
   hide() {
-    this.hidden ? this.hidden = false : this.hidden = true;
+    this.hidden = !this.hidden;
   }
 }
 
 class Carnivore extends Animal {
+  constructor(name) {
+    super(name);
+    this.canBite = true; // to avoid "useless constructor" error by lint
+  }
+
   bite(victim) {
     const victimIndex = Animal.alive.indexOf(victim);
     const isAlive = victimIndex > -1;
