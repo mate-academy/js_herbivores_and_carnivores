@@ -27,10 +27,10 @@ class Carnivore extends Animal {
     Animal.alive.push(this);
   }
 
-  bite(obj) {
-    if (obj !== this && !obj.hidden && !(obj instanceof Carnivore)) {
-      obj.health -= 50;
-      Animal.alive = Animal.alive.filter(animal => animal.health > 0);
+  bite(animal) {
+    if (animal !== this && !animal.hidden && !(animal instanceof Carnivore)) {
+      animal.health -= 50;
+      Animal.alive = Animal.alive.filter(anim => anim.health > 0);
     }
   }
 }
