@@ -1,15 +1,10 @@
 'use strict';
 
 class Animal {
-  static add(creature) {
-    this.alive.push(creature);
-  }
-
   constructor(name, health = 100) {
     this.name = name;
     this.health = health;
-
-    Animal.add(this);
+    Animal.alive.push(this);
   }
 }
 
