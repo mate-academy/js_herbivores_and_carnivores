@@ -29,7 +29,7 @@ class Carnivore extends Animal {
     }
 
     if (animal.health <= 0) {
-      Animal.alive = Animal.alive.filter(a => a.health > 0);
+      Animal.alive = Animal.alive.filter(herbivore => herbivore.health > 0);
     }
   }
 }
