@@ -25,7 +25,10 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(beast) {
-    if (beast instanceof Carnivore || beast.hidden) {
+    const isCarnivore = beast instanceof Carnivore;
+    const isHidden = beast.hidden;
+
+    if (isCarnivore || isHidden) {
       return;
     }
 
