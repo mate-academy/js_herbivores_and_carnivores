@@ -17,17 +17,17 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    this.hidden = !this.hidden;
+    this.hidden = true;
   }
 }
 
 class Carnivore extends Animal {
   bite(prey) {
-    if (prey.constructor.name === 'Herbivore' && !prey.hidden) {
+    if (prey instanceof Herbivore && !prey.hidden) {
       prey.health -= 50;
     }
 
-    if (prey.health <= 0) {
+    if (prey.health === 0) {
       Animal.alive = Animal.alive.filter((animal) => animal !== prey);
     }
   }
