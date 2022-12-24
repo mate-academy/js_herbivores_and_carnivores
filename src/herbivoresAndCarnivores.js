@@ -17,10 +17,10 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(victim) {
-    if (
-      victim instanceof Herbivore
-      && !victim.hidden
-    ) {
+    const isHerbovire = victim instanceof Herbivore;
+    const isVisible = !victim.hidden;
+
+    if (isHerbovire && isVisible) {
       victim.health -= 50;
     }
 
