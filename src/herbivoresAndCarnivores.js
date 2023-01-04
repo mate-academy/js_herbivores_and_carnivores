@@ -7,16 +7,6 @@ class Animal {
 
     Animal.alive.push(this);
   }
-
-  static alive(animal) {
-    const array = [];
-
-    if (animal.health === 100) {
-      array.push(animal);
-    }
-
-    return array;
-  }
 }
 
 Animal.alive = [];
@@ -35,10 +25,10 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(animal) {
-    if ((animal instanceof Herbivore) && (animal.hidden === false)) {
+    if (animal instanceof Herbivore && !animal.hidden) {
       animal.health -= 50;
 
-      if (animal.health === 0) {
+      if (animal.health <= 0) {
         Animal.alive.splice(Animal.alive.indexOf(animal), 1);
       }
     }
