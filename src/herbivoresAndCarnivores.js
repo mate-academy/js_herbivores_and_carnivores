@@ -5,8 +5,8 @@ class Animal {
     this.alive.push(animal);
   }
 
-  static removeAnimal(animal) {
-    this.alive.splice(this.alive.indexOf(animal));
+  static removeAnimal() {
+    this.alive = this.alive.filter(({ health }) => health > 0);
   }
 
   constructor(name) {
@@ -37,9 +37,7 @@ class Carnivore extends Animal {
   bite(animal) {
     if (animal.hidden === false) {
       animal.health -= 50;
-    }
 
-    if (animal.health <= 0) {
       Animal.removeAnimal(animal);
     }
   }
