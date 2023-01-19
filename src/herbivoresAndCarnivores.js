@@ -2,9 +2,9 @@
 
 class Animal {
   // write your code here
-  constructor(name, health = 100) {
+  constructor(name) {
     this.name = name;
-    this.health = health;
+    this.health = 100;
     Animal.alive.push(this);
   }
 }
@@ -29,10 +29,8 @@ class Carnivore extends Animal {
       herbivore.health -= 50;
     }
 
-    if (herbivore.health <= 0) {
-      const indOfDead = Animal.alive.findIndex(animal => animal === herbivore);
-
-      Animal.alive.splice(indOfDead, 1);
+    if (herbivore.health <= 0 && Animal.alive.includes(herbivore)) {
+      Animal.alive.splice(Animal.alive.indexOf(herbivore), 1);
     }
   }
 }
