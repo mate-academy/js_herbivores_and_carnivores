@@ -2,7 +2,6 @@
 
 class Animal {
   // write your code here
-  static alive = [];
 
   constructor(name, health = 100) {
     this.name = name;
@@ -10,6 +9,8 @@ class Animal {
     Animal.alive.push(this);
   }
 }
+
+Animal.alive = [];
 
 class Herbivore extends Animal {
   // write your code here
