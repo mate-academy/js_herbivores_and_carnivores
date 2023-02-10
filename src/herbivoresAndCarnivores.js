@@ -22,7 +22,7 @@ class Carnivore extends Animal {
     if (object instanceof Herbivore && object.hidden === false) {
       object.health -= 50;
     }
-    Animal.alive = Animal.alive.filter(x => x.health > 0).slice();
+    Animal.alive = Animal.alive.filter(x => x.health > 0);
   }
 }
 
