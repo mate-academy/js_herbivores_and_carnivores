@@ -9,14 +9,10 @@ class Animal {
   }
 }
 
-Animal.alive = []; // need to use static propery instead
+Animal.alive = [];
 
 Animal.deleteDead = function() {
-  for (let i = 0; i < Animal.alive.length; i++) {
-    if (Animal.alive[i].health === 0) {
-      Animal.alive.splice(i, 1);
-    }
-  }
+  Animal.alive = Animal.alive.filter(item => item.health > 0);
 };
 
 class Herbivore extends Animal {
@@ -31,7 +27,7 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  bite(obj) {
+  biteAnimal(obj) {
     if (!obj.hidden && obj instanceof Herbivore) {
       obj.health -= 50;
 
