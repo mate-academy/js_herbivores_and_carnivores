@@ -12,7 +12,7 @@ class Animal {
 Animal.alive = [];
 
 Animal.deleteDead = function() {
-  Animal.alive = Animal.alive.filter(item => item.health > 0);
+  Animal.alive = Animal.alive.filter(item => item.health !== 0);
 };
 
 class Herbivore extends Animal {
@@ -27,7 +27,7 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  biteAnimal(obj) {
+  bite(obj) {
     if (!obj.hidden && obj instanceof Herbivore) {
       obj.health -= 50;
 
