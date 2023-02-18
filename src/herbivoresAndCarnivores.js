@@ -7,6 +7,8 @@ class Animal {
 
     if (this.health > 0) {
       Animal.alive.push(this);
+    } else {
+      throw new Error('Animals must be alive');
     }
   }
 }
@@ -27,12 +29,14 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(herbivore) {
+    // I suppose I can't do (!herbivore.hidden) like mentor noticed
+    // because I should check is it false, but not undefined
     if (herbivore.hidden === false) {
       herbivore.health -= 50;
     }
 
     if (herbivore.health <= 0) {
-      Animal.alive = Animal.alive.filter(animal => animal.health !== 0);
+      Animal.alive = Animal.alive.filter(({ health }) => health !== 0);
     }
   }
 }
