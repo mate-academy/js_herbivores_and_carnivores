@@ -5,9 +5,7 @@ class Animal {
     this.health = 100;
     this.name = name;
 
-    if (this.health > 0) {
-      Animal.alive.push(this);
-    }
+    Animal.alive.push(this);
   }
 }
 
