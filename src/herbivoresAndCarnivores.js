@@ -1,11 +1,10 @@
 'use strict';
 
 class Animal {
-  health = 100;
-  hidden = false;
-
   constructor(name) {
     this.name = name;
+    this.health = 100;
+    this.hidden = false;
     Animal.alive.push(this);
   }
 }
