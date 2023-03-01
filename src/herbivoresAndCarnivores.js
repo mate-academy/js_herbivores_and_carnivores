@@ -1,8 +1,6 @@
 'use strict';
 
 class Animal {
-  static alive = [];
-
   health = 100;
   hidden = false;
 
@@ -31,6 +29,8 @@ class Carnivore extends Animal {
     }
   }
 }
+
+Animal.alive = [];
 
 module.exports = {
   Animal,
