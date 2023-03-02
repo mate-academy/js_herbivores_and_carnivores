@@ -20,11 +20,7 @@ class Herbivore extends Animal {
 }
 
 Herbivore.prototype.hide = function() {
-  if (this.hidden) {
-    this.hidden = false;
-  } else {
-    this.hidden = true;
-  }
+  this.hidden = true;
 };
 
 class Carnivore extends Animal {}
@@ -32,10 +28,10 @@ class Carnivore extends Animal {}
 Carnivore.prototype.bite = function(prey) {
   if (!prey.hidden && !(prey instanceof Carnivore)) {
     prey.health -= 50;
+  }
 
-    if (prey.health === 0) {
-      Animal.alive.splice(Animal.alive.indexOf(prey), 1);
-    }
+  if (prey.health === 0) {
+    Animal.alive = Animal.alive.filter(animal => animal !== prey);
   }
 };
 
