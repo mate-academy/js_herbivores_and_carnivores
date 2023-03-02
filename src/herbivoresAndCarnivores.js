@@ -8,6 +8,8 @@ class Animal {
   }
 }
 
+Animal.alive = [];
+
 class Herbivore extends Animal {
   constructor(name, health, hidden = false) {
     super(name, health);
@@ -20,22 +22,16 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  bite(name) {
-    if (name instanceof Herbivore) {
-      if (name.hidden === false) {
-        name.health -= 50;
-      }
+  bite(nameOfAnimal) {
+    if (nameOfAnimal instanceof Herbivore && nameOfAnimal.hidden === false) {
+      nameOfAnimal.health -= 50;
+    }
 
-      if (name.health <= 0) {
-        const res = Animal.alive.filter(beast => beast.health > 0);
-
-        Animal.alive = res;
-      }
+    if (nameOfAnimal.health <= 0) {
+      Animal.alive = Animal.alive.filter(beast => beast.health > 0);
     }
   }
 }
-
-Animal.alive = [];
 
 module.exports = {
   Animal,
