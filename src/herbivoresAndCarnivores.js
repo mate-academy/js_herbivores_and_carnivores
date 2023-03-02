@@ -5,11 +5,16 @@ class Animal {
     this.name = name;
     this.health = 100;
 
-    this.pushAlive();
+    Animal.pushAlive(this);
   }
 
-  pushAlive() {
-    Animal.alive.push(this);
+  static pushAlive(animal) {
+    Animal.alive.push(animal);
+  }
+
+  static removeAnimal(animalDied) {
+    Animal.alive
+    = Animal.alive.filter(animal => animal.name !== animalDied.name);
   }
 }
 
@@ -28,13 +33,15 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  bite(whom) {
-    const isHerbivore = whom instanceof Herbivore;
+  bite(animal) {
+    const isHerbivore = animal instanceof Herbivore;
 
-    if (isHerbivore && !whom.hidden) {
-      whom.health -= 50;
+    if (isHerbivore && !animal.hidden) {
+      animal.health -= 50;
 
-      Animal.alive = Animal.alive.filter(animal => animal.health > 0);
+      if (animal.health <= 0) {
+        Animal.removeAnimal(animal);
+      }
     }
   }
 }
