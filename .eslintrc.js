@@ -5,7 +5,6 @@ module.exports = {
   },
   rules: {
     'no-proto': 0,
-    "no-useless-constructor": 0,
   },
   plugins: ['jest']
 };
