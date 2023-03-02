@@ -5,11 +5,19 @@ class Animal {
     this.name = name;
     this.health = health;
 
-    Animal.alive.push(this);
+    Animal.birth(this);
   }
 }
 
 Animal.alive = [];
+
+Animal.birth = (animal) => {
+  Animal.alive.push(animal);
+};
+
+Animal.death = (herbivore) => {
+  Animal.alive = Animal.alive.filter(animal => animal !== herbivore);
+};
 
 class Herbivore extends Animal {
   constructor(name, health) {
@@ -29,7 +37,7 @@ class Carnivore extends Animal {
       herbivore.health -= 50;
 
       if (herbivore.health <= 0) {
-        Animal.alive = Animal.alive.filter(animal => animal !== herbivore);
+        Animal.death(herbivore);
       }
     }
   }
