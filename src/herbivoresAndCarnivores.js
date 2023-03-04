@@ -7,6 +7,18 @@ class Animal {
 
     Animal.alive.push(this);
   }
+
+  set health(value) {
+    if (value >= 0) {
+      this._health = value;
+    } else {
+      this._health = 0;
+    }
+  }
+
+  get health() {
+    return this._health;
+  }
 }
 
 Animal.alive = [];
