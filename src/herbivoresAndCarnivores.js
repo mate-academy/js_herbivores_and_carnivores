@@ -17,23 +17,23 @@ class Herbivore extends Animal {
 
     this.hidden = false;
   }
+
+  hide() {
+    this.hidden = true;
+  };
 }
 
-Herbivore.prototype.hide = function() {
-  this.hidden = true;
-};
+class Carnivore extends Animal {
+  bite(prey) {
+    if (!prey.hidden && !(prey instanceof Carnivore)) {
+      prey.health -= 50;
+    }
 
-class Carnivore extends Animal {}
-
-Carnivore.prototype.bite = function(prey) {
-  if (!prey.hidden && !(prey instanceof Carnivore)) {
-    prey.health -= 50;
-  }
-
-  if (prey.health === 0) {
-    Animal.alive = Animal.alive.filter(animal => animal !== prey);
-  }
-};
+    if (prey.health <= 0) {
+      Animal.alive = Animal.alive.filter(animal => animal.health > 0);
+    }
+  };
+}
 
 module.exports = {
   Animal,
