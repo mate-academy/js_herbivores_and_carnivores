@@ -7,6 +7,26 @@ class Animal {
 
     Animal.alive.push(this);
   }
+
+  set health(value) {
+    if (value >= 0) {
+      this._health = value;
+    } else {
+      this._health = 0;
+    }
+
+    if (this.health === 0) {
+      this.kill();
+    }
+  }
+
+  get health() {
+    return this._health;
+  }
+
+  kill() {
+    Animal.alive = Animal.alive.filter((animal) => animal !== this);
+  }
 }
 
 Animal.alive = [];
@@ -29,10 +49,6 @@ class Carnivore extends Animal {
       && !prey.hidden
     ) {
       prey.health -= 50;
-
-      if (prey.health === 0) {
-        Animal.alive = Animal.alive.filter((animal) => animal !== prey);
-      }
     }
   }
 }
