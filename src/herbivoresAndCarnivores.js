@@ -39,7 +39,9 @@ class Carnivore extends Animal {
 
     prey.health -= 50;
 
-    Animal.checkAlive();
+    if (prey.health <= 0) {
+      Animal.checkAlive();
+    }
   }
 }
 
