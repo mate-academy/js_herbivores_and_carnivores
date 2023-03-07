@@ -7,8 +7,8 @@ class Animal {
     Animal.alive.push(this);
   }
 
-  static die(animal) {
-    Animal.alive = Animal.alive.filter(a => a !== animal);
+  static die() {
+    Animal.alive = Animal.alive.filter(animal => animal.health > 0);
   }
 }
 
@@ -30,7 +30,9 @@ class Carnivore extends Animal {
     if (target instanceof Herbivore && !target.hidden) {
       target.health -= 50;
 
-      target.health <= 0 && Animal.die(target);
+      if (target.health <= 0) {
+        Animal.die();
+      }
     }
   }
 }
