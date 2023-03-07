@@ -24,13 +24,13 @@ class Carnivore extends Animal {
     if (animal instanceof Herbivore && !animal.hidden) {
       animal.health -= 50;
     }
-    Animal.checkIsAlive();
+    Animal.removeDeadAnimals();
   }
 }
 
 Animal.alive = [];
 
-Animal.checkIsAlive = function() {
+Animal.removeDeadAnimals = function() {
   Animal.alive = Animal.alive.filter(beast => beast.health > 0);
 };
 
