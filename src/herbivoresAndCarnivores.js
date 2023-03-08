@@ -11,7 +11,7 @@ class Animal {
 
 Animal.alive = [];
 
-Animal.checkIsAlive = () => {
+Animal.removeDead = () => {
   Animal.alive = Animal.alive.filter(({ health }) => health > 0);
 };
 
@@ -32,7 +32,9 @@ class Carnivore extends Animal {
     if (animal instanceof Herbivore && !animal.hidden) {
       animal.health -= 50;
 
-      Animal.checkIsAlive();
+      if (animal.health <= 0) {
+        Animal.removeDead();
+      }
     }
   }
 }
