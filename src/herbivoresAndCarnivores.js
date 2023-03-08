@@ -7,6 +7,10 @@ class Animal {
 
     Animal.alive.push(this);
   }
+
+  die() {
+    Animal.alive = Animal.alive.filter(beast => beast.health > 0);
+  }
 }
 
 Animal.alive = [];
@@ -29,7 +33,7 @@ class Carnivore extends Animal {
       animal.health -= 50;
 
       if (animal.health <= 0) {
-        Animal.alive.splice(Animal.alive.indexOf(animal), 1);
+        animal.die();
       }
     }
   }
