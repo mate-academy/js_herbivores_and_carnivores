@@ -9,13 +9,9 @@ class Animal {
   }
 
   set health(value) {
-    if (value >= 0) {
-      this._health = value;
-    } else {
-      this._health = 0;
-    }
+    this._health = (value >= 0) ? value : 0;
 
-    if (this.health === 0) {
+    if (!this.health) {
       this.die();
     }
   }
