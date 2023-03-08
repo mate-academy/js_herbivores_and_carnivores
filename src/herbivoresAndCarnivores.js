@@ -1,7 +1,16 @@
 'use strict';
 
+function createIdGenerator(minId = 1) {
+  let nextId = minId;
+
+  return () => nextId++;
+}
+
+const idGenerator = createIdGenerator();
+
 class Animal {
   constructor(name) {
+    this.id = idGenerator();
     this.name = name;
     this.health = 100;
 
@@ -21,7 +30,7 @@ class Animal {
   }
 
   die() {
-    Animal.alive = Animal.alive.filter((animal) => animal !== this);
+    Animal.alive = Animal.alive.filter((animal) => animal.id !== this.id);
   }
 }
 
