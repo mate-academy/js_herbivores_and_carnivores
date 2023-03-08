@@ -16,7 +16,7 @@ class Animal {
     }
 
     if (this.health === 0) {
-      this.kill();
+      this.die();
     }
   }
 
@@ -24,7 +24,7 @@ class Animal {
     return this._health;
   }
 
-  kill() {
+  die() {
     Animal.alive = Animal.alive.filter((animal) => animal !== this);
   }
 }
