@@ -25,12 +25,12 @@ class Carnivore extends Animal {
   constructor(name, health = 100) {
     super(name, health);
   }
-  bite(food) {
-    if (!(food instanceof Carnivore || food.hidden)) {
-      food.health -= 50;
+  bite(foods) {
+    if (!(foods instanceof Carnivore || foods.hidden)) {
+      foods.health -= 50;
     }
 
-    if (food.health <= 0) {
+    if (foods.health <= 0) {
       Animal.alive = Animal.alive.filter(animal => animal.health > 0);
     }
   }
