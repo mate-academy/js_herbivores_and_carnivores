@@ -1,7 +1,7 @@
 'use strict';
 
 class Animal {
-  static alive =[]
+  static alive = []
 
   constructor(name, health = 100) {
     this.name = name;
@@ -30,7 +30,9 @@ class Carnivore extends Animal {
       food.health -= 50;
     }
 
-    Animal.alive = Animal.alive.filter(x => (x.health > 0));
+    if (food.health <= 0) {
+      Animal.alive = Animal.alive.filter(animal => animal.health > 0);
+    }
   }
 }
 
