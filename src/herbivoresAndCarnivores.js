@@ -11,33 +11,26 @@ class Animal {
       Animal.alive.push(this);
     }
   }
-  // write your code here
 }
-
 class Herbivore extends Animal {
   constructor(name, health = 100) {
     super(name, health);
     this.hidden = false;
   }
-
   hide() {
     this.hidden = true;
-  } // write your code here
+  }
 }
-
 class Carnivore extends Animal {
   constructor(name, health = 100) {
     super(name, health);
   }
-
   bite(food) {
     if (!(food instanceof Carnivore || food.hidden)) {
       food.health -= 50;
     }
 
-    if (!food.health) {
-      Animal.alive.pop(food);
-    }// write your code here
+    Animal.alive = Animal.alive.filter(x => (x.health > 0));
   }
 }
 
