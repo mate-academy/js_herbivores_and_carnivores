@@ -6,26 +6,6 @@ class Animal {
     this.health = health;
     Animal.alive.push(this);
   }
-
-  set health(value) {
-    this._health = value;
-
-    if (this._health <= 0) {
-      this.die();
-    }
-  }
-
-  get health() {
-    return this._health;
-  }
-
-  die() {
-    const index = Animal.alive.indexOf(this);
-
-    if (index !== -1) {
-      Animal.alive.splice(index, 1);
-    }
-  }
 }
 
 Animal.alive = [];
@@ -47,8 +27,12 @@ class Carnivore extends Animal {
   }
 
   bite(animal) {
-    if (!animal.hidden && !(animal instanceof Carnivore)) {
+    if (!animal.hidden && animal instanceof Herbivore) {
       animal.health -= 50;
+    }
+
+    if (animal.health <= 0) {
+      Animal.alive = Animal.alive.filter(value => value.health !== 0);
     }
   }
 }
