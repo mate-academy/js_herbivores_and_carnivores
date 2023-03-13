@@ -1,8 +1,6 @@
 'use strict';
 
 class Animal {
-  static alive = [];
-
   health = 100;
 
   constructor(name) {
@@ -10,6 +8,8 @@ class Animal {
     Animal.alive.push(this);
   }
 }
+
+Animal.alive = [];
 
 class Herbivore extends Animal {
   hidden = false;
@@ -25,10 +25,6 @@ class Carnivore extends Animal {
       herbivore.health -= 50;
 
       Animal.alive = Animal.alive.filter(x => x.health > 0);
-
-      // if (herbivore.health <= 0) {
-      //   Animal.alive.splice(Animal.alive.indexOf(herbivore), 1);
-      // }
     }
   }
 }
