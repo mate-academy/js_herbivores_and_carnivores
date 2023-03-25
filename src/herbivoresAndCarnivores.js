@@ -17,7 +17,6 @@ class Herbivore extends Animal {
 
   hide() {
     this.hidden = true;
-    Animal.alive = Animal.alive.filter(p => p.health > 0);
   }
 }
 
