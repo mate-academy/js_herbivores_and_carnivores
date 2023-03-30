@@ -28,7 +28,7 @@ class Carnivore extends Animal {
 
   bite(herbivoreObject) {
     // eslint-disable-next-line
-    const isItHerbivore = Object.getPrototypeOf(herbivoreObject) === Herbivore.prototype;
+    const isItHerbivore = herbivoreObject instanceof Herbivore;
 
     herbivoreObject.health = herbivoreObject.hidden === false
     && isItHerbivore
