@@ -27,12 +27,15 @@ class Carnivore extends Animal {
   }
 
   bite(herbivoreObject) {
+    // eslint-disable-next-line
+    const isItHerbivore = Object.getPrototypeOf(herbivoreObject) === Herbivore.prototype;
+
     herbivoreObject.health = herbivoreObject.hidden === false
-    && Object.getPrototypeOf(herbivoreObject) === Herbivore.prototype
+    && isItHerbivore
       ? herbivoreObject.health -= 50
       : herbivoreObject.health;
 
-    if (herbivoreObject.health === 0) {
+    if (herbivoreObject.health === 0 && isItHerbivore) {
       Animal.alive = Animal.alive.filter(({ health }) => health > 0);
     }
   }
