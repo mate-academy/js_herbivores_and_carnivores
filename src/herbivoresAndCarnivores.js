@@ -22,6 +22,7 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
+  // if we add human it will be Carnivore or Herbivore, Hm....
   constructor(name, health) {
     super(name, health);
     Animal.alive.push(this);
