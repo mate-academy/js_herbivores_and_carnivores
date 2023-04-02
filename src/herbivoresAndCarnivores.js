@@ -21,9 +21,7 @@ class Herbivore extends Animal {
   }
 
   digreaseHealth() {
-    if (this.health === 0) {
-      Animal.alive = Animal.alive.filter(animal => animal.health !== 0);
-    }
+    Animal.alive = Animal.alive.filter(animal => animal.health !== 0);
   }
 }
 
