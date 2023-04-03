@@ -10,9 +10,9 @@ class Animal {
   }
 
   static updateAlive(target) {
-    const index = this.alive.indexOf(target);
-
     if (target.health <= 0) {
+      const index = this.alive.indexOf(target);
+
       this.alive.splice(index, 1);
     }
   }
