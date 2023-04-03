@@ -7,7 +7,6 @@ class Animal {
     Animal.alive.push(this);
   }
 
-  // eslint-disable-next-line
   static alive = [];
 }
 
