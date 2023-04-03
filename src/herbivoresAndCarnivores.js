@@ -28,11 +28,11 @@ class Carnivore extends Animal {
   }
 
   bite(herbivore) {
-    if (herbivore.hidden === false) {
+    if (!herbivore.hidden && herbivore.hasOwnProperty('hidden')) {
       herbivore.health -= 50;
     }
 
-    if (herbivore.health === 0 && herbivore !== undefined) {
+    if (herbivore.health <= 0) {
       Animal.alive = Animal.alive.filter(beast => beast !== herbivore);
     }
   }
