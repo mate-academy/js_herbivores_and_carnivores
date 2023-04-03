@@ -1,15 +1,38 @@
 'use strict';
 
 class Animal {
-  // write your code here
+  constructor(name) {
+    this.name = name;
+    this.health = 100;
+    Animal.alive.push(this);
+  }
+
+  // eslint-disable-next-line
+  static alive = [];
 }
 
 class Herbivore extends Animal {
-  // write your code here
+  constructor(name) {
+    super(name);
+    this.hidden = false;
+  }
+  hide() {
+    this.hidden = !this.hidden;
+  }
 }
 
 class Carnivore extends Animal {
-  // write your code here
+  bite(animal) {
+    if (animal.hidden || animal instanceof Carnivore) {
+      return 0;
+    } else {
+      animal.health -= 50;
+    }
+
+    if (!animal.health) {
+      Animal.alive = Animal.alive.filter((herbivore) => herbivore.health > 0);
+    }
+  }
 }
 
 module.exports = {
