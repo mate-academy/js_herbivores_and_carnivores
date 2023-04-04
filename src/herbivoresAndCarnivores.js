@@ -15,7 +15,6 @@ class Herbivore extends Animal {
   constructor(name) {
     super(name);
     this.hidden = false;
-    // i have to pass this prop here because i had some eslint error.
   }
 
   hide() {
@@ -24,21 +23,14 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  constructor(name) {
-    super(name);
-    this.hidden = false;
-  }
-
   bite(animal) {
     if (animal.hidden || animal instanceof Carnivore) {
       return;
     }
     animal.health -= 50;
 
-    if (animal.health === 0) {
-      Animal.alive = Animal.alive.filter(beast => {
-        return beast.name !== animal.name;
-      });
+    if (animal.health <= 0) {
+      Animal.alive = Animal.alive.filter(beast => beast.name !== animal.name);
     }
   }
 }
