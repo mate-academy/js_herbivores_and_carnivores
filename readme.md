@@ -1,4 +1,5 @@
 # Herbivores and Сarnivores
+
 Nature is well suited to reflect the principles of Object Oriented Programming.
 All instances of the `Animal` class must have health and a name.
 Health is 100 by default.
@@ -14,7 +15,26 @@ Carnivore has a `bite` method, which takes a herbivore object and decreases the 
 All alive animals should be in the static `Animal.alive` array.
 If the health of the animal reaches 0, the beast dies and it should be removed from the static array `Animals.alive`.
 
+```
+# Травоїдні та Хижі тварини
+Природа добре підходить для відображення принципів об'єктно-орієнтованого програмування.
+Усі екземпляри класу `Animal` повинні мати здоров'я та назву.
+Здоров'я за замовчуванням становить 100.
+
+Створіть клас «Травоїдні».
+У травоїдних тварин є метод «ховатися», який змінює приховану властивість звіра і допомагає сховатися від м'ясоїдних.
+
+Створіть клас `Сarnivore`.
+Carnivore має метод «укусу», який бере травоїдний об’єкт і знижує здоров’я об’єкта на 50. Метод не працює, якщо це інша хижа тварина або травоїдна тварина зараз ховається.
+
+`Травоїдна тварина` та `Знаїдна тварина` повинні розширити клас `Тварина`.
+
+Усі живі тварини мають бути в статичному масиві `Animal.alive`.
+Якщо здоров'я тварини досягає 0, звір гине і його слід видалити зі статичного масиву `Animals.alive`.
+```
+
 Example:
+
 ```
 const deer = new Herbivore('Bembi');
 const panther = new Carnivore('Bagira');
