@@ -8,8 +8,6 @@ class Animal {
     Animal.addAnimal(this);
   }
 
-  static alive = [];
-
   static addAnimal(animal) {
     Animal.alive.push(animal);
   }
@@ -18,6 +16,8 @@ class Animal {
     Animal.alive = Animal.alive.filter(being => being.health > 0);
   }
 }
+
+Animal.alive = [];
 
 class Herbivore extends Animal {
   constructor(name) {
