@@ -3,14 +3,13 @@
 class Animal {
   // write your code here
   constructor(name, health = 100) {
-    if (!Animal.alive) {
-      Animal.alive = [];
-    }
     this.health = health;
     this.name = name;
     Animal.alive.push(this);
   }
 }
+
+Animal.alive = [];
 
 class Herbivore extends Animal {
   // write your code here
@@ -27,7 +26,7 @@ class Herbivore extends Animal {
 class Carnivore extends Animal {
   // write your code here
   bite(target) {
-    if (target instanceof Herbivore && target.hidden === false) {
+    if (target instanceof Herbivore && !target.hidden) {
       target.health -= 50;
     }
 
