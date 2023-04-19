@@ -2,7 +2,6 @@
 
 class Animal {
   // write your code here
-  static alive = [];
   constructor(name) {
     this.name = name;
     this.health = 100;
@@ -30,6 +29,8 @@ class Carnivore extends Animal {
     }
   }
 }
+
+Animal.alive = [];
 
 module.exports = {
   Animal,
