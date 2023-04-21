@@ -6,9 +6,21 @@ class Animal {
     this.name = name;
     this.health = 100;
   }
+
+  checkStatus(woundedAnimal) {
+    if (woundedAnimal.health <= 0) {
+      Animal.alive = Animal.alive.filter((el) => el !== woundedAnimal);
+    }
+  }
 }
 
-Animal.alive = []; // Linter czepia się użyciu static
+Animal.alive = []; // Linter is mad about 'static'
+
+Animal.checkStatus = (woundedAnimal) => {
+  if (woundedAnimal.health <= 0) {
+    Animal.alive = Animal.alive.filter((el) => el !== woundedAnimal);
+  }
+}; // Linter is still mad about 'static'
 
 class Herbivore extends Animal {
   // write your code here
@@ -33,10 +45,7 @@ class Carnivore extends Animal {
   bite(target) {
     if (!target.hidden && 'hidden' in target) {
       target.health -= 50;
-
-      if (target.health <= 0) {
-        Animal.alive = Animal.alive.filter((el) => el !== target);
-      }
+      Animal.checkStatus(target);
     }
   }
 }
