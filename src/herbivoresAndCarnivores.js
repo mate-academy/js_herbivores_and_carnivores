@@ -27,7 +27,9 @@ class Carnivore extends Animal {
       beast.health -= 50;
     }
 
-    Animal.alive = Animal.alive.filter(creature => creature.health > 0);
+    if (beast.health === 0) {
+      Animal.alive = Animal.alive.filter(creature => creature !== beast);
+    }
   }
 }
 
