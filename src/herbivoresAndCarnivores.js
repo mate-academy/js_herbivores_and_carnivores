@@ -4,21 +4,16 @@ class Animal {
   constructor(name, health = 100) {
     this.name = name;
     this.health = health;
-    this.hidden = false;
 
     Animal.alive.push(this);
   }
 
   die() {
-    const index = Animal.alive.indexOf(this);
-
-    if (index !== -1) {
-      Animal.alive.splice(index, 1);
-    }
+    Animal.alive = Animal.alive.filter(animal => animal !== this);
   }
 
-  decreaseHealth(amount) {
-    this.health = Math.max(0, this.health - amount);
+  decreaseHealth() {
+    this.health = Math.max(0, this.health - 50);
 
     if (this.health === 0) {
       this.die();
@@ -29,17 +24,21 @@ class Animal {
 Animal.alive = [];
 
 class Herbivore extends Animal {
+  constructor(name) {
+    super(name);
+    this.hidden = false;
+  }
+
   hide() {
     this.hidden = true;
   }
 }
 
 class Carnivore extends Animal {
-  bite(h) {
-    if (h.hidden || h instanceof Carnivore) {
-      return;
+  bite(lustiness) {
+    if (!lustiness.hidden && lustiness instanceof Herbivore) {
+      lustiness.decreaseHealth(50);
     }
-    h.decreaseHealth(50);
   }
 }
 
