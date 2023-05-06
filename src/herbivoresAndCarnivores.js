@@ -1,7 +1,6 @@
 'use strict';
 
 class Animal {
-
   constructor(name, health = 100) {
     this.name = name;
     this.health = health;
@@ -11,6 +10,7 @@ class Animal {
 
   die() {
     const index = Animal.alive.indexOf(this);
+
     if (index !== -1) {
       Animal.alive.splice(index, 1);
     }
@@ -30,12 +30,12 @@ class Carnivore extends Animal {
       return;
     }
     animal.health -= 50;
+
     if (animal.health <= 0) {
       animal.die();
     }
   }
 }
-
 
 module.exports = {
   Animal,
