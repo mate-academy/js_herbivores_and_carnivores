@@ -28,7 +28,6 @@ class Carnivore extends Animal {
       herbivore.health -= 50;
     }
 
-    // Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
     if (herbivore.health <= 0) {
       delete Animal.alive[Animal.alive.indexOf(herbivore)];
     }
