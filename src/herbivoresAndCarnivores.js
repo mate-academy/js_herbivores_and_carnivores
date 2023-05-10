@@ -11,7 +11,7 @@ class Animal {
     this.health -= damage;
 
     if (this.health <= 0) {
-      Animal.alive = Animal.alive.filter(animal => animal !== this);
+      Animal.alive = Animal.alive.filter(aliveAnimal => aliveAnimal.health > 0);
     }
   }
 }
