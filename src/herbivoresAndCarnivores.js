@@ -8,14 +8,15 @@ class Animal {
     Animal.alive.push(this);
   }
 
-  static killAnimal(name) {
-    const index = Animal.alive.indexOf(name);
+  killAnimal(name) {
+    // const index = Animal.alive.indexOf(name);
 
-    Animal.alive.splice(index, 1);
+    // Animal.alive.splice(index, 1);
+    Animal.alive = Animal.alive.filter(animal => animal.health > 0);
   }
-
-  static alive = [];
 }
+
+Animal.alive = [];
 
 class Herbivore extends Animal {
   // write your code here
@@ -38,7 +39,7 @@ class Carnivore extends Animal {
     }
 
     if (prey.health <= 0) {
-      Animal.killAnimal(prey.name);
+      Animal.prototype.killAnimal(prey.name);
     }
   }
 }
