@@ -8,15 +8,15 @@ class Animal {
     Animal.alive.push(this);
   }
 
-  decreaseHealth(amount = 50) {
+  _decreaseHealth(amount = 50) {
     this.health -= amount;
 
     if (this.health <= 0) {
-      this.die();
+      this._die();
     }
   }
 
-  die() {
+  _die() {
     const index = Animal.alive.indexOf(this);
 
     if (index !== -1) {
@@ -34,7 +34,7 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    this.hidden = true;
+    this.hidden = !this.hidden;
   }
 }
 
@@ -45,7 +45,7 @@ class Carnivore extends Animal {
 
   bite(animal) {
     if (animal instanceof Herbivore && !animal.hidden) {
-      animal.decreaseHealth();
+      animal._decreaseHealth();
     }
   }
 }
