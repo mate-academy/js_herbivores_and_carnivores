@@ -14,9 +14,7 @@ class Animal {
   }
 
   static removeAnimal(animal) {
-    const index = Animal.alive.indexOf(animal);
-
-    Animal.alive.splice(index, 1);
+    this.alive = this.alive.filter(animals => animals !== animal);
   }
 }
 
