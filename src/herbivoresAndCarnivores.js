@@ -26,10 +26,6 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   // write your code here
-  constructor(name) {
-    super(name);
-  }
-
   bite(herbivore) {
     if (herbivore instanceof Herbivore && !herbivore.hidden) {
       herbivore.health -= 50;
