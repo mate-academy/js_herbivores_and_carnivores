@@ -7,12 +7,8 @@ class Animal {
     Animal.alive.push(this);
   }
 
-  static removeFromAlive(animal) {
-    const index = Animal.alive.indexOf(animal);
-
-    if (index !== -1) {
-      Animal.alive.splice(index, 1);
-    }
+  static removeFromAlive(target) {
+    Animal.alive = Animal.alive.filter(animal => animal.name !== target.name);
   }
 }
 
