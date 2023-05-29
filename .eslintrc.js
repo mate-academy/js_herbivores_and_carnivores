@@ -1,4 +1,5 @@
 module.exports = {
+  "parser": "babel-eslint",
   extends: '@mate-academy/eslint-config',
   env: {
     jest: true
@@ -7,6 +8,4 @@ module.exports = {
     'no-proto': 0
   },
   plugins: ['jest'],
-
-  "parser": "babel-eslint",
 };
