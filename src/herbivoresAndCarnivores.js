@@ -24,15 +24,6 @@ class Herbivore extends Animal {
   hide() {
     this.hidden = true;
   }
-
-  set health(value) {
-    this._health = value;
-    Animal.removeDeadAnimals();
-  }
-
-  get health() {
-    return this._health;
-  }
 }
 
 class Carnivore extends Animal {
@@ -41,7 +32,9 @@ class Carnivore extends Animal {
       target.health -= 50;
     }
 
-    Animal.removeDeadAnimals();
+    if (target.health <= 0) {
+      Animal.removeDeadAnimals();
+    }
   }
 }
 
