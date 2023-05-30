@@ -10,7 +10,7 @@ class Animal {
 
 Animal.alive = [];
 
-Animal.reduceAllDeadAnimals = () => {
+Animal.deleteAllDeadAnimals = () => {
   Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
 };
 
@@ -21,7 +21,7 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    this.hidden = !this.hidden;
+    this.hidden = true;
   }
 }
 
@@ -29,11 +29,11 @@ class Carnivore extends Animal {
   bite(animal) {
     const isHerbivore = animal instanceof Herbivore;
     const isAlive = Animal.alive.includes(animal);
-    const isNotHidding = !animal.hidden;
+    const isHidding = animal.hidden;
 
-    if (isHerbivore && isAlive && isNotHidding) {
+    if (isHerbivore && isAlive && !isHidding) {
       animal.health -= 50;
-      Animal.reduceAllDeadAnimals();
+      Animal.deleteAllDeadAnimals();
     }
   }
 }
