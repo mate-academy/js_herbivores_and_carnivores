@@ -8,7 +8,7 @@ class Animal {
     Animal.alive.push(this);
   }
 
-  static checkLifeStatus() {
+  static removeDeadAnimals() {
     this.alive = this.alive.filter(animal => animal.health > 0);
   }
 }
@@ -28,14 +28,16 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  bite(herbivore) {
-    if (!herbivore.hidden
-      && herbivore instanceof Herbivore) {
-      herbivore.health -= 50;
+  bite(beast) {
+    if (
+      !beast.hidden
+      && beast instanceof Herbivore
+    ) {
+      beast.health -= 50;
     }
 
-    if (herbivore.health <= 0) {
-      Animal.checkLifeStatus();
+    if (beast.health <= 0) {
+      Animal.removeDeadAnimals();
     }
   }
 }
