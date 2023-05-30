@@ -33,7 +33,6 @@ class Carnivore extends Herbivore {
 
     if (animal instanceof Herbivore && !animal.hidden) {
       animal.health -= 50;
-      console.log(animal, 'was bitten');
 
       if (animal.health <= 0) {
         Animal.alive = Animal.alive.filter(a => a.health > 0);
@@ -41,23 +40,6 @@ class Carnivore extends Herbivore {
     }
   }
 }
-
-const herb = new Herbivore('Zebra');
-const herb2 = new Herbivore('Zebras');
-const alfa = new Carnivore('Domka');
-const alfa2 = new Carnivore('Domka2');
-// alfa.hide();
-// console.log(Animal.alive);
-// Animal.die(herb);
-
-
-// herb.hide();
-alfa.bite(herb);
-alfa.bite(herb);
-alfa.bite(herb2);
-alfa.bite(alfa2);
-
-console.log(Animal.alive);
 
 module.exports = {
   Animal,
