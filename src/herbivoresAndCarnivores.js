@@ -8,7 +8,7 @@ class Animal {
   }
 
   static removeAnimal() {
-    this.alive = this.alive.filter(el => el.health > 0);
+    this.alive = this.alive.filter(animal => animal.health > 0);
   }
 }
 
@@ -29,7 +29,7 @@ class Carnivore extends Animal {
   bite(animal) {
     const powerOfBite = 50;
 
-    if (animal instanceof Herbivore && animal.hidden === false) {
+    if (animal instanceof Herbivore && !animal.hidden) {
       animal.health -= powerOfBite;
     }
 
