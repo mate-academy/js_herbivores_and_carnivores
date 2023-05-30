@@ -10,7 +10,7 @@ class Animal {
 
 Animal.alive = [];
 
-Animal.deleteAllDeadAnimals = () => {
+Animal.removeDeadAnimals = () => {
   Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
 };
 
