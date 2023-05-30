@@ -10,8 +10,8 @@ class Animal {
 
 Animal.alive = [];
 
-Animal.removeAnimal = function(objToRemove) {
-  delete this.alive[Animal.alive.indexOf(objToRemove)];
+const indexOfDeadAnimal = function(animalToRemove) {
+  return Animal.alive.indexOf(animalToRemove);
 };
 
 class Herbivore extends Animal {
@@ -25,13 +25,13 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  bite(obj) {
-    if (!obj.hidden && !(obj instanceof Carnivore)) {
-      obj.health -= 50;
+  bite(animal) {
+    if (!animal.hidden && animal instanceof Herbivore) {
+      animal.health -= 50;
+    }
 
-      if (obj.health === 0) {
-        Animal.removeAnimal(obj);
-      }
+    if (animal.health <= 0) {
+      delete Animal.alive[indexOfDeadAnimal(animal)];
     }
   }
 }
