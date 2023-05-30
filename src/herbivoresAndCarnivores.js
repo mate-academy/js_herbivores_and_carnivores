@@ -3,11 +3,11 @@
 class Animal {
   static alive = [];
 
-  static newAnimal(animalObj) {
+  static addToAlive(animalObj) {
     this.alive.push(animalObj);
   }
 
-  static animalDeath(animalObj) {
+  static removeFromAlive(animalObj) {
     const animalIndex = this.alive.indexOf(animalObj);
 
     this.alive.splice(animalIndex, 1);
@@ -19,7 +19,7 @@ class Animal {
     this.name = name;
     this.health = health || defaultHealth;
 
-    Animal.newAnimal(this);
+    Animal.addToAlive(this);
   }
 }
 
@@ -31,21 +31,21 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    this.hidden = !this.hidden;
+    this.hidden = true;
   }
 }
 
 class Carnivore extends Animal {
   bite(victim) {
     const bitePower = 50;
-    const isHerbivore = Object.hasOwnProperty.call(victim, 'hidden');
+    const isHerbivore = victim instanceof Herbivore;
 
     if (!victim.hidden && isHerbivore) {
       victim.health -= bitePower;
     }
 
     if (victim.health <= 0) {
-      Animal.animalDeath(victim);
+      Animal.removeFromAlive(victim);
     }
   }
 }
