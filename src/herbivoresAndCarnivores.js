@@ -1,8 +1,6 @@
 'use strict';
 
 class Animal {
-  static alive = [];
-
   static addToAlive(animalObj) {
     this.alive.push(animalObj);
   }
@@ -22,6 +20,8 @@ class Animal {
     Animal.addToAlive(this);
   }
 }
+
+Animal.alive = [];
 
 class Herbivore extends Animal {
   constructor(name, health) {
