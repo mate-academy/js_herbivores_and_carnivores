@@ -32,7 +32,7 @@ class Carnivore extends Animal {
       beast.health -= 50;
     }
 
-    if (!beast.health) {
+    if (beast.health <= 0) {
       Animal.deleteDeadAnimal();
     }
   }
