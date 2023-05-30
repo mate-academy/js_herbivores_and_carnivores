@@ -1,11 +1,11 @@
 'use strict';
 
 class Animal {
-  static addToAlive(animalObj) {
+  static addNewAnimal(animalObj) {
     this.alive.push(animalObj);
   }
 
-  static removeFromAlive(animalObj) {
+  static removeDeadAnimal(animalObj) {
     const animalIndex = this.alive.indexOf(animalObj);
 
     this.alive.splice(animalIndex, 1);
@@ -17,7 +17,7 @@ class Animal {
     this.name = name;
     this.health = health || defaultHealth;
 
-    Animal.addToAlive(this);
+    Animal.addNewAnimal(this);
   }
 }
 
@@ -40,12 +40,12 @@ class Carnivore extends Animal {
     const bitePower = 50;
     const isHerbivore = victim instanceof Herbivore;
 
-    if (!victim.hidden && isHerbivore) {
+    if (isHerbivore && !victim.hidden) {
       victim.health -= bitePower;
     }
 
     if (victim.health <= 0) {
-      Animal.removeFromAlive(victim);
+      Animal.removeDeadAnimal(victim);
     }
   }
 }
