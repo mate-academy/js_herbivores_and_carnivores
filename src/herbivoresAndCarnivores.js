@@ -4,7 +4,6 @@ class Animal {
   constructor(name) {
     this.name = name;
     this.health = 100;
-    this.hidden = false;
     Animal.createAnimal(this);
   }
 
@@ -20,6 +19,10 @@ class Animal {
 }
 
 class Herbivore extends Animal {
+  constructor() {
+    super();
+    this.hidden = false;
+  }
   hide() {
     this.hidden = true;
   }
