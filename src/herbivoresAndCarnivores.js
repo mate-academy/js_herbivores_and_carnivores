@@ -14,14 +14,6 @@ class Animal {
       }
     }
   }
-
-  // died() {
-  //   const index = Animal.alive.indexOf(this);
-
-  //   if (index !== -1) {
-  //     Animal.alive.splice(index, 1);
-  //   }
-  // }
 }
 
 Animal.alive = [];
