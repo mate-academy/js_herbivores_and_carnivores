@@ -33,7 +33,7 @@ class Carnivore extends Animal {
 
     if (isHerbivore && isAlive && !isHidding) {
       animal.health -= 50;
-      Animal.deleteAllDeadAnimals();
+      Animal.removeDeadAnimals();
     }
   }
 }
