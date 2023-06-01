@@ -41,7 +41,7 @@ class Carnivore extends Animal {
       if (target.hidden === false) {
         target.health -= 50;
 
-        if (target.health <= 0) {
+        if (target.health === 0) {
           Animal.removeAnimal(target);
         }
       }
