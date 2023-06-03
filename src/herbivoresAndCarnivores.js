@@ -10,7 +10,7 @@ class Animal {
 
 Animal.alive = [];
 
-Animal.removeDeadAnimal = (animal) => {
+Animal.filterDeadAnimal = (animal) => {
   Animal.alive = Animal.alive.filter(beast => beast !== animal);
 };
 
@@ -33,7 +33,7 @@ class Carnivore extends Animal {
       animal.health -= biteForce;
 
       if (animal.health <= 0) {
-        Animal.removeDeadAnimal(animal);
+        Animal.filterDeadAnimal(animal);
       }
     }
   }
