@@ -1,5 +1,4 @@
 'use strict';
-
 class Animal {
   constructor(health, name, hidden) {
     this.name = name;
