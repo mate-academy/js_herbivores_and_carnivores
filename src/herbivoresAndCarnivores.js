@@ -26,9 +26,9 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  constructor(name, damage = 50) {
+  constructor(name) {
     super(name);
-    this.damage = damage;
+    this.damage = 50;
   }
 
   bite(animal) {
