@@ -7,8 +7,8 @@ class Animal {
     Animal.alive.push(this);
   }
 
-  static removeFromAlive(animal) {
-    Animal.alive = Animal.alive.filter((a) => a.health > 0);
+  static removeFromAlive() {
+    this.alive = this.alive.filter((animal) => animal.health > 0);
   }
 }
 
