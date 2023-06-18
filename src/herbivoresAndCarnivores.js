@@ -1,8 +1,6 @@
 'use strict';
 
 class Animal {
-  static alive = [];
-
   checkHealth() {
     if (this.health <= 0) {
       this.die();
@@ -23,6 +21,8 @@ class Animal {
     Animal.alive.push(this);
   }
 }
+
+Animal.alive = [];
 
 class Herbivore extends Animal {
   constructor(name) {
