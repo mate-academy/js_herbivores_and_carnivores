@@ -7,16 +7,6 @@ class Animal {
 
     Animal.alive.push(this);
   }
-
-  decreaseHealth(num) {
-    const posOfAll = Animal.alive.indexOf(this);
-
-    this.health -= num;
-
-    if (this.health <= 0 && posOfAll > -1) {
-      Animal.alive.splice(posOfAll, 1);
-    }
-  }
 }
 
 Animal.alive = [];
@@ -36,7 +26,11 @@ class Herbivore extends Animal {
 class Carnivore extends Animal {
   bite(animal) {
     if (animal instanceof Herbivore && !animal.hidden) {
-      animal.decreaseHealth(50);
+      animal.health -= 50;
+
+      if (animal.health === 0) {
+        Animal.alive = Animal.alive.filter(el => el !== animal);
+      }
     }
   }
 }
