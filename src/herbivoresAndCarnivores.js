@@ -5,8 +5,6 @@ class Animal {
     this.name = name;
     this.health = 100;
   }
-
-  static alive = [];
 }
 
 class Herbivore extends Animal {
@@ -38,6 +36,8 @@ class Carnivore extends Animal {
       : Animal.alive;
   }
 }
+
+Animal.alive = [];
 
 module.exports = {
   Animal,
