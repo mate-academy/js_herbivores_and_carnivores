@@ -1,12 +1,10 @@
 'use strict';
 
-const alive = [];
-
 class Animal {
   constructor(name, health = 100) {
     this.name = name;
     this.health = health;
-    alive.push(this);
+    Animal.alive.push(this);
   }
 
   decreaseHealth(amount) {
@@ -18,17 +16,15 @@ class Animal {
   }
 
   die() {
-    const index = alive.indexOf(this);
+    const index = Animal.alive.indexOf(this);
 
     if (index !== -1) {
-      alive.splice(index, 1);
+      Animal.alive.splice(index, 1);
     }
   }
-
-  static get alive() {
-    return alive;
-  }
 }
+
+Animal.alive = [];
 
 class Herbivore extends Animal {
   constructor(name) {
