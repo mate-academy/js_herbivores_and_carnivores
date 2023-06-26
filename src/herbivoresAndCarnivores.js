@@ -1,5 +1,5 @@
 
-"use strict";
+'use strict';
 
 class Animal {
   static alive = [];
