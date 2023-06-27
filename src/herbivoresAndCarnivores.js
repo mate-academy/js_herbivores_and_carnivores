@@ -1,8 +1,8 @@
 'use strict';
 
 class Animal {
-  constructor(name, health) {
-    this.health = health || 100;
+  constructor(name, health = 100) {
+    this.health = health;
     this.name = name;
     Animal.alive.push(this);
   }
