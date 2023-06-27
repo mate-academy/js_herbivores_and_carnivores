@@ -13,7 +13,7 @@ Animal.alive = [];
 Animal.remove = function(prey) {
   if (prey.health <= 0) {
     Animal.alive = Animal.alive.filter(
-      (animal) => animal.name !== prey.name,
+      (animal) => animal !== prey,
     );
   }
 };
@@ -31,7 +31,7 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(prey) {
-    if (prey.hidden === false) {
+    if (prey instanceof Herbivore && !prey.hidden) {
       prey.health -= 50;
       Animal.remove(prey);
     }
