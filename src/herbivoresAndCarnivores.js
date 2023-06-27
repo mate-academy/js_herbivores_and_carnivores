@@ -29,7 +29,7 @@ class Carnivore extends Animal {
 
     if (animal.health <= 0) {
     // eslint-disable-next-line
-      const beastIndex = Animal.alive.findIndex(el => el.health <= 0 && el.name === animal.name);
+      const beastIndex = Animal.alive.findIndex(el => el === animal);
 
       if (beastIndex >= 0) {
         Animal.alive.splice(beastIndex, 1);
