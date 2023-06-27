@@ -24,13 +24,12 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(animal) {
-    const DAMAGE_OF_BITE = 50;
-    const isHerbivore = (animal instanceof Herbivore);
-    const isEnoughHealth = (animal.health >= DAMAGE_OF_BITE);
-    const isVisible = (animal.hidden === false);
+    const BITE_DAMAGE = 50;
+    const isHerbivore = animal instanceof Herbivore;
+    const isVisible = !animal.hidden;
 
-    if (isHerbivore && isVisible && isEnoughHealth) {
-      animal.health -= DAMAGE_OF_BITE;
+    if (isHerbivore && isVisible) {
+      animal.health -= BITE_DAMAGE;
     }
 
     if (animal.health === 0) {
