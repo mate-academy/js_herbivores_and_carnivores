@@ -16,6 +16,7 @@ class Animal {
     }
   }
 }
+
 Animal.alive = [];
 
 class Herbivore extends Animal {
@@ -35,12 +36,13 @@ class Carnivore extends Animal {
   }
 
   bite(victim) {
-    if (victim.hidden === false) {
+    if (victim instanceof Herbivore && !victim.hidden) {
       victim.health -= 50;
       victim.healthCheck();
     }
   }
 }
+
 
 module.exports = {
   Animal,
