@@ -29,14 +29,14 @@ class Carnivore extends Animal {
 
   bite(object) {
     if (
-      Object.getPrototypeOf(object) !== Carnivore
+      !(object instanceof Carnivore)
       && object.hidden === false
     ) {
       object.health -= 50;
     }
 
     if (object.health <= 0) {
-      Animal.alive = Animal.alive.filter((element) => element.health > 0);
+      Animal.alive = Animal.alive.filter((element) => element !== object);
     }
   }
 }
