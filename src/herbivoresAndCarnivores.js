@@ -7,10 +7,10 @@ class Animal {
 
     Animal.alive.push(this);
   }
-}
 
-function checkHealth() {
-  Animal.alive = Animal.alive.filter(animal => animal.health > 0);
+  static checkHealth() {
+    Animal.alive = Animal.alive.filter(animal => animal.health > 0);
+  }
 }
 
 Animal.alive = [];
@@ -29,9 +29,8 @@ class Carnivore extends Animal {
   bite(target) {
     if (target instanceof Herbivore && !target.hidden) {
       target.health -= 50;
+      Animal.checkHealth();
     }
-
-    checkHealth();
   }
 }
 
