@@ -9,6 +9,10 @@ class Animal {
   }
 }
 
+function checkHealth() {
+  Animal.alive = Animal.alive.filter(animal => animal.health > 0);
+}
+
 Animal.alive = [];
 class Herbivore extends Animal {
   constructor(name) {
@@ -27,7 +31,7 @@ class Carnivore extends Animal {
       target.health -= 50;
     }
 
-    Animal.alive = Animal.alive.filter(a => a.health > 0);
+    checkHealth();
   }
 }
 
