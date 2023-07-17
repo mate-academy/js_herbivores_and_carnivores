@@ -9,11 +9,6 @@ class Animal {
 
   static die() {
     Animal.alive = Animal.alive.filter(elememt => elememt.health > 0);
-    // if (!animal.health) {
-    //   const index = Animal.alive.indexOf(animal);
-
-    //   Animal.alive.splice(index, 1);
-    // }
   }
 }
 
