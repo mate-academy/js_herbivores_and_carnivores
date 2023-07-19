@@ -9,7 +9,9 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  // write your code here
+  const a = 1;
+
+  return a;
 }
 
 module.exports = {
