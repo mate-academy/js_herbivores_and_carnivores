@@ -27,8 +27,6 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(victim) {
-    // const victimIndex = Animal.alive.findIndex(animal => animal === victim);
-
     if (victim instanceof Herbivore && !victim.hidden) {
       victim.health -= 50;
       Animal.removeKilled();
