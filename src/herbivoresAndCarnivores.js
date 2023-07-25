@@ -8,11 +8,7 @@ class Animal {
   }
 
   die() {
-    const index = Animal.alive.indexOf(this);
-
-    if (index !== -1) {
-      Animal.alive.splice(index, 1);
-    }
+    Animal.alive = Animal.alive.filter(animal => animal !== this);
   }
 }
 
@@ -20,7 +16,7 @@ Animal.alive = [];
 
 class Herbivore extends Animal {
   constructor(name, health = 100, hidden = false) {
-    super();
+    super(name, health);
     this.hidden = hidden;
   }
 
