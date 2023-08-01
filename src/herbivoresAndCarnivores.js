@@ -6,7 +6,6 @@ class Animal {
     this.name = name;
     Animal.alive.push(this);
   }
-}
 
 Animal.alive = [];
 
@@ -36,6 +35,8 @@ class Carnivore extends Animal {
     }
   }
 }
+
+Animal.alive = [];
 
 module.exports = {
   Animal,
