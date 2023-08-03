@@ -2,6 +2,9 @@
 
 class Animal {
   // write your code here
+  static RemoveDead(animal) {
+    Animal.alive.splice(Animal.alive.indexOf(animal), 1);
+  }
   constructor(name) {
     this.name = name;
     this.health = 100;
@@ -29,7 +32,7 @@ class Carnivore extends Animal {
       object.health -= 50;
 
       if(object.health <= 0) {
-        Animal.alive.splice(Animal.alive.indexOf(object), 1);
+        Animal.RemoveDead(object);
       }
     }
   }
