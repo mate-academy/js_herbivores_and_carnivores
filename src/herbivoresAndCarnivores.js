@@ -2,8 +2,8 @@
 
 class Animal {
   // write your code here
-  static RemoveDead(animal) {
-    Animal.alive.splice(Animal.alive.indexOf(animal), 1);
+  static removeDead() {
+    Animal.alive = Animal.alive.filter(animal => animal.health > 0);
   }
   constructor(name) {
     this.name = name;
@@ -27,12 +27,12 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   // write your code here
-  bite(object) {
-    if(!object.hidden && !(object instanceof Carnivore)) {
-      object.health -= 50;
+  bite(animal) {
+    if (!animal.hidden && !(animal instanceof Carnivore)) {
+      animal.health -= 50;
 
-      if(object.health <= 0) {
-        Animal.RemoveDead(object);
+      if (animal.health <= 0) {
+        Animal.removeDead();
       }
     }
   }
