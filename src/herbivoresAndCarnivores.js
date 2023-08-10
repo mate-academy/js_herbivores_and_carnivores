@@ -1,9 +1,8 @@
 'use strict';
 
 class Animal {
-/* eslint-disable */
   static alive = [];
-  /* eslint-enable */
+
   health = 100;
 
   constructor(name) {
