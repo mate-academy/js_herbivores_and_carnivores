@@ -3,7 +3,7 @@
 class Animal {
   constructor(name, health) {
     this.name = name;
-    this.health = 100 || health;
+    this.health = health || 100;
     Animal.alive.push(this);
   }
 }
@@ -27,9 +27,7 @@ class Carnivore extends Animal {
     }
 
     if (animal.health <= 0) {
-      const deleteIndex = Animal.alive.indexOf(animal);
-
-      Animal.alive.splice(deleteIndex, 1);
+      Animal.alive = Animal.alive.filter(el => el.health > 0);
     }
   }
 }
