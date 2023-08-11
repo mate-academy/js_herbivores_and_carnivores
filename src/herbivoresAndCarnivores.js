@@ -12,7 +12,7 @@ class Animal {
     Animal.alive = Animal.alive.filter(animal => animal !== this);
   }
 
-  afterBite(decreaseInHealth) {
+  reduceHealth(decreaseInHealth) {
     this.health -= decreaseInHealth;
 
     if (this.health <= 0) {
@@ -28,7 +28,6 @@ class Herbivore extends Animal {
   constructor(name, health) {
     super(name, health);
     this.hidden = false;
-    Animal.alive.push(this);
   }
 
   hide() {
@@ -39,7 +38,6 @@ class Herbivore extends Animal {
 class Carnivore extends Animal {
   constructor(name, health) {
     super(name, health);
-    Animal.alive.push(this);
   }
 
   bite(target) {
@@ -47,7 +45,7 @@ class Carnivore extends Animal {
       return `${this.name} can't bite ${target.name}`;
     }
 
-    target.afterBite(50);
+    target.reduceHealth(50);
 
     return `${this.name} bit ${target.name}, `
     + `health decreased to ${target.health}`;
