@@ -6,6 +6,18 @@ class Animal {
     this.health = 100;
     Animal.alive.push(this);
   }
+
+  reduceHealth(damage) {
+    this.health -= damage;
+
+    if (this.health <= 0) {
+      this.die();
+    }
+  }
+
+  die() {
+    Animal.alive = Animal.alive.filter(animal => animal !== this);
+  }
 }
 
 Animal.alive = [];
@@ -22,17 +34,15 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  bite(herbivore) {
-    if (herbivore.hidden === false && herbivore instanceof Herbivore) {
-    // is better to use !herbivore.hidden && !(herbivore instanceof Carnivore)?
-      herbivore.health -= 50;
+  bite(animal, amount = 50) {
+    if (animal.hidden || animal instanceof Carnivore) {
+      return;
     }
-
-    if (herbivore.health <= 0) {
-      Animal.alive = Animal.alive.filter(animal => animal !== herbivore);
-    }
+    animal.reduceHealth(amount);
   }
 }
+
+Animal.staticProperty = true;
 
 module.exports = {
   Animal,
