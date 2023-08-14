@@ -1,19 +1,15 @@
 'use strict';
 
 class Animal {
-  constructor(name) {
+  constructor(name, health) {
     this.name = name;
-    this.health = 100;
+    this.health = health || 100;
     this.hidden = false;
     Animal.alive.push(this);
   }
 
   static removeFromAlive(animal) {
-    const index = Animal.alive.indexOf(animal);
-
-    if (index !== -1) {
-      Animal.alive.splice(index, 1);
-    }
+    Animal.alive = Animal.alive.filter(a => a !== animal);
   }
 }
 
