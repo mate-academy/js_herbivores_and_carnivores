@@ -17,22 +17,13 @@ class Animal {
   }
 
   die() {
-    const index = Animal.alive.indexOf(this);
-
-    if (index !== -1) {
-      Animal.alive.splice(index, 1);
-    }
+    Animal.alive = Animal.alive.filter(animal => animal !== this);
   }
 }
 
 Animal.alive = [];
 
 class Herbivore extends Animal {
-  // eslint-disable-next-line no-useless-constructor
-  constructor(name) {
-    super(name);
-  }
-
   hide() {
     this.hidden = true;
   }
