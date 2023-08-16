@@ -7,7 +7,7 @@ class Animal {
     Animal.alive.push(this);
   }
 
-  die() {
+  dead() {
     const index = Animal.alive.indexOf(this);
 
     Animal.alive.splice(index, 1);
@@ -34,7 +34,7 @@ class Carnivore extends Animal {
     }
 
     if (target.health <= 0) {
-      target.die();
+      target.dead();
     }
   }
 }
