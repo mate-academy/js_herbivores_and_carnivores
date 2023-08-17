@@ -8,7 +8,7 @@ class Animal {
   }
 
   die() {
-    Animal.alive.splice(Animal.alive.indexOf(this), 1);
+    Animal.alive = Animal.alive.filter(animal => animal !== this);
   }
 }
 
