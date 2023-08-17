@@ -21,10 +21,6 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  constructor(name) {
-    super(name);
-    this.hidden = false;
-  };
   bite(animal) {
     const isHerbivore = animal instanceof Herbivore;
 
