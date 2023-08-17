@@ -25,8 +25,6 @@ class Herbivore extends Animal {
 
   hide() {
     this.hidden = !this.hidden;
-
-    return this;
   }
 }
 
@@ -38,12 +36,10 @@ class Carnivore extends Animal {
 
   bite(victim) {
     if (victim.hidden || victim instanceof Carnivore) {
-      return this;
+      return;
     }
 
     victim.health -= this.bitePower;
-
-    return this;
   }
 }
 
