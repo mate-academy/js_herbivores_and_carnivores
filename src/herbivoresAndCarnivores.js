@@ -1,12 +1,18 @@
 'use strict';
 
+const FULL_HEALTH = 100;
+const HEALTH_TAKEN_BY_BITE = 50;
+const DEAD_ANIMAL_HEALTH = 0;
+
 class Animal {
   constructor(name) {
     this.name = name;
-    this.health = 100;
+    this.health = FULL_HEALTH;
     Animal.alive.push(this);
   }
 }
+
+Animal.alive = [];
 
 class Herbivore extends Animal {
   constructor(name) {
@@ -22,18 +28,16 @@ class Herbivore extends Animal {
 class Carnivore extends Animal {
   bite(victim) {
     if (victim instanceof Herbivore && victim.hidden === false) {
-      victim.health -= 50;
+      victim.health -= HEALTH_TAKEN_BY_BITE;
     }
 
-    if (victim.health === 0) {
+    if (victim.health === DEAD_ANIMAL_HEALTH) {
       const index = Animal.alive.indexOf(victim);
 
       delete Animal.alive[index];
     }
   }
 }
-
-Animal.alive = [];
 
 module.exports = {
   Animal,
