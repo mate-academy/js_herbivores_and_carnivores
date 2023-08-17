@@ -3,13 +3,13 @@
 const MAX_HEALTH = 100;
 
 class Animal {
-  static alive = [];
-
   constructor(name, health = MAX_HEALTH) {
     this.health = health;
     this.name = name;
     Animal.alive.push(this);
   }
+
+  static alive = [];
 
   die() {
     Animal.alive = Animal.alive.filter(animal => animal !== this);
