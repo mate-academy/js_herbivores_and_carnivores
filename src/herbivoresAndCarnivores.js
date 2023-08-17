@@ -9,12 +9,12 @@ class Animal {
     Animal.alive.push(this);
   }
 
-  static alive = [];
-
   die() {
     Animal.alive = Animal.alive.filter(animal => animal !== this);
   }
 }
+
+Animal.alive = [];
 
 class Herbivore extends Animal {
   constructor(name, health) {
