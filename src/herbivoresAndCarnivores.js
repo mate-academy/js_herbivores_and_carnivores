@@ -8,6 +8,7 @@ class Animal {
   constructor(name) {
     this.name = name;
     this.health = FULL_HEALTH;
+
     Animal.alive.push(this);
   }
 }
