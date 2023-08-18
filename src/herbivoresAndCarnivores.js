@@ -15,26 +15,27 @@ class Herbivore extends Animal {
     super(name);
     this.hidden = false;
   };
+
   hide() {
     this.hidden = true;
   }
 }
 
 class Carnivore extends Animal {
-  bite(animal) {
-    const isHerbivore = animal instanceof Herbivore;
+  bite(victim) {
+    const isHerbivore = victim instanceof Herbivore;
 
-    if (animal.hidden === false
-      && isHerbivore === true) {
-      animal.health -= 50;
+    if (!victim.hidden
+      && isHerbivore) {
+      victim.health -= 50;
     }
 
-    if (animal.health > 0) {
+    if (victim.health > 0) {
       return;
     }
 
     Animal.alive = Animal.alive
-      .filter((oneAnimal) => oneAnimal.health > 0);
+      .filter((animal) => animal.health > 0);
   }
 }
 
