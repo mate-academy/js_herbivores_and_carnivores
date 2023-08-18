@@ -2,7 +2,7 @@
 
 const MAX_HEALTH = 100;
 const BITE_DAMAGE = 50;
-const DEAD = 0;
+const DEAD_VALUE = 0;
 
 class Animal {
   constructor(name, health = MAX_HEALTH) {
