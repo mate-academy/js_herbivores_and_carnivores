@@ -1,6 +1,5 @@
 'use strict';
 
-const aliveAnimalsList = [];
 const HEALTH = 100;
 const BITE_POWER = 50;
 
@@ -8,13 +7,15 @@ class Animal {
   constructor(name) {
     this.name = name;
     this.health = HEALTH;
-    aliveAnimalsList.push(this);
+    Animal.aliveAnimalsList.push(this);
   }
 
   static get alive() {
-    return aliveAnimalsList.filter(animal => animal.health > 0);
+    return Animal.aliveAnimalsList.filter(animal => animal.health > 0);
   }
 }
+
+Animal.aliveAnimalsList = [];
 
 class Herbivore extends Animal {
   constructor(name) {
@@ -24,7 +25,7 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    this.hidden = !this.hidden;
+    this.hidden = true;
   }
 }
 
