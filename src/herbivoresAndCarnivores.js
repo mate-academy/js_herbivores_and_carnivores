@@ -3,12 +3,14 @@
 class Animal {
   constructor(name) {
     this.name = name;
-    this.health = 100;
+    this.health = Animal.INITIAL_HEALTH;
     Animal.alive.push((this));
   };
 }
 
 Animal.alive = [];
+Animal.INITIAL_HEALTH = 100;
+Animal.AFTER_VUCTIM_HEALTH = 50;
 
 class Herbivore extends Animal {
   constructor(name) {
@@ -25,17 +27,14 @@ class Carnivore extends Animal {
   bite(victim) {
     const isHerbivore = victim instanceof Herbivore;
 
-    if (!victim.hidden
-      && isHerbivore) {
-      victim.health -= 50;
+    if (!victim.hidden && isHerbivore) {
+      victim.health -= Animal.AFTER_VUCTIM_HEALTH;
     }
 
-    if (victim.health > 0) {
-      return;
+    if (victim.health <= 0) {
+      Animal.alive = Animal.alive
+        .filter((animal) => animal.health > 0);
     }
-
-    Animal.alive = Animal.alive
-      .filter((animal) => animal.health > 0);
   }
 }
 
