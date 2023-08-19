@@ -5,10 +5,6 @@ class Animal {
     this.name = name;
     this.health = health;
   }
-
-  // static addNewAnimal(obj) {
-  //   Animal.alive.push(obj);
-  // }
 }
 
 Animal.alive = [];
