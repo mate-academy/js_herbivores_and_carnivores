@@ -35,9 +35,7 @@ class Carnivore extends Animal {
     animalToBite.health -= Carnivore.BITE_DAMAGE;
 
     if (animalToBite.health <= 0) {
-      const animalToDeleteIndex = Animal.alive.indexOf(animalToBite);
-
-      Animal.alive.splice(animalToDeleteIndex, 1);
+      Animal.alive = Animal.alive.filter(animal => animal !== animalToBite);
     }
   }
 }
