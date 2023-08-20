@@ -11,8 +11,9 @@ class Animal {
 
 Animal.alive = [];
 
-const HEALTH_DAMAGE = 50;
 const FULL_HEALTH = 100;
+const HEALTH_DAMAGE = 50;
+const ANIMAL_DEAD = 0;
 
 class Herbivore extends Animal {
   constructor(name) {
@@ -32,9 +33,7 @@ class Carnivore extends Animal {
     }
 
     if (!herbivore.health) {
-      const deadHerbivoreIndex = Animal.alive.indexOf(herbivore);
-
-      Animal.alive.splice(deadHerbivoreIndex, 1);
+      Animal.alive = Animal.alive.filter((pray) => pray.health > ANIMAL_DEAD);
     }
   }
 }
