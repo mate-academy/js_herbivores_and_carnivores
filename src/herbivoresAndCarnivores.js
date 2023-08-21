@@ -1,7 +1,7 @@
 'use strict';
 
 const FULL_HEALTH = 100;
-const ANIMAL_DIED = 0;
+const DIED_VALUE = 0;
 const BITE_DEMAGE = 50;
 
 class Animal {
@@ -31,11 +31,12 @@ class Carnivore extends Animal {
       animal.health -= BITE_DEMAGE;
     }
 
-    if (animal.health === ANIMAL_DIED) {
-      Animal.alive = Animal.alive.filter((beast) => beast.health > ANIMAL_DIED);
+    if (animal.health <= DIED_VALUE) {
+      Animal.alive = Animal.alive.filter(({ health }) => health > DIED_VALUE);
     }
   }
 }
+
 Animal.alive = [];
 
 module.exports = {
