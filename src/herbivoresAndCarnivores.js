@@ -1,7 +1,7 @@
 'use strict';
 
 const FULL_HEALTH = 100;
-const HALF_HEALTH = 50;
+const BITE_DAMAGE = 50;
 const DEAD = 0;
 
 class Animal {
@@ -28,9 +28,11 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(animal) {
-    if ((animal instanceof Herbivore) && (animal.hidden === false)) {
-      animal.health -= HALF_HEALTH;
+    if (animal instanceof Herbivore && !animal.hidden) {
+      animal.health -= BITE_DAMAGE;
+    }
 
+    if (animal.health <= DEAD) {
       Animal.alive = Animal.alive.filter(({ health }) => health > DEAD);
     }
   }
