@@ -1,7 +1,9 @@
 'use strict';
 
+const HEALTH_START_VALUE = 100;
+
 class Animal {
-  constructor(name, health = 100) {
+  constructor(name, health = HEALTH_START_VALUE) {
     this.name = name;
     this.health = health;
   }
@@ -9,36 +11,36 @@ class Animal {
 
 Animal.alive = [];
 
-Animal.checkAlive = (obj) => {
-  if (obj.health <= 0) {
-    Animal.alive.splice(Animal.alive.findIndex(item =>
-      item.health === obj.health), 1);
+Animal.checkAnimals = (animal) => {
+  if (animal.health <= 0) {
+    Animal.alive = Animal.alive.filter(beast =>
+      beast.health !== 0);
   }
 };
 
 class Herbivore extends Animal {
-  constructor(name, health = 100, hidden = false) {
-    super(name, health);
+  constructor(name, health, hidden = false) {
+    super();
     this.hidden = hidden;
     Animal.alive.push(this);
   }
 
   hide() {
-    this.hidden = !this.hidden;
+    this.hidden = true;
   }
 }
 
 class Carnivore extends Animal {
-  constructor(name, health = 100) {
-    super(name, health);
+  constructor(name, health) {
+    super();
     Animal.alive.push(this);
   }
 
-  bite(obj) {
-    if (obj instanceof Herbivore && !obj.hidden) {
-      obj.health = obj.health - 50;
+  bite(animal) {
+    if (animal instanceof Herbivore && !animal.hidden) {
+      animal.health = animal.health - 50;
 
-      Animal.checkAlive(obj);
+      Animal.checkAnimals(animal);
     }
   }
 }
