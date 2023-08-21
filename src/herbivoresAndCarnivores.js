@@ -37,7 +37,7 @@ class Carnivore extends Animal {
       animal.health -= DAMAGE_BITE;
     }
 
-    if (animal) {
+    if (animal.health === DEATH_HEALTH) {
       Animal.alive = Animal.alive
         .filter(animals => animals.health !== DEATH_HEALTH);
     }
