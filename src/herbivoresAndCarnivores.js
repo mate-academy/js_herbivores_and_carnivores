@@ -1,9 +1,12 @@
 'use strict';
 
+const TOTAL_HEALTH = 100;
+const HEALTH_A_BIT = 50;
+
 class Animal {
   constructor(name) {
     this.name = name;
-    this.health = 100;
+    this.health = TOTAL_HEALTH;
     Animal.alive.push(this);
   }
 }
@@ -31,7 +34,7 @@ class Carnivore extends Animal {
       return;
     }
 
-    target.health -= 50;
+    target.health -= HEALTH_A_BIT;
 
     if (target.health > 0) {
       return;

@@ -7,4 +7,5 @@ module.exports = {
     'no-proto': 0
   },
   plugins: ['jest'],
+  parser: "babel-eslint",
 };
