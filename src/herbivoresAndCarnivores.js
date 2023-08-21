@@ -1,7 +1,7 @@
 'use strict';
 
 class Animal {
-  constructor(name, health) {
+  constructor(name) {
     this.name = name;
     this.health = FULL_HEALTH;
 
@@ -12,7 +12,7 @@ class Animal {
 Animal.alive = [];
 
 const FULL_HEALTH = 100;
-const HEALTH_DAMAGE = 50;
+const BITE_DAMAGE = 50;
 const ANIMAL_DEAD = 0;
 
 class Herbivore extends Animal {
@@ -27,12 +27,12 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  bite(herbivore) {
-    if (herbivore.hasOwnProperty('hidden') && !herbivore.hidden) {
-      herbivore.health -= HEALTH_DAMAGE;
+  bite(animal) {
+    if (animal instanceof Herbivore && !animal.hidden) {
+      animal.health -= BITE_DAMAGE;
     }
 
-    if (!herbivore.health) {
+    if (animal.health <= ANIMAL_DEAD) {
       Animal.alive = Animal.alive.filter((pray) => pray.health > ANIMAL_DEAD);
     }
   }
