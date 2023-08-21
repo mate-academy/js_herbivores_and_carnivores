@@ -1,7 +1,6 @@
 'use strict';
 
 class Animal {
-  // TEST
   static alive = [];
 
   constructor(name, health = 100) {
