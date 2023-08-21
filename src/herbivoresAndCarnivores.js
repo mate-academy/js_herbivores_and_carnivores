@@ -1,8 +1,12 @@
 'use strict';
 
+const INITIAL_HEALTH_VALUE = 100;
+const HEALTH_BITE_DECREASE = 50;
+
 class Animal {
   static alive = [];
-  constructor(name, health = 100) {
+
+  constructor(name, health = INITIAL_HEALTH_VALUE) {
     this.name = name;
     this.health = health;
     Animal.alive.push(this);
@@ -10,7 +14,7 @@ class Animal {
 }
 
 class Herbivore extends Animal {
-  constructor(name, health = 100) {
+  constructor(name, health) {
     super(name, health);
     this.hidden = false;
   }
@@ -22,15 +26,13 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(prey) {
-    if (prey instanceof Herbivore && !prey.hidden) {
-      prey.health -= 50;
+    const canBeBitten = prey instanceof Herbivore && !prey.hidden;
 
-      if (prey.health === 0) {
-        const index = Animal.alive.indexOf(prey);
+    if (canBeBitten) {
+      prey.health -= HEALTH_BITE_DECREASE;
 
-        if (index !== -1) {
-          Animal.alive.splice(index, 1);
-        }
+      if (prey.health <= 0) {
+        Animal.alive.splice(Animal.alive.indexOf(prey), 1);
       }
     }
   }
