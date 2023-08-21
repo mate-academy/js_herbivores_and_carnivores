@@ -1,9 +1,12 @@
 'use strict';
 
+const HEALTH_BY_DEFAULT = 100;
+const BITE_VALUE = 50;
+
 class Animal {
   static alive = [];
 
-  constructor(name, health = 100) {
+  constructor(name, health = HEALTH_BY_DEFAULT) {
     this.name = name;
     this.health = health;
 
@@ -29,13 +32,9 @@ class Carnivore extends Animal {
       return;
     }
 
-    beast.health -= 50;
+    beast.health -= BITE_VALUE;
 
-    if (beast.health <= 0) {
-      const indexBeast = Animal.alive.findIndex((animal) => animal === beast);
-
-      Animal.alive.splice(indexBeast, 1);
-    }
+    Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
   }
 }
 
