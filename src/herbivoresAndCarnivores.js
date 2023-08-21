@@ -1,7 +1,7 @@
 'use strict';
 
 const MAX_HEALTH = 100;
-const DECREASED_HEALTH_BY_BITE = 50;
+const BITE_DAMAGE = 50;
 
 class Animal {
   constructor(name) {
@@ -25,14 +25,14 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  bite(animalName) {
-    if (animalName instanceof Herbivore
-      && !animalName.hidden) {
-      animalName.health -= DECREASED_HEALTH_BY_BITE;
+  bite(prey) {
+    if (prey instanceof Herbivore
+      && !prey.hidden) {
+      prey.health -= BITE_DAMAGE;
     }
 
-    if (animalName.health === 0) {
-      Animal.alive = Animal.alive.filter((animal) => animal.health !== 0);
+    if (prey.health <= 0) {
+      Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
     }
   }
 }
