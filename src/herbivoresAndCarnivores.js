@@ -1,19 +1,22 @@
 'use strict';
 
+const INIT_ANIMAL_HEALTH = 100;
+const BITE_DAMAGE = 50;
+
 class Animal {
   static alive = [];
 
   constructor(name) {
     this.name = name;
-    this.health = 100;
+    this.health = INIT_ANIMAL_HEALTH;
     Animal.alive.push(this);
   }
 }
 
 class Herbivore extends Animal {
-  constructor(name, health, hidden = false) {
-    super(name, health);
-    this.hidden = hidden;
+  constructor() {
+    super();
+    this.hidden = false;
   }
 
   hide() {
@@ -24,9 +27,9 @@ class Herbivore extends Animal {
 class Carnivore extends Animal {
   bite(victim) {
     if (victim instanceof Herbivore && !victim.hidden) {
-      victim.health -= 50;
+      victim.health -= BITE_DAMAGE;
 
-      if (victim.health === 0) {
+      if (victim.health <= 0) {
         Animal.alive = Animal.alive.filter(animal => animal.health > 0);
       }
     }
