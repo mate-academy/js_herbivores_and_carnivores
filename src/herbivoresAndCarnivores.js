@@ -5,9 +5,9 @@ const BITE_STRENGTH = 50;
 
 class Animal {
   static alive = [];
-  constructor(name) {
+  constructor(name, health = TOTAL_HEALTH) {
     this.name = name;
-    this.health = TOTAL_HEALTH;
+    this.health = health;
   }
 }
 
