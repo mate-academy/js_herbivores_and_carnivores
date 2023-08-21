@@ -2,7 +2,7 @@
 
 const MAX_HEALTH = 100;
 const DEATH_HEALTH = 0;
-const DAMAGE_BITE = 50;
+const BITE_DAMAGE = 50;
 
 class Animal {
   static alive = [];
@@ -16,8 +16,7 @@ class Animal {
 
 class Herbivore extends Animal {
   constructor(name) {
-    super();
-    this.name = name;
+    super(name);
     this.hidden = false;
   }
 
@@ -27,19 +26,14 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  constructor(name) {
-    super();
-    this.name = name;
-  }
-
-  bite(animal) {
-    if (animal instanceof Herbivore && !animal.hidden) {
-      animal.health -= DAMAGE_BITE;
+  bite(victim) {
+    if (victim instanceof Herbivore && !victim.hidden) {
+      victim.health -= BITE_DAMAGE;
     }
 
-    if (animal.health === DEATH_HEALTH) {
+    if (victim.health <= DEATH_HEALTH) {
       Animal.alive = Animal.alive
-        .filter(animals => animals.health !== DEATH_HEALTH);
+        .filter(animal => animal.health > DEATH_HEALTH);
     }
   }
 }
