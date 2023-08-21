@@ -34,10 +34,10 @@ class Carnivore extends Animal {
 
     if (isHerbivore && !animal.hidden) {
       animal.health -= BITE_STRENGTH;
+    }
 
-      if (animal.health <= 0) {
-        Animal.alive = Animal.alive.filter(({ health }) => health > 0);
-      }
+    if (animal.health <= 0) {
+      Animal.alive = Animal.alive.filter(({ health }) => health > 0);
     }
   }
 }
