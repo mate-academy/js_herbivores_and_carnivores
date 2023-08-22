@@ -5,7 +5,6 @@ const BITE_DAMAGE = 50;
 const DEAD = 0;
 
 class Animal {
-  // write your code here
   constructor(name) {
     this.health = FULL_HEALTH;
     this.name = name;
@@ -17,7 +16,6 @@ class Animal {
 Animal.alive = [];
 
 class Herbivore extends Animal {
-  // write your code here
   constructor(name) {
     super(name);
     this.hidden = false;
@@ -29,7 +27,6 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  // write your code here
   bite(object) {
     if (object instanceof Carnivore || object.hidden) {
       return;
@@ -37,10 +34,8 @@ class Carnivore extends Animal {
     object.health -= BITE_DAMAGE;
 
     if (object.health <= DEAD) {
-      Animal.alive.pop(object);
+      Animal.alive = Animal.alive.filter(animal => animal.health > DEAD);
     }
-
-    return this.health;
   }
 }
 
