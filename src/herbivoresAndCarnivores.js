@@ -1,9 +1,13 @@
 'use strict';
 
+const FULL_HEALTH = 100;
+const BITE_STRENGTH = 50;
+const DEAD = 0;
+
 class Animal {
   constructor(name) {
     this.name = name;
-    this.health = 100;
+    this.health = FULL_HEALTH;
 
     Animal.alive.push(this);
   }
@@ -21,15 +25,15 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  bite(something) {
-    if (something.hidden || something instanceof Carnivore) {
+  bite(target) {
+    if (target.hidden || target instanceof Carnivore) {
       return;
     }
 
-    something.health -= 50;
+    target.health -= BITE_STRENGTH;
 
-    if (something.health === 0) {
-      Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
+    if (target.health === DEAD) {
+      Animal.alive = Animal.alive.filter((animal) => animal.health > DEAD);
     }
   }
 }
