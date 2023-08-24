@@ -31,10 +31,8 @@ class Carnivore extends Animal {
       prey.health -= DAMAGE;
     }
 
-    if (prey.health === DIED) {
-      const diedAnimal = Animal.alive.indexOf(prey);
-
-      Animal.alive.splice(diedAnimal, 1);
+    if (prey.health <= DIED) {
+      Animal.alive = Animal.alive.filter(animal => animal.health > DIED);
     }
   }
 }
