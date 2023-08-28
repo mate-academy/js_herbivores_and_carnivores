@@ -7,21 +7,12 @@ class Animal {
     this.name = name;
     this.health = health;
     this.hidden = false;
-    Animal.alive.push(this);
 
-    Animal.alive.push({
-      name: this.name,
-      health: this.health,
-      hidden: this.hidden,
-    });
+    Animal.alive.push(this);
   }
 
   static removeFromAlive(animal) {
-    const index = Animal.alive.indexOf(animal);
-
-    if (index !== -1) {
-      Animal.alive.splice(index, 1);
-    }
+    Animal.alive = Animal.alive.filter((a) => a !== animal);
   }
 }
 
