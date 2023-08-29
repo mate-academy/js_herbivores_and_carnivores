@@ -16,7 +16,7 @@ class Animal {
   }
 }
 
-Animal.alive = []
+Animal.alive = [];
 
 class Herbivore extends Animal {
   constructor(name, health) {
@@ -30,7 +30,7 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  constructor(name, health, obj) {
+  constructor(name, health = 100) {
     super(name, health);
   }
 
