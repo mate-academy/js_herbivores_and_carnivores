@@ -1,15 +1,44 @@
 'use strict';
 
+const BASE_HEALTH = 100;
+const BASE_ATTACK = 50;
+const MIN_HEALTH = 0;
+
 class Animal {
-  // write your code here
+  constructor(name, health = BASE_HEALTH) {
+    this.name = name;
+    this.health = health;
+    Animal.alive.push(this);
+  }
 }
 
+Animal.alive = [];
+
 class Herbivore extends Animal {
-  // write your code here
+  constructor(name, health) {
+    super(name, health);
+    this.hidden = false;
+    Animal.alive.push(this);
+  }
+  hide() {
+    this.hidden = true;
+  }
 }
 
 class Carnivore extends Animal {
-  // write your code here
+  constructor(name, health) {
+    super(name, health);
+    Animal.alive.push(this);
+  }
+  bite(herbivore) {
+    if (herbivore.hidden === false && herbivore instanceof Herbivore) {
+      herbivore.health -= BASE_ATTACK;
+
+      if (herbivore.health <= MIN_HEALTH) {
+        Animal.alive = Animal.alive.filter(animal => animal !== herbivore);
+      }
+    }
+  }
 }
 
 module.exports = {
