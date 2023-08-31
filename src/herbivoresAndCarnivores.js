@@ -6,15 +6,11 @@ class Animal {
       return deadAnimal.name !== animal.name;
     });
   }
-  constructor(name) {
+  constructor(name, health = 100) {
     this.name = name;
-    this.health = 100;
+    this.health = health;
 
     Animal.alive.push(this);
-  }
-
-  thisClassName() {
-    return this.constructor.name;
   }
 }
 Animal.alive = [];
