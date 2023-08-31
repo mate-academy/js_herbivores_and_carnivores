@@ -3,14 +3,14 @@
 class Animal {
   constructor(name, health) {
     this.name = name;
-    this.health = health || 100;
+    this.health = health;
     Animal.alive.push(this);
   }
 
-  isDie() {
-    const index = Animal.alive.indexOf(this);
+  isDie(herbivore) {
+    const index = Animal.alive.indexOf(herbivore);
 
-    if (this.health <= 0) {
+    if (herbivore.health <= 0) {
       Animal.alive.splice(index, 1);
     }
   }
