@@ -9,12 +9,12 @@ class Animal {
     Animal.addAlive(this);
   }
 
-  static addAlive(object) {
-    Animal.alive.push(object);
+  static addAlive(animal) {
+    Animal.alive.push(animal);
   }
 
-  static removeAlive(object) {
-    Animal.alive.splice(Animal.alive.indexOf(object), 1);
+  static removeAlive(splice) {
+    Animal.alive.splice(Animal.alive.indexOf(splice), 1);
   }
 }
 
@@ -25,13 +25,7 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    if (this.hidden) {
-      this.hidden = false;
-
-      return;
-    }
-
-    this.hidden = true;
+    this.hidden = !this.hidden;
   }
 }
 
