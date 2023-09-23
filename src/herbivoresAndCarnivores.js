@@ -1,18 +1,14 @@
 'use strict';
 
 class Animal {
-  constructor(name, health = 100,) {
+  constructor(name, health = 100) {
     this.name = name;
     this.health = health;
     Animal.alive.push(this);
   }
 
   die() {
-    const index = Animal.alive.indexOf(this);
-
-    if (index !== -1) {
-      Animal.alive.splice(index, 1);
-    }
+    Animal.alive = Animal.alive.filter(animal => animal !== this);
   }
 }
 
@@ -42,6 +38,12 @@ class Carnivore extends Animal {
     }
   }
 }
+
+// Використання класів Herbivore та Carnivore для створення об'єктів
+// const herbione = new Herbivore('Herbione');
+// const corniole = new Carnivore('Corniole');
+
+Animal.alive = []; // Оголошення статичного поля за межами конструктора
 
 module.exports = {
   Animal,
