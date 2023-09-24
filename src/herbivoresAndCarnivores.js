@@ -7,6 +7,7 @@ class Animal {
     Animal.alive.push(this);
   }
 }
+
 Animal.alive = [];
 
 class Herbivore extends Animal {
@@ -26,8 +27,8 @@ class Carnivore extends Animal {
       animal.health -= 50;
 
       if (animal.health <= 0) {
-        Animal.alive = Animal.alive
-          .filter(livingAnimal => livingAnimal !== animal);
+        Animal.alive = Animal
+          .alive.filter(aliveAnimal => aliveAnimal !== animal);
       }
     }
   }
