@@ -28,15 +28,12 @@ class Carnivore extends Animal {
   }
 
   bite(beast) {
-    // Checklist 1 - Check for animals existance
-    // implemented as an extra condition in IF construction
-    if (beast.hidden !== undefined
-        && beast.hidden !== true
-        && Animal.alive.includes(beast)) {
+    if (beast.hidden !== undefined // cheeky way to check for carnivore
+        && beast.hidden !== true) {
       beast.health -= 50;
 
       if (beast.health <= 0) {
-        // Checklist 2 - Splice/IndexOf replaced by Filter
+        // Checklist 1/2 - Splice/IndexOf replaced by Filter
         Animal.alive = Animal.alive.filter(el => el !== beast);
       }
     }
