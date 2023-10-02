@@ -8,7 +8,7 @@ class Animal {
   }
 }
 
-Animal.static = [];
+Animal.alive = [];
 
 class Herbivore extends Animal {
   constructor(name) {
