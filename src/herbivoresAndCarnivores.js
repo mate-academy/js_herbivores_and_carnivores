@@ -4,15 +4,11 @@ class Animal {
   constructor(name) {
     this.health = 100;
     this.name = name;
-
-    // Linter is not allowing us to use static =(
-
-    if (!Animal.alive) {
-      Animal.alive = [];
-    }
     Animal.alive.push(this);
   }
 }
+
+Animal.alive = [];
 
 class Herbivore extends Animal {
   constructor(name) {
@@ -31,7 +27,7 @@ class Carnivore extends Animal {
       animal.health -= 50;
 
       if (animal.health === 0) {
-        Animal.alive = Animal.alive.filter(beast => beast.name !== animal.name);
+        Animal.alive = Animal.alive.filter(beast => beast.health !== 0);
       }
     }
   }
