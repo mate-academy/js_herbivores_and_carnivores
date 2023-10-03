@@ -1,9 +1,11 @@
 'use strict';
 
+const COMPLEATLY_HEALTHY = 100;
+const BITE_OF_ANIMAL = 50;
+const NOT_HEALTHY = 0;
+
 class Animal {
   constructor(name) {
-    const COMPLEATLY_HEALTHY = 100;
-
     this.health = COMPLEATLY_HEALTHY;
     this.name = name;
     Animal.alive.push(this);
@@ -30,9 +32,6 @@ class Carnivore extends Animal {
   }
 
   bite(prey) {
-    const BITE_OF_ANIMAL = 50;
-    const NOT_HEALTHY = 0;
-
     if (prey instanceof Herbivore && !prey.hidden) {
       prey.health -= BITE_OF_ANIMAL;
     }
