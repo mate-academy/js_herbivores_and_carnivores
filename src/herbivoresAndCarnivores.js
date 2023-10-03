@@ -10,10 +10,11 @@ class Animal {
     this.alive.push(animal);
   }
 
-  static removeAnimal(animal) {
-    const index = this.alive.findIndex(el => el === animal);
+  static removeAnimal(killedAnimal) {
+    const killedAnimalIndex = this.alive.findIndex(
+      animalAlive => animalAlive === killedAnimal);
 
-    this.alive.splice(index, 1);
+    this.alive.splice(killedAnimalIndex, 1);
   }
 }
 Animal.alive = [];
@@ -39,7 +40,7 @@ class Carnivore extends Animal {
   }
 
   bite(victim) {
-    if (victim.type === 'herbivore' && victim.hidden === false) {
+    if (!victim.hidden && victim.type === 'herbivore') {
       victim.health -= 50;
     }
 
