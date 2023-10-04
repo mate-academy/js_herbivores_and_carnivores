@@ -32,17 +32,8 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   // write your code here
-  constructor(health, name) {
-    super(health, name);
-
-    // I should duplicate this code again,
-    // because without this code I see error like 'Useless constructor.'
-    this.health = 100;
-    this.name = name;
-  }
-
   bite(animal) {
-    if (animal instanceof Herbivore && animal.hidden === false) {
+    if (animal instanceof Herbivore && !animal.hidden) {
       animal.health -= 50;
     }
 
