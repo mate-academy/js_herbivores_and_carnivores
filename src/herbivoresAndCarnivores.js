@@ -28,9 +28,6 @@ class Carnivore extends Animal {
   bite(herb) {
     if (herb.hidden === false) {
       herb.health -= 50;
-    }
-
-    if (herb.health === 0) {
       herb.die();
     }
   }
