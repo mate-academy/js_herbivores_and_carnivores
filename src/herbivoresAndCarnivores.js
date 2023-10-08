@@ -1,49 +1,41 @@
 'use strict';
 
 class Animal {
-  // static alive = [];
-
-  constructor(health = 100, name) {
+  constructor(name, health = 100) {
     this.health = health;
     this.name = name;
     Animal.alive.push(this);
   }
-
-  // static deleteDeadAnimal() {
-  //   Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
-  // }
 }
 
 Animal.alive = [];
 
 class Herbivore extends Animal {
   constructor(name, health) {
-    super(health, name);
+    super(name, health);
     this.hidden = false;
   }
 
   hide() {
     if (this.hidden === false) {
       this.hidden = true;
-    } else {
-      this.hidden = false;
     }
   }
 }
 
 class Carnivore extends Animal {
-  constructor(health, name) {
+  constructor(name, health = 100) {
     super(name, health);
   }
 
-  bite(victum) {
-    if (victum.hidden === false
-      && victum instanceof Herbivore) {
-      victum.health -= 50;
+  bite(victim) {
+    if (!victim.hidden
+      && victim instanceof Herbivore) {
+      victim.health -= 50;
     }
 
-    if (victum.health === 0) {
-      Animal.alive = Animal.alive.filter(aliveAnimal => aliveAnimal !== victum);
+    if (victim.health === 0) {
+      Animal.alive = Animal.alive.filter(aliveAnimal => aliveAnimal !== victim);
     }
   }
 }
