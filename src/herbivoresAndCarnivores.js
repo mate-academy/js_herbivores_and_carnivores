@@ -5,15 +5,14 @@ class Animal {
     this.alive.push(animal);
   };
 
-  static removeFromAlive(animal) {
-    const indexOfAnimal = this.alive.indexOf(animal);
-
-    this.alive[indexOfAnimal] = 0;
+  static removeFromAlive(herb) {
+    this.alive = this.alive.filter(animal => animal !== herb);
   }
 
   constructor(name, health) {
     this.name = name;
     this.health = health || 100;
+    Animal.addAlive(this);
   }
 }
 
@@ -24,8 +23,6 @@ class Herbivore extends Animal {
     super(name);
 
     this.hidden = hidden || false;
-
-    Animal.addAlive(this);
   }
 
   hide() {
@@ -37,7 +34,6 @@ class Carnivore extends Animal {
   constructor(name, bite) {
     super(name);
 
-    Animal.addAlive(this);
   }
 
   bite(herbivore) {
