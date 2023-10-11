@@ -1,4 +1,5 @@
 'use strict';
+
 class Animal {
   static alive = [];
 
@@ -39,3 +40,9 @@ class Carnivore extends Animal {
     }
   }
 }
+
+module.exports = {
+  Animal,
+  Herbivore,
+  Carnivore,
+};
