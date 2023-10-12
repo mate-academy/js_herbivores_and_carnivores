@@ -11,35 +11,31 @@ class Animal {
   }
 
   static removeFromAliveList(animal) {
-    const index = Animal.alive.findIndex(a => a === animal);
-    if (index !== -1) {
-      Animal.alive.splice(index, 1);
-    }
-  }
-
-  takeDamage(damage) {
-    if (this.health > 0) {
-      this.health -= damage;
-      if (this.health <= 0) {
-        Animal.removeFromAliveList(this);
-      }
-    }
+    Animal.alive = Animal.alive.filter(a => a !== animal);
   }
 }
 
 class Herbivore extends Animal {
+  constructor(name, health) {
+    super(name, health);
+  }
+
   hide() {
-    this.hidden === true;
+    this.hidden = true;
   }
 }
 
 class Carnivore extends Animal {
   bite(target) {
     if (target instanceof Herbivore && !target.hidden) {
-      target.takeDamage(50);
+      target.health -= 50;
+      if (target.health <= 0) {
+        Animal.removeFromAliveList(target);
+      }
     }
   }
 }
+
 
 module.exports = {
   Animal,
