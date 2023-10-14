@@ -30,9 +30,7 @@ class Carnivore extends Animal {
     }
 
     if (animal.health === 0) {
-      const index = Animal.alive.findIndex(beast => beast === animal);
-
-      Animal.alive.splice(index, 1);
+      Animal.alive = Animal.alive.filter(beast => beast !== animal);
     }
   }
 }
