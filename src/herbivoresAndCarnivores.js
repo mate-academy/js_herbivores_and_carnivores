@@ -4,6 +4,7 @@ class Animal {
   constructor(name = '') {
     this.health = 100;
     this.name = name;
+    Animal.alive.push(this);
   }
 }
 
@@ -13,7 +14,6 @@ class Herbivore extends Animal {
   constructor(name) {
     super(name);
     this.hidden = false;
-    Animal.alive.push(this);
   }
 
   hide() {
@@ -22,9 +22,9 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
+  // eslint-disable-next-line no-useless-constructor
   constructor(name) {
     super(name);
-    Animal.alive.push(this);
   }
 
   bite(herbivore) {
@@ -35,9 +35,7 @@ class Carnivore extends Animal {
     herbivore.health -= 50;
 
     if (herbivore.health === 0) {
-      Animal.alive = Animal.alive.filter(animal => (
-        animal.name !== herbivore.name
-      ));
+      Animal.alive = Animal.alive.filter(animal => animal.health > 0);
     }
   }
 }
