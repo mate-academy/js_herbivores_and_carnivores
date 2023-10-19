@@ -22,11 +22,6 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  // eslint-disable-next-line no-useless-constructor
-  constructor(name) {
-    super(name);
-  }
-
   bite(herbivore) {
     if (!(herbivore instanceof Herbivore) || herbivore.hidden) {
       return;
