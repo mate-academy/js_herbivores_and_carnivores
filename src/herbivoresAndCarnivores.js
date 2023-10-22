@@ -8,8 +8,8 @@ class Animal {
     Animal.alive.push(this);
   }
 
-  static removeAnimalByName(name) {
-    Animal.alive = Animal.alive.filter(animal => animal.name !== name);
+  static removeAnimalByName() {
+    Animal.alive = Animal.alive.filter(animal => animal.health > 0);
   }
 }
 
