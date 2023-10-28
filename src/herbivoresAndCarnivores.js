@@ -11,7 +11,7 @@ class Animal {
 
   dieAnimal() {
     Animal.alive = Animal.alive
-      .filter(animal => animal.name !== this.name);
+      .filter(animal => animal.health > 0);
   }
 }
 
