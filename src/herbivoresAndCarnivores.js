@@ -2,6 +2,7 @@
 
 class Animal {
   // write your code here
+
   static alive = [];
 
   constructor(name, health = 100) {
