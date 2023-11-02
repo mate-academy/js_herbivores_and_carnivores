@@ -2,8 +2,8 @@
 
 class Animal {
   // write your code here
-
-  static alive = [];
+  static alive;
+  alive = [];
 
   constructor(name, health = 100) {
     this.name = name;
