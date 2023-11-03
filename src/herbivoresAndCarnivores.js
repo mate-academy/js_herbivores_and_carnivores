@@ -13,31 +13,24 @@ class Animal {
 
 class Herbivore extends Animal {
   // write your code here
-  constructor(name, health, hidden = false) {
-    super(name, health);
-    this.hidden = hidden;
-    this.type = 'Herbivore';
-  }
+  hidden = false;
+  type = 'Herbivore';
 
   hide() {
-    this.hidden = true;
+    this.hidden = !this.hidden;
   }
 }
 
 class Carnivore extends Animal {
   // write your code here
-
-  constructor(name, health) {
-    super(name, health);
-    this.type = 'Carnivore';
-  }
+  type = 'Carnivore';
 
   bite(animal) {
-    if (animal.type === 'Herbivore') {
-      if (animal.hidden !== true && animal.health > 0) {
-        animal.health -= 50;
-        Animal.alive = Animal.alive.filter(animals => animals.health > 50);
-      }
+    if (animal instanceof Herbivore
+      && !animal.hidden
+      && animal.health > 0) {
+      animal.health -= 50;
+      Animal.alive = Animal.alive.filter(animals => animals.health > 50);
     }
   }
 }
