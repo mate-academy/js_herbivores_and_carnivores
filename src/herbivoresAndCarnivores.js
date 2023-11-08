@@ -1,9 +1,9 @@
 'use strict';
 
 class Animal {
-  constructor(name) {
+  constructor(name, health = 100) {
     this.name = name;
-    this.health = 100;
+    this.health = health;
     Animal.aliveAnimals.push(this);
   }
 
@@ -21,19 +21,13 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    if (this.hidden) {
-      this.hidden = false;
-
-      return;
-    }
-
-    this.hidden = true;
+    this.hidden = !this.hidden;
   }
 }
 
 class Carnivore extends Animal {
   bite(animal) {
-    if (animal instanceof Herbivore && animal.hidden === false) {
+    if (animal instanceof Herbivore && !animal.hidden) {
       animal.health -= 50;
     }
   }
