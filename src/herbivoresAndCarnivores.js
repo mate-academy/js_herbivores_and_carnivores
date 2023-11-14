@@ -4,6 +4,7 @@ class Animal {
   // write your code here
 }
 
+
 class Herbivore extends Animal {
   // write your code here
 }
