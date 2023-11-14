@@ -5,8 +5,6 @@ const DEFAULT_HEALTH = 100;
 
 class Animal {
   // write your code here
-  static alive = [];
-
   constructor(name, health = DEFAULT_HEALTH) {
     this.name = name;
     this.health = health;
@@ -14,7 +12,7 @@ class Animal {
   }
 }
 
-// Animal.alive = [];
+Animal.alive = [];
 
 class Herbivore extends Animal {
   // write your code here
