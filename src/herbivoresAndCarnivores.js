@@ -4,12 +4,13 @@ const BASE_HEALTH = 100;
 const BASE_DAMAGE = 50;
 
 class Animal {
-  static alive = [];
   constructor(name, health = BASE_HEALTH) {
     this.health = health;
     this.name = name;
   }
 }
+
+Animal.alive = [];
 
 class Herbivore extends Animal {
   constructor(name, health, hidden = false) {
