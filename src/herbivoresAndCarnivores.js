@@ -29,14 +29,11 @@ class Herbivore extends Animal {
 class Carnivore extends Animal {
   // write your code here
   bite(bitedAnimal) {
-    if (bitedAnimal instanceof Herbivore
-      && bitedAnimal.hidden !== true) {
+    if (bitedAnimal instanceof Herbivore && !bitedAnimal.hidden) {
       bitedAnimal.health -= HEALTH_DECREASE_COUNT;
-
-      if (bitedAnimal.health === 0) {
-        Animal.alive.splice(Animal.alive.indexOf(bitedAnimal), 1);
-      }
     }
+
+    Animal.alive = Animal.alive.filter(animal => animal.health > 0);
   }
 }
 
