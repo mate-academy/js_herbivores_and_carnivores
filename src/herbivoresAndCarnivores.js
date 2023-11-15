@@ -2,6 +2,7 @@
 
 const DAMAGE_AMOUNT = 50;
 const HEALTH_AMOUNT = 100;
+const HEALTH_MIN = 0;
 
 class Animal {
   constructor(name, health = HEALTH_AMOUNT) {
@@ -30,8 +31,9 @@ class Carnivore extends Animal {
       animal.health -= DAMAGE_AMOUNT;
     }
 
-    if (animal.health <= 0) {
-      Animal.alive = Animal.alive.filter(creature => creature.health > 0);
+    if (animal.health <= HEALTH_MIN) {
+      Animal.alive = Animal.alive.filter(
+        creature => creature.health > HEALTH_MIN);
     }
   }
 }
