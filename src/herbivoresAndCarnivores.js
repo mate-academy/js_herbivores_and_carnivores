@@ -36,11 +36,11 @@ class Carnivore extends Animal {
       herb.health -= 50;
     };
 
-    for (let i = 0; i < Animal.alive.length; i++) {
-      if (Animal.alive[i].health === 0) {
+    Animal.alive.filter((el, i) => {
+      if (el.health === 0) {
         Animal.alive.splice(i, 1);
       }
-    }
+    });
   }
 }
 
