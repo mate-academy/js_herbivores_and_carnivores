@@ -31,25 +31,29 @@ class Carnivore extends Animal {
       return 'Provide the prey to be bitten.';
     }
 
-    if (prey instanceof Herbivore
-      && !prey.hidden) {
-      prey.health -= 50;
-
-      if (prey.health <= 0
-        && Animal.alive.includes(prey)) {
-        Animal.alive = Animal.alive.filter(e => e !== prey);
-
-        return `${prey.name} died :(`;
-      }
-    }
-
-    if (prey instanceof Herbivore && prey.hidden) {
-      return 'Prey can\'t be bitten while hidden.';
-    }
-
     if (!(prey instanceof Herbivore)) {
       return 'Prey has to be a herbivore to be bitten.';
     }
+
+    if (prey.hidden) {
+      return 'Prey can\'t be bitten while hidden.';
+    }
+
+    if (!Animal.alive.includes(prey)) {
+      return `${prey.name} is not alive.`;
+    }
+
+    prey.health -= 50;
+      
+    if (prey.health <= 0) {
+      this.kill(prey);
+    }
+  }
+
+  kill(prey) {
+    Animal.alive = Animal.alive.filter(e => e !== prey);
+
+    return `${prey.name} died :(`;
   }
 };
 
