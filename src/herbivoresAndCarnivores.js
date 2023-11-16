@@ -34,7 +34,9 @@ class Carnivore extends Animal {
 
   bite(animal) {
     if (!animal.hidden && !(animal instanceof Carnivore)) {
-      animal.health -= 50;
+      const BITE_FORCE = 50;
+
+      animal.health -= BITE_FORCE;
     }
 
     if (animal.health === 0) {
