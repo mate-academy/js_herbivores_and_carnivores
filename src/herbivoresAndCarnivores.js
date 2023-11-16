@@ -26,10 +26,6 @@ class Herbivore extends Animal {
 };
 
 class Carnivore extends Animal {
-  constructor(name, health = 100) {
-    super(name, health);
-  }
-
   bite(prey) {
     if (!prey) {
       console.error('Provide the prey to be bitten.')
