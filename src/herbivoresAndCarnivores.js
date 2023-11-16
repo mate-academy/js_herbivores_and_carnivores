@@ -1,6 +1,7 @@
 'use strict';
 
 const FULL_HEALTH = 100;
+const DAMAGE = 50;
 
 class Animal {
   constructor(name = '') {
@@ -28,7 +29,7 @@ class Carnivore extends Animal {
   }
   bite(production) {
     if (production instanceof Herbivore && !production.hidden) {
-      production.health -= 50;
+      production.health -= DAMAGE;
     }
 
     if (production.health === 0) {
