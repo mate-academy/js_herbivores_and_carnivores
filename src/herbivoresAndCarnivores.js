@@ -17,10 +17,10 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    if(!this.hidden) {
+    if (!this.hidden) {
       this.hidden = true;
     } else {
-      console.error('This animal is already in hiding.')
+      return 'This animal is already in hiding.';
     }
   }
 };
@@ -28,26 +28,27 @@ class Herbivore extends Animal {
 class Carnivore extends Animal {
   bite(prey) {
     if (!prey) {
-      console.error('Provide the prey to be bitten.')
+      return 'Provide the prey to be bitten.';
     }
 
     if (prey instanceof Herbivore
       && !prey.hidden) {
       prey.health -= 50;
-      
-      if(prey.health <= 0
+
+      if (prey.health <= 0
         && Animal.alive.includes(prey)) {
-          Animal.alive = Animal.alive.filter(e => e !== prey);
-          console.log(`${prey.name} died :(`);
+        Animal.alive = Animal.alive.filter(e => e !== prey);
+
+        return `${prey.name} died :(`;
       }
     }
 
     if (prey instanceof Herbivore && prey.hidden) {
-      console.error('Prey can\'t be bitten while hidden.')
+      return 'Prey can\'t be bitten while hidden.';
     }
 
     if (!(prey instanceof Herbivore)) {
-      console.error('Prey has to be a herbivore to be bitten.')
+      return 'Prey has to be a herbivore to be bitten.';
     }
   }
 };
