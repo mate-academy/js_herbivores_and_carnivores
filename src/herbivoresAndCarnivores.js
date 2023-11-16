@@ -4,7 +4,7 @@ const FULL_HEALTH = 100;
 const DAMAGE = 50;
 
 class Animal {
-  constructor(name = '') {
+  constructor(name) {
     this.health = FULL_HEALTH;
     this.name = name;
     Animal.alive.push(this);
@@ -14,7 +14,7 @@ class Animal {
 Animal.alive = [];
 
 class Herbivore extends Animal {
-  constructor(name = '') {
+  constructor(name) {
     super(name);
     this.hidden = false;
   }
@@ -24,16 +24,13 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  constructor(name = '') {
-    super(name);
-  }
-  bite(production) {
-    if (production instanceof Herbivore && !production.hidden) {
-      production.health -= DAMAGE;
+  bite(aim) {
+    if (aim instanceof Herbivore && !aim.hidden) {
+      aim.health -= DAMAGE;
     }
 
-    if (production.health === 0) {
-      Animal.alive = Animal.alive.filter(person => person.health !== 0);
+    if (aim.health <= 0) {
+      Animal.alive = Animal.alive.filter(person => person.health);
     }
   }
 }
