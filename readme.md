@@ -48,4 +48,4 @@ Animal.alive === [
 ];
 ```
 
-**Read [the guideline](https://github.com/mate-academy/js_task-guideline/blob/master/README.md) before start**
+**Read [the guideline](https://github.com/MariannaBo/js_task-guideline/blob/master/README.md) before start**
