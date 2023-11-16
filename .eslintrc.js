@@ -7,5 +7,9 @@ module.exports = {
   rules: {
     'no-proto': 0
   },
-  plugins: ['jest']
+  plugins: ['jest'],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    // "sourceType": "module",
+  },
 };

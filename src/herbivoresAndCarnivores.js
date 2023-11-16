@@ -7,9 +7,9 @@ class Animal {
     this.health = 100;
     Animal.alive.push(this);
   }
-}
 
-Animal.alive = [];
+  static alive = [];
+}
 
 class Herbivore extends Animal {
   // write your code here
