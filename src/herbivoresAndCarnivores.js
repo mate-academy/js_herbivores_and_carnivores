@@ -13,7 +13,6 @@ class Animal {
 class Herbivore extends Animal {
   constructor(name) {
     super(name);
-    this.name = name;
     this.hidden = false;
   }
 
@@ -23,11 +22,6 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  constructor(name) {
-    super(name);
-    this.name = name;
-  }
-
   bite(animal) {
     const CARNIVORE_BITE = 50;
 
