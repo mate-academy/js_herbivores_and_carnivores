@@ -1,10 +1,9 @@
 'use strict';
 
 class Animal {
-  health = 100;
-
   constructor(name) {
     this.name = name;
+    this.health = 100;
   }
 }
 
@@ -24,7 +23,8 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  // ATTACK_DAMAGE = 50;
+  ATTACK_DAMAGE = 50;
+
   constructor(name) {
     super(name);
     Animal.alive.push(this);
@@ -42,8 +42,6 @@ class Carnivore extends Animal {
     }
   }
 }
-
-Animal.ATTACK_DAMAGE = 50;
 
 module.exports = {
   Animal,
