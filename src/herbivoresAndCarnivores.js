@@ -27,16 +27,16 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   // write your code here
+  ATTACK_DAMAGE = 50;
+
   constructor(name) {
     super(name);
     Animal.alive.push(this);
   }
 
   bite(animal) {
-    if (!animal.hidden && !(animal instanceof Carnivore)) {
-      const BITE_FORCE = 50;
-
-      animal.health -= BITE_FORCE;
+    if (!animal.hidden && animal instanceof Herbivore) {
+      animal.health -= this.ATTACK_DAMAGE;
     }
 
     if (animal.health === 0) {
