@@ -1,9 +1,6 @@
 'use strict';
 
 class Animal {
-  // write your code here
-  static alive = [];
-
   health = 100;
 
   constructor(name) {
@@ -11,8 +8,9 @@ class Animal {
   }
 }
 
+Animal.alive = [];
+
 class Herbivore extends Animal {
-  // write your code here
   constructor(name) {
     super(name);
 
@@ -26,7 +24,6 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  // write your code here
   ATTACK_DAMAGE = 50;
 
   constructor(name) {
