@@ -1,6 +1,7 @@
-"use strict";
+'use strict';
 
 const DEFAULT_HEALTH = 100;
+const BITE_DAMAGE = 50;
 
 class Animal {
   constructor(name) {
@@ -27,7 +28,7 @@ class Herbivore extends Animal {
 class Carnivore extends Animal {
   bite(victim) {
     if (victim instanceof Herbivore && victim.hidden !== true) {
-      victim.health -= 50;
+      victim.health -= BITE_DAMAGE;
     }
 
     if (victim.health <= 0) {
