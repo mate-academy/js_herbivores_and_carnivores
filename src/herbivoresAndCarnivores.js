@@ -1,18 +1,18 @@
 'use strict';
 
 class Animal {
-  static alive = [];
-
-  constructor(health = 100, name) {
-    this.health = health;
+  constructor(name) {
+    this.health = 100;
     this.name = name;
     Animal.alive.push(this);
   }
 }
 
+Animal.alive = [];
+
 class Herbivore extends Animal {
-  constructor(health = 100, name) {
-    super(health, name);
+  constructor(name) {
+    super(name);
     this.hidden = false;
   }
 
@@ -26,8 +26,9 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  constructor(health = 100, name) {
-    super(health, name);
+// eslint-disable-next-line no-useless-constructor
+  constructor(name) {
+    super(name);
   }
 
   bite(target) {
