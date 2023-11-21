@@ -38,6 +38,8 @@ class Carnivore extends Animal {
           Animal.alive.splice(index, 1);
         }
       }
+    } else {
+      return 'This animal can not be bite';
     }
   }
 }
