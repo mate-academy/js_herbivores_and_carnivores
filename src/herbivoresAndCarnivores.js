@@ -28,18 +28,23 @@ class Herbivore extends Animal {
 class Carnivore extends Animal {
   // write your code here
   bite(animal) {
-    if (animal.hidden !== true && animal instanceof Herbivore) {
-      animal.health -= 50;
+    if (animal.hidden === true || !(animal instanceof Herbivore)
+    || animal.health <= 0) {
+      // eslint-disable-next-line no-console
+      console.error('This animal can not be bitten');
 
-      if (animal.health <= 0) {
-        const index = Animal.alive.indexOf(animal);
+      return;
+    }
+    animal.health -= 50;
 
-        if (index !== -1) {
-          Animal.alive.splice(index, 1);
-        }
-      }
-    } else {
-      return 'This animal can not be bite';
+    if (animal.health > 0) {
+      return;
+    }
+
+    const index = Animal.alive.indexOf(animal);
+
+    if (index !== -1) {
+      Animal.alive.splice(index, 1);
     }
   }
 }
