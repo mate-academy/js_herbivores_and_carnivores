@@ -1,9 +1,11 @@
 'use strict';
 
+const HEALTH_DEFAULT = 100;
+
 class Animal {
   constructor(name) {
     this.name = name;
-    this.health = 100;
+    this.health = HEALTH_DEFAULT;
     Animal.alive.push(this);
   }
 }
@@ -17,7 +19,7 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    this.hidden = true;
+    this.hidden = !this.hidden;
   }
 }
 
