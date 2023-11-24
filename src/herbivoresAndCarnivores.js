@@ -3,15 +3,15 @@
 class Animal {
   static alive = [];
   health = 100;
+
+  constructor(name) {
+    this.name = name;
+    Animal.alive.push(this);
+  }
 }
 
 class Herbivore extends Animal {
   hidden = false;
-
-  constructor(name) {
-    super(name);
-    Animal.alive.push(this);
-  }
 
   hide() {
     if (this.hidden) {
@@ -23,13 +23,8 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  constructor(name) {
-    super(name);
-    Animal.alive.push(this);
-  }
-
   bite(animal) {
-    if (animal.hasOwnProperty('hidden') && animal.hidden === false) {
+    if (animal && animal.hasOwnProperty('hidden') && animal.hidden === false) {
       animal.health -= 50;
 
       if (animal.health <= 0) {
