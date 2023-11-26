@@ -1,11 +1,16 @@
 'use strict';
 
 class Animal {
-  constructor(name) {
+  constructor(name, health = 100) {
     this.name = name;
-    this.health = 100;
-    this.hidden = undefined;
+    this.health = health;
     Animal.alive.push(this);
+  }
+
+  kill() {
+    const index = Animal.alive.indexOf(this);
+
+    Animal.alive.splice(index, 1);
   }
 }
 
@@ -23,21 +28,12 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  // eslint-disable-next-line no-useless-constructor
-  constructor(name) {
-    super(name);
-  }
-
   bite(target) {
-    if (target instanceof Herbivore && target.hidden) {
-      return;
-    }
-
-    if (!(target instanceof Carnivore)) {
+    if (target instanceof Herbivore && !target.hidden) {
       target.health -= 50;
 
-      if (target.health <= 0) {
-        Animal.alive = Animal.alive.filter(anim => anim !== target);
+      if (target.health === 0) {
+        target.kill();
       }
     }
   }
