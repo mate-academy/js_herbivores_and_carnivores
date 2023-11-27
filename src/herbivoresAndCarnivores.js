@@ -32,11 +32,8 @@ class Carnivore extends Animal {
       victim.health -= 50;
 
       if (victim.health === 0) {
-        for (let i = 0; i < Animal.alive.length; i++) {
-          if (Animal.alive[i].name === victim.name) {
-            delete Animal.alive[i];
-          }
-        }
+        Animal.alive = Animal.alive.filter(animal =>
+          animal.name !== victim.name);
       }
     }
   }
