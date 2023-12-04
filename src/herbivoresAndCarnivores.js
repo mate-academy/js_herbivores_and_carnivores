@@ -15,8 +15,8 @@ class Animal {
     this.alive.push(animal);
   }
 
-  static removeAnimal(animal) {
-    delete this.alive[this.alive.indexOf(animal)];
+  static removeAnimal() {
+    this.alive = this.alive.filter(animal => animal.health > 0);
   }
 }
 
@@ -35,14 +35,12 @@ class Herbivore extends Animal {
 class Carnivore extends Animal {
   // write your code here
   bite(herbivore) {
-    if (herbivore.hidden === undefined || herbivore.hidden) {
-      return;
+    if (herbivore instanceof Herbivore && !herbivore.hidden) {
+      herbivore.health -= 50;
     }
 
-    herbivore.health -= 50;
-
     if (herbivore.health <= 0) {
-      Animal.removeAnimal(herbivore);
+      Animal.removeAnimal();
     }
   }
 }
