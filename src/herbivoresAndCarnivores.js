@@ -1,8 +1,6 @@
 'use strict';
 
 class Animal {
-  static alive = [];
-
   constructor(name, health = 100) {
     this.name = name;
     this.health = health;
@@ -42,6 +40,8 @@ class Carnivore extends Animal {
     }
   }
 }
+
+Animal.alive = [];
 
 module.exports = {
   Animal,
