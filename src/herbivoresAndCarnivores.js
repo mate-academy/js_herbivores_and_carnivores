@@ -2,9 +2,7 @@
 
 class Animal {
   static dying() {
-    const dyIndex = this.alive.findIndex(animal => animal.health <= 0);
-
-    Animal.alive.splice(dyIndex, 1);
+    this.alive = this.alive.filter(animal => animal.health > 0);
   }
 
   constructor(name, health = 100) {
@@ -24,17 +22,13 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    if (this.hidden) {
-      this.hidden = false;
-    } else {
-      this.hidden = true;
-    }
+    this.hidden = true;
   }
 }
 
 class Carnivore extends Animal {
   bite(animal) {
-    if (animal.hasOwnProperty('hidden') && animal.hidden === false) {
+    if (animal instanceof Herbivore && !animal.hidden) {
       animal.health -= 50;
     }
 
