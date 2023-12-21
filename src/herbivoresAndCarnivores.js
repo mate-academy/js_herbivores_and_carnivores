@@ -1,8 +1,6 @@
 'use strict';
 
 class Animal {
-  static alive = [];
-
   constructor(name, health = 100) {
     this.health = health;
     this.name = name;
@@ -17,6 +15,8 @@ class Animal {
     this.alive.splice(this.alive.indexOf(animal), 1);
   }
 }
+
+Animal.alive = [];
 
 class Herbivore extends Animal {
   constructor(name, health = 100, hidden = false) {
