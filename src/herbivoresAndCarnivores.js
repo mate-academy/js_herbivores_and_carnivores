@@ -4,7 +4,6 @@ class Animal {
   constructor(name) {
     this.health = 100;
     this.name = name;
-    Animal.allAnimals = Animal.allAnimals || [];
     Animal.allAnimals.push(this);
   }
 
@@ -12,6 +11,8 @@ class Animal {
     return Animal.allAnimals.filter(animal => animal.health > 0);
   }
 }
+
+Animal.allAnimals = [];
 
 class Herbivore extends Animal {
   constructor(name) {
@@ -25,11 +26,6 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  constructor(name) {
-    super(name);
-    this.hidden = false;
-  }
-
   bite(target) {
     if (!target.hidden
       && !(target instanceof Carnivore)
