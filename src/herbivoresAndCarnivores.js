@@ -6,7 +6,6 @@ class Animal {
  constructor(name) {
    this.health = 100;
    this.name = name;
-   this.hidden = false;
    Animal.addAnimal(this);
  }
 
