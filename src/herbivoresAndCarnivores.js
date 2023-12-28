@@ -6,9 +6,6 @@ class Animal {
   constructor(name, health = 100) {
     this.name = name;
     this.health = health;
-    // if (!Animal.alive) {
-    //   Animal.alive = [];
-    // }
     Animal.alive.push(this);
   }
 }
