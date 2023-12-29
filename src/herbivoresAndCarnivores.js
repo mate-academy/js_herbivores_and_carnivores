@@ -29,7 +29,9 @@ class Carnivore extends Animal {
 
   bite(animal) {
     if (animal instanceof Herbivore && !animal.hidden) {
-      animal.health -= 50;
+      const LOSS_HEALTH = 50;
+
+      animal.health -= LOSS_HEALTH;
 
       if (animal.health <= 0) {
         this.killAnimal(animal);
@@ -38,7 +40,9 @@ class Carnivore extends Animal {
   }
 
   killAnimal(animal) {
-    Animal.alive.splice(Animal.alive.indexOf(animal), 1);
+    if (animal) {
+      Animal.alive.splice(Animal.alive.indexOf(animal), 1);
+    }
   }
 }
 
