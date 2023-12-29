@@ -6,6 +6,10 @@ class Animal {
     this.health = health;
     Animal.alive.push(this);
   }
+
+  refreshAliveList() {
+    Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
+  }
 }
 
 Animal.alive = [];
@@ -22,18 +26,17 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  constructor(name) {
-    super(name);
-    Animal.alive.push(this);
+  degreaseHealthOfOpponent(target, damage) {
+    if (target instanceof Herbivore && !target.hidden) {
+      target.health -= damage;
+    }
   }
 
   bite(herbivore) {
-    if (herbivore instanceof Herbivore && !herbivore.hidden) {
-      herbivore.health -= 50;
+    this.degreaseHealthOfOpponent(herbivore, 50);
 
-      if (herbivore.health <= 0) {
-        Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
-      }
+    if (herbivore.health <= 0) {
+      this.refreshAliveList();
     }
   }
 }
