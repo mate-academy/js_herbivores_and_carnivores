@@ -1,14 +1,10 @@
 'use strict';
 
 class Animal {
+  static alive = []
   constructor(name) {
     this.name = name;
     this.health = 100;
-
-    if (!Animal.alive) {
-      Animal.alive = [];
-    }
-
     Animal.alive.push(this);
   }
   static removeDead(animal) {
