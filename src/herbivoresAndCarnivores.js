@@ -1,7 +1,11 @@
 'use strict';
 
+const HEALTH_THRESHOLD_DEAD = 0;
+const DAMAGE_FROM_BITE = 50;
+const DEFAULT_HEALTH = 100;
+
 class Animal {
-  constructor(name, health = 100) {
+  constructor(name, health = DEFAULT_HEALTH) {
     this.name = name;
     this.health = health;
     Animal.alive.push(this);
@@ -31,20 +35,20 @@ class Herbivore extends Animal {
   decreaseHealth(amount) {
     this.health -= amount;
 
-    if (this.health <= 0) {
+    if (this.health <= HEALTH_THRESHOLD_DEAD) {
       Animal.removeFromAlive(this);
     }
   }
 }
 
 class Carnivore extends Animal {
-  constructor(name, health = 100) {
+  constructor(name, health = DEFAULT_HEALTH) {
     super(name, health);
   }
 
   bite(target) {
     if (target instanceof Herbivore && !target.hidden) {
-      target.decreaseHealth(50);
+      target.decreaseHealth(DAMAGE_FROM_BITE);
     }
   }
 }
