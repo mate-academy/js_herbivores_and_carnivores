@@ -1,6 +1,7 @@
 'use strict';
 
 class Animal {
+  // eslint-disable-line
   static alive = [];
 
   constructor(name, health = 100) {
@@ -10,10 +11,7 @@ class Animal {
   }
 
   die() {
-    const index = Animal.alive.indexOf(this);
-    if (index !== -1) {
-      Animal.alive.splice(index, 1);
-    }
+    Animal.alive = Animal.alive.filter(animal => animal.health > 0);
   }
 }
 
@@ -33,12 +31,14 @@ class Carnivore extends Animal {
     super(name, health);
   }
 
-  bite(victim) {
-    if (victim instanceof Herbivore && !victim.hidden) {
-      victim.health -= 50;
+  bite(attacked) {
+    const damage = 50;
 
-      if (victim.health <= 0) {
-        victim.die();
+    if (attacked instanceof Herbivore && !attacked.hidden) {
+      attacked.health -= damage;
+
+      if (attacked.health <= 0) {
+        attacked.die();
       }
     }
   }
