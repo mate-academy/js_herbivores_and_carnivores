@@ -6,15 +6,13 @@ class Animal {
     this.health = health;
     Animal.alive.push(this);
   }
-
-  checkHealth() {
-    if (this.health === 0) {
-      Animal.alive = Animal.alive.filter(animal => animal.health > 0);
-    }
-  }
 }
 
 Animal.alive = [];
+
+Animal.checkHealth = function() {
+  Animal.alive = Animal.alive.filter(animal => animal.health > 0);
+};
 
 class Herbivore extends Animal {
   constructor(name, health, hidden = false) {
@@ -31,7 +29,7 @@ class Carnivore extends Animal {
   bite(animal) {
     if (animal instanceof Herbivore && !animal.hidden) {
       animal.health -= 50;
-      animal.checkHealth();
+      Animal.checkHealth();
     }
   }
 }
