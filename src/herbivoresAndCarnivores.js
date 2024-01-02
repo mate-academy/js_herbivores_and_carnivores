@@ -1,9 +1,18 @@
 'use strict';
 
+const DAMAGE_POWER = 50;
+const MAX_HEALTH = 100;
+const DEATH = 0;
+
 class Animal {
-  constructor(name, health = 100,) {
+  constructor(name, health = MAX_HEALTH,) {
     this.name = name;
     this.health = health;
+    Animal.alive.push(this);
+  }
+
+  animalAlive() {
+    Animal.alive = Animal.alive.filter((animal) => animal.health > DEATH);
   }
 }
 
@@ -13,8 +22,6 @@ class Herbivore extends Animal {
   constructor(health, name) {
     super(health, name);
     this.hidden = false;
-
-    Animal.alive.push(this);
   }
 
   hide() {
@@ -23,19 +30,13 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  constructor(health, name) {
-    super(health, name);
-
-    Animal.alive.push(this);
-  }
-
   bite(herbivore) {
     if (herbivore.hidden === false && herbivore instanceof Herbivore) {
-      herbivore.health -= 50;
+      herbivore.health -= DAMAGE_POWER;
     }
 
-    if (herbivore.health <= 0) {
-      Animal.alive = Animal.alive.filter(animal => animal !== herbivore);
+    if (herbivore.health <= DEATH) {
+      this.animalAlive();
     }
   }
 }
