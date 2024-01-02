@@ -3,7 +3,7 @@
 class Animal {
   // write your code here
 
-  constructor(health = 100, name) {
+  constructor(name, health = 100) {
     this.health = health;
     this.name = name;
     Animal.alive.push(this);
@@ -14,8 +14,7 @@ Animal.alive = [];
 class Herbivore extends Animal {
   // write your code here
   constructor(name) {
-    super();
-    this.name = name;
+    super(name);
     this.hidden = false;
   }
   hide() {
@@ -25,14 +24,11 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   // write your code here
-  constructor(name) {
-    super();
-    this.name = name;
-  }
+
   bite(animal) {
-    if (animal.hidden === false) {
+    if (animal.hidden === false && animal instanceof Herbivore) {
       animal.health -= 50;
-    }
+    };
 
     const checkAnimal = Animal.alive.filter(item => item.health > 0);
 
