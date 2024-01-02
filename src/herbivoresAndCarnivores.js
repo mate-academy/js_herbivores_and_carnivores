@@ -10,9 +10,9 @@ class Animal {
     this.health = health;
     Animal.alive.push(this);
   }
-}
 
-Animal.alive = [];
+  static alive = [];
+}
 
 Animal.removeFromAlive = function(target) {
   const index = this.alive.indexOf(target);
