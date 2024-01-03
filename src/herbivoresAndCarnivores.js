@@ -1,7 +1,7 @@
 'use strict';
 
 class Animal {
-  static alive = []
+  static alive = [];
 
   constructor(name, health = 100) {
     this.health = health;
