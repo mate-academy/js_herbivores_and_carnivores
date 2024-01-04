@@ -2,9 +2,9 @@
 
 class Animal {
   static alive = [];
-  health = 100;
 
-  constructor(name) {
+  constructor(name, health = 100) {
+    this.health = health;
     this.name = name;
     Animal.alive.push(this);
   }
