@@ -8,11 +8,7 @@ class Animal {
   }
 
   die() {
-    const index = Animal.alive.indexOf(this);
-
-    if (index !== -1) {
-      Animal.alive.splice(index, 1);
-    }
+    Animal.alive = Animal.alive.filter(animal => animal !== this);
   }
 }
 
@@ -27,16 +23,11 @@ class Herbivore extends Animal {
   hide() {
     this.hidden = true;
   }
-
-  die() {
-    super.die();
-  }
 }
 
 class Carnivore extends Animal {
   bite(target) {
-    if (this instanceof Carnivore
-      && target instanceof Herbivore
+    if (target instanceof Herbivore
       && target.hidden === false) {
       target.health -= 50;
 
