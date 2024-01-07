@@ -2,7 +2,7 @@
 
 class Animal {
   // write your code here
-  // static alive = [];
+  static alive = [];
 
   constructor(name) {
     this.name = name;
@@ -10,8 +10,6 @@ class Animal {
     Animal.alive.push(this);
   }
 }
-
-Animal.alive = [];
 
 class Herbivore extends Animal {
   // write your code here
@@ -28,7 +26,7 @@ class Herbivore extends Animal {
 class Carnivore extends Animal {
   // write your code here
   bite(animal) {
-    if (animal.hidden === false) {
+    if (animal.hidden === false && animal instanceof Herbivore) {
       animal.health -= 50;
 
       if (animal.health <= 0) {
