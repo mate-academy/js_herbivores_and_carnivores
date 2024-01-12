@@ -14,7 +14,6 @@ class Herbivore extends Animal {
     super(name, health);
     this.hidden = hidden;
   }
-
   hide() {
     this.hidden = true;
   }
@@ -22,13 +21,11 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(herb) {
-    if (herb.hidden === false) {
+    if (herb instanceof Herbivore && herb.hidden === false) {
       herb.health -= 50;
     }
 
-    if (herb.health <= 0) {
-      Animal.alive.splice(Animal.alive.indexOf(herb), 1);
-    }
+    Animal.alive = Animal.alive.filter(item => item.health > 0);
   }
 }
 
