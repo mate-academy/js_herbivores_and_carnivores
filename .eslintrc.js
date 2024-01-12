@@ -1,11 +1,14 @@
 module.exports = {
   extends: '@mate-academy/eslint-config',
-  parser: "babel-eslint",
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+  },
   env: {
-    jest: true
+    jest: true,
   },
   rules: {
-    'no-proto': 0
+    'no-proto': 0,
   },
-  plugins: ['jest']
+  plugins: ['jest'],
 };
