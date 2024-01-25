@@ -6,13 +6,10 @@ class Animal {
     this.health = health;
     Animal.alive.push(this);
   }
-  static removeFromAlive(animal) {
-    const index = Animal.alive.indexOf(animal);
-
-    if (index !== -1) {
-      Animal.alive.splice(index, 1);
+    static removeFromAlive(animal) {
+      Animal.alive = Animal.alive.filter(item => item !== animal);
     }
-  }
+  
 }
 Animal.alive = [];
 
