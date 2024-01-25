@@ -6,10 +6,9 @@ class Animal {
     this.health = health;
     Animal.alive.push(this);
   }
-    static removeFromAlive(animal) {
-      Animal.alive = Animal.alive.filter(item => item !== animal);
-    }
-  
+  static removeFromAlive(animal) {
+    Animal.alive = Animal.alive.filter(item => item !== animal);
+  }
 }
 Animal.alive = [];
 
