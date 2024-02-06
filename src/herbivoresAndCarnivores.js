@@ -23,7 +23,7 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(herbivore) {
-    const canBite = !herbivore.hidden
+    const canBite = herbivore.hidden === false
       && herbivore.prototype !== Carnivore.prototype;
 
     if (canBite) {
