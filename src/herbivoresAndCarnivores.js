@@ -6,10 +6,6 @@ class Animal {
     this.health = health;
     Animal.alive.push(this);
   }
-
-  hide() {
-    this.hidden = true;
-  };
 }
 
 Animal.alive = [];
@@ -19,6 +15,10 @@ class Herbivore extends Animal {
     super();
     this.hidden = false;
   }
+
+  hide() {
+    this.hidden = true;
+  };
 }
 
 class Carnivore extends Animal {
