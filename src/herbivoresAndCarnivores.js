@@ -26,7 +26,7 @@ class Carnivore extends Animal {
   }
 
   bite(herbivore) {
-    if (herbivore.hidden === false) {
+    if (herbivore.hidden) {
       if (herbivore.health <= 50) {
         Animal.alive.splice(Animal.alive.indexOf(herbivore), 1);
       }
