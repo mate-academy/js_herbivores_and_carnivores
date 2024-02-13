@@ -6,22 +6,19 @@ describe('Animal', () => {
   it('Herbivore can be used as a constructor', () => {
     const animal = new Herbivore('Zebra');
 
-    expect(animal)
-      .toBeInstanceOf(Herbivore);
+    expect(animal).toBeInstanceOf(Herbivore);
   });
 
   it('Сarnivore can be used as a constructor', () => {
     const animal = new Carnivore('Tiger');
 
-    expect(animal)
-      .toBeInstanceOf(Carnivore);
+    expect(animal).toBeInstanceOf(Carnivore);
   });
 
   it(`Herbivore should has falsy 'hidden' property`, () => {
     const animal = new Herbivore('Zebra');
 
-    expect(animal.hidden)
-      .toBe(false);
+    expect(animal.hidden).toBe(false);
   });
 
   it(`Herbivores and Carnivores should have health property equal to 100`,
@@ -29,13 +26,10 @@ describe('Animal', () => {
       const herb = new Herbivore('Zebra');
       const carn = new Carnivore('Tiger');
 
-      expect(herb)
-        .toHaveProperty('health', 100);
+      expect(herb).toHaveProperty('health', 100);
 
-      expect(carn)
-        .toHaveProperty('health', 100);
-    }
-  );
+      expect(carn).toHaveProperty('health', 100);
+    });
 
   it(`Herbivore should have 'hide' method which inverts 'hidden' property`,
     () => {
@@ -43,10 +37,8 @@ describe('Animal', () => {
 
       animal.hide();
 
-      expect(animal.hidden)
-        .toBe(true);
-    }
-  );
+      expect(animal.hidden).toBe(true);
+    });
 
   it(`Herbivores 'hide' method should be inherited`, () => {
     const animal = new Herbivore('Zebra');
@@ -61,8 +53,7 @@ describe('Animal', () => {
 
     carn.bite(herb);
 
-    expect(herb.health)
-      .toBe(50);
+    expect(herb.health).toBe(50);
   });
 
   it(`Сarnivores 'bite' method should be inherited`, () => {
@@ -79,8 +70,7 @@ describe('Animal', () => {
     herb.hide();
     carn.bite(herb);
 
-    expect(herb.health)
-      .toBe(100);
+    expect(herb.health).toBe(100);
   });
 
   it(`'bite' method shouldn't decrease 'health' property of the carnivores `,
@@ -90,24 +80,19 @@ describe('Animal', () => {
 
       wolf.bite(tiger);
 
-      expect(tiger.health)
-        .toBe(100);
-    }
-  );
+      expect(tiger.health).toBe(100);
+    });
 
   it(`Carnivores and Herbivores should be in 'Animal.alive' array`, () => {
     const bear = new Carnivore('Bear');
     const pig = new Carnivore('Pig');
     const rabbit = new Herbivore('Rabbit');
 
-    expect(Animal.alive.includes(bear))
-      .toBe(true);
+    expect(Animal.alive.includes(bear)).toBe(true);
 
-    expect(Animal.alive.includes(pig))
-      .toBe(true);
+    expect(Animal.alive.includes(pig)).toBe(true);
 
-    expect(Animal.alive.includes(rabbit))
-      .toBe(true);
+    expect(Animal.alive.includes(rabbit)).toBe(true);
   });
 
   it(`Herbivores should be removed from 'Animal.alive' array,
@@ -118,10 +103,8 @@ describe('Animal', () => {
     tiger.bite(zebra);
     tiger.bite(zebra);
 
-    expect(Animal.alive.includes(zebra))
-      .toBe(false);
+    expect(Animal.alive.includes(zebra)).toBe(false);
 
-    expect(Animal.alive.includes(tiger))
-      .toBe(true);
+    expect(Animal.alive.includes(tiger)).toBe(true);
   });
 });
