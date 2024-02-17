@@ -1,7 +1,6 @@
 'use strict';
 
 class Animal {
-
   constructor(name, health = 100) {
     this.name = name;
     this.health = health;
@@ -26,7 +25,7 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(anim) {
-    if(anim.hidden === false) {
+    if (!anim.hidden) {
       anim.health -= 50;
     }
 
