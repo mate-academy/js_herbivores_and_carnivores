@@ -1,6 +1,5 @@
 'use strict';
 
-// Define the Animal class
 class Animal {
   constructor(name) {
     this.name = name;
