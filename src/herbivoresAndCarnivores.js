@@ -1,22 +1,27 @@
 'use strict';
 
 class Animal {
-  // write your code here
-
-  constructor(health, name) {
+  constructor(name) {
     this.name = name;
-    this.health = 100 || health;
+    this.health = 100;
     Animal.alive.push(this);
+  }
+
+  decreaseHealth(damage) {
+    this.health -= damage;
+  }
+
+  deleteDeadAnimal(points) {
+    Animal.alive = Animal.alive.filter(item => item.health > points);
   }
 }
 
 Animal.alive = [];
 
 class Herbivore extends Animal {
-  // write your code here
-  constructor(name, health, hidden = false) {
-    super(name, health);
-    this.hidden = hidden;
+  constructor(name) {
+    super(name);
+    this.hidden = false;
   }
 
   hide() {
@@ -25,17 +30,16 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  // write your code here
   bite(nameOfBitten) {
     const BITE_POINTS = 50;
     const LIMIT_OF_HEALTH = 0;
     const isHerbivore = nameOfBitten instanceof Herbivore;
 
-    if (isHerbivore && nameOfBitten.hidden !== true) {
-      nameOfBitten.health -= BITE_POINTS;
+    if (isHerbivore && !nameOfBitten.hidden) {
+      nameOfBitten.decreaseHealth(BITE_POINTS);
     }
 
-    Animal.alive = Animal.alive.filter(item => item.health > LIMIT_OF_HEALTH);
+    nameOfBitten.deleteDeadAnimal(LIMIT_OF_HEALTH);
   }
 }
 
