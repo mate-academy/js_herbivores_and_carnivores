@@ -26,14 +26,11 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   static BITE_DAMAGE = 50;
-  
+
   bite(target) {
     if (Animal.alive.includes(target) && target instanceof Herbivore && !target.hidden) {
       target.health -= Carnivore.BITE_DAMAGE;
-
-      if (target.health <= 0) {
-        Animal.updateAliveList();
-      }
+      Animal.updateAliveList();
     }
   }
 }
