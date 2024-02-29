@@ -1,21 +1,20 @@
 'use strict';
 
+const DEFAULT_HEALTH = 100;
+
 class Animal {
-  constructor(name, health = 100) {
+  constructor(name, health = DEFAULT_HEALTH) {
     this.name = name;
     this.health = health;
-
-    if (!Animal.alive) {
-      Animal.alive = [];
-    }
 
     Animal.alive.push(this);
   }
 }
+Animal.alive = [];
 
 class Herbivore extends Animal {
-  constructor(name) {
-    super(name);
+  constructor(name, health) {
+    super(name, health);
     this.hidden = false;
   }
 
@@ -30,7 +29,7 @@ class Carnivore extends Animal {
       animal.health -= 50;
 
       if (animal.health <= 0) {
-        Animal.alive = Animal.alive.filter((a) => a !== animal);
+        Animal.alive = Animal.alive.filter((creature) => creature !== animal);
       }
     }
   }
