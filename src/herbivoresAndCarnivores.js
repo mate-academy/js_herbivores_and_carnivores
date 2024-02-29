@@ -1,28 +1,18 @@
 'use strict';
 
 class Animal {
-  constructor(name, health = 100) {
+  constructor(name) {
     this.name = name;
-    this._health = health; // Private property for health
+    this.health = 100;
     Animal.alive.push(this);
-  }
-
-  get health() {
-    return this._health;
-  }
-
-  set health(value) {
-    this._health = value;
-
-    if (this._health <= 0) {
-      Animal.removeDeadAnimals();
-    }
   }
 
   static removeDeadAnimals() {
     Animal.alive = Animal.alive.filter(beast => beast.health > 0);
   }
 }
+
+Animal.alive = [];
 
 class Herbivore extends Animal {
   constructor(name, hidden = false) {
@@ -40,10 +30,12 @@ class Carnivore extends Animal {
     if (victim instanceof Herbivore && !victim.hidden) {
       victim.health -= 50;
     }
+
+    if (victim.health <= 0) {
+      Animal.removeDeadAnimals();
+    }
   }
 }
-
-Animal.alive = [];
 
 module.exports = {
   Animal,
