@@ -3,6 +3,9 @@
 class Animal {
   static alive = [];
 
+  static updateAliveList = () => {
+    Animal.alive = Animal.alive.filter(animal => animal.health > 0)
+  }
   constructor(name) {
     this.name = name;
     this.health = 100;
@@ -17,17 +20,19 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    this.hidden = !this.hidden;
+    this.hidden = true;
   }
 }
 
 class Carnivore extends Animal {
+  static BITE_DAMAGE = 50;
+  
   bite(target) {
     if (Animal.alive.includes(target) && target instanceof Herbivore && !target.hidden) {
-      target.health -= 50;
+      target.health -= Carnivore.BITE_DAMAGE;
 
       if (target.health <= 0) {
-        Animal.alive.splice(Animal.alive.indexOf(target), 1);
+        Animal.updateAliveList();
       }
     }
   }
