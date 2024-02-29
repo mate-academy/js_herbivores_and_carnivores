@@ -3,12 +3,24 @@
 class Animal {
   constructor(name, health = 100) {
     this.name = name;
-    this.health = health;
+    this._health = health; // Private property for health
     Animal.alive.push(this);
   }
 
+  get health() {
+    return this._health;
+  }
+
+  set health(value) {
+    this._health = value;
+
+    if (this._health <= 0) {
+      Animal.removeDeadAnimals();
+    }
+  }
+
   static removeDeadAnimals() {
-    Animal.alive = Animal.alive.filter((beast) => beast.health > 0);
+    Animal.alive = Animal.alive.filter(beast => beast.health > 0);
   }
 }
 
@@ -27,10 +39,6 @@ class Carnivore extends Animal {
   bite(victim) {
     if (victim instanceof Herbivore && !victim.hidden) {
       victim.health -= 50;
-
-      if (victim.health <= 0) {
-        Animal.removeDeadAnimals();
-      }
     }
   }
 }
