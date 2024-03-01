@@ -1,6 +1,7 @@
 'use strict';
 
 const AMOUNT_OF_HEALTH = 100;
+const BITE_DAMAGE = 50;
 
 class Animal {
   static alive = [];
@@ -22,9 +23,7 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    this.hidden = (this.hidden)
-      ? false
-      : true;
+    this.hidden = !(this.hidden);
   }
 }
 
@@ -37,7 +36,7 @@ class Carnivore extends Animal {
 
   bite(animal) {
     if (animal instanceof Herbivore && !animal.hidden) {
-      animal.health -= 50;
+      animal.health -= BITE_DAMAGE;
     }
 
     if (animal.health === 0) {
