@@ -34,8 +34,12 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(target) {
-    if (target instanceof Carnivore && target.hidden) {
+    if (target instanceof Carnivore) {
       return;
+    }
+
+    if (target.hidden) {
+      return `${target.name}`;
     }
     target.decreaseHealth(BITE_DAMAGE);
   }
