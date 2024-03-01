@@ -4,13 +4,16 @@ const AMOUNT_OF_HEALTH = 100;
 const BITE_DAMAGE = 50;
 
 class Animal {
-  static alive = [];
-
   health = AMOUNT_OF_HEALTH;
 
   constructor(name) {
     this.name = name;
   }
+
+  static alive = [];
+  static updateAliveList(animal) {
+    Animal.alive = Animal.alive.filter(beast => beast !== animal);
+  };
 }
 
 class Herbivore extends Animal {
@@ -40,7 +43,7 @@ class Carnivore extends Animal {
     }
 
     if (animal.health === 0) {
-      Animal.alive = Animal.alive.filter(beast => beast !== animal);
+      Animal.updateAliveList(animal);
     }
   }
 }
