@@ -1,9 +1,13 @@
-"use strict";
+'use strict';
+
+const ANIMAL_DAMAGE = 50;
+const ANIMAL_BASE_HP = 100;
+const MINIMUM_HP = 0;
 
 class Animal {
   constructor(name) {
     this.name = name;
-    this.health = 100;
+    this.health = ANIMAL_BASE_HP;
     this.hidden = false;
     Animal.alive.push(this);
   }
@@ -23,9 +27,9 @@ class Carnivore extends Animal {
       return;
     }
 
-    animal.health -= 50;
+    animal.health -= ANIMAL_DAMAGE;
 
-    if (animal.health <= 0) {
+    if (animal.health <= MINIMUM_HP) {
       Animal.alive = Animal.alive.filter((a) => a !== animal);
     }
   }
