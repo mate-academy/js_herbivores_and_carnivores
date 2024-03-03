@@ -8,7 +8,6 @@ class Animal {
     this.health = health;
     Animal.alive.push(this);
   }
-  // write your code here
 
   decreaseHealth(amount) {
     this.health -= amount;
