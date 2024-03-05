@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
 const ANIMAL_DAMAGE = 50;
 const ANIMAL_BASE_HP = 100;
-const MINIMUM_HP = 0;
+const ANIMAL_MINIMUM_HP = 0;
 
 class Animal {
   constructor(name) {
@@ -13,6 +13,10 @@ class Animal {
   }
 
   static alive = [];
+
+  die() {
+    Animal.alive = Animal.alive.filter((a) => a !== this);
+  }
 }
 
 class Herbivore extends Animal {
@@ -29,8 +33,8 @@ class Carnivore extends Animal {
 
     animal.health -= ANIMAL_DAMAGE;
 
-    if (animal.health <= MINIMUM_HP) {
-      Animal.alive = Animal.alive.filter((a) => a !== animal);
+    if (animal.health <= ANIMAL_MINIMUM_HP) {
+      animal.die();
     }
   }
 }
