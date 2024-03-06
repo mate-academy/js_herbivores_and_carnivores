@@ -10,32 +10,23 @@ class Animal {
     this.name = name;
     Animal.alive.push(this);
   }
+}
 
+class Herbivore extends Animal {
+  // write your code here
   hide() {
     this.hidden = !this.hidden;
   }
 }
 
-class Herbivore extends Animal {
-  // write your code here
-}
-
 class Carnivore extends Animal {
   // write your code here
-  bite(obj) {
-    if (obj instanceof Carnivore) {
+  bite(victim) {
+    if (victim instanceof Carnivore || victim.hidden || victim.health <= 0) {
       return;
     }
 
-    if (obj.hidden === true) {
-      return;
-    }
-
-    if (obj.health <= 0) {
-      return;
-    }
-
-    obj.health -= 50;
+    victim.health -= 50;
 
     Animal.alive = Animal.alive.filter((elem) => {
       return elem.health !== 0;
