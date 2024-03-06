@@ -3,19 +3,20 @@
 class Animal {
   // write your code here
   static alive = [];
+  static health = 100;
 
-  constructor(name, health = 100) {
+  constructor(name) {
     this.name = name;
-    this.health = health;
+    this.health = Animal.health;
     Animal.alive.push(this);
   }
 }
 
 class Herbivore extends Animal {
   // write your code here
-  constructor(name, health = 100, hidden = false) {
-    super(name, health);
-    this.hidden = hidden;
+  constructor() {
+    super();
+    this.hidden = false;
   }
   hide(hidden) {
     this.hidden = true;
@@ -24,16 +25,15 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   // write your code here
-  constructor(name, health = 100, hidden = false) {
-    super(name, health, hidden);
-  }
+  static damage = 50;
+  static fullDamage = 0;
 
-  bite(herbivore) {
-    if (herbivore.hidden === false) {
-      herbivore.health -= 50;
+  bite(carnivore) {
+    if (carnivore.hidden === false) {
+      carnivore.health -= Carnivore.damage;
 
-      if (herbivore.health === 0) {
-        Animal.alive = Animal.alive.filter((animal) => animal !== herbivore);
+      if (carnivore.health <= 0) {
+        Animal.alive = Animal.alive.filter((animal) => animal !== carnivore);
       }
     }
   }
