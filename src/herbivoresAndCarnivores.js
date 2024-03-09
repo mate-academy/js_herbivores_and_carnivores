@@ -8,26 +8,38 @@ class Animal {
   constructor(name) {
     this.name = name;
     this.health = ANIMAL_BASE_HP;
-    this.hidden = false;
     Animal.alive.push(this);
   }
 
   static alive = [];
 
   die() {
-    Animal.alive = Animal.alive.filter((a) => a !== this);
+    Animal.alive = Animal.alive.filter((animal) => animal !== this);
   }
 }
 
 class Herbivore extends Animal {
+  constructor(name) {
+    super(name);
+    this.hidden = false;
+  }
+
   hide() {
     this.hidden = true;
   }
 }
 
 class Carnivore extends Animal {
+  constructor(name) {
+    super(name);
+    Animal.alive.push(this);
+  }
+
   bite(animal) {
-    if (animal.constructor === Carnivore || animal.hidden) {
+    if (
+      animal instanceof Carnivore ||
+      (animal instanceof Herbivore && animal.hidden)
+    ) {
       return;
     }
 
