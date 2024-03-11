@@ -1,0 +1,42 @@
+{
+    "sourceFile": "src/herbivoresAndCarnivores.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1710170810948,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1710170822913,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,19 @@\n+'use strict';\n+\n+class Animal {\n+  constructor(health, name)\n+}\n+\n+class Herbivore extends Animal {\n+  // write your code here\n+}\n+\n+class Carnivore extends Animal {\n+  // write your code here\n+}\n+\n+module.exports = {\n+  Animal,\n+  Herbivore,\n+  Carnivore,\n+};\n"
+                },
+                {
+                    "date": 1710170833393,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n 'use strict';\n \n class Animal {\n-  constructor(health, name)\n+  constructor(name, health)\n }\n \n class Herbivore extends Animal {\n   // write your code here\n@@ -16,23 +16,4 @@\n   Animal,\n   Herbivore,\n   Carnivore,\n };\n-'use strict';\n-\n-class Animal {\n-  construc\n-}\n-\n-class Herbivore extends Animal {\n-  // write your code here\n-}\n-\n-class Carnivore extends Animal {\n-  // write your code here\n-}\n-\n-module.exports = {\n-  Animal,\n-  Herbivore,\n-  Carnivore,\n-};\n"
+                },
+                {
+                    "date": 1710170838810,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,19 @@\n+'use strict';\n+\n+class Animal {\n+  constructor(name, health) \n+}\n+\n+class Herbivore extends Animal {\n+  // write your code here\n+}\n+\n+class Carnivore extends Animal {\n+  // write your code here\n+}\n+\n+module.exports = {\n+  Animal,\n+  Herbivore,\n+  Carnivore,\n+};\n"
+                },
+                {
+                    "date": 1710170845549,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n 'use strict';\n \n class Animal {\n-  constructor(name, health) \n+  constructor(name, health = )\n }\n \n class Herbivore extends Animal {\n   // write your code here\n@@ -16,23 +16,4 @@\n   Animal,\n   Herbivore,\n   Carnivore,\n };\n-'use strict';\n-\n-class Animal {\n-  constructor(name, health)\n-}\n-\n-class Herbivore extends Animal {\n-  // write your code here\n-}\n-\n-class Carnivore extends Animal {\n-  // write your code here\n-}\n-\n-module.exports = {\n-  Animal,\n-  Herbivore,\n-  Carnivore,\n-};\n"
+                },
+                {
+                    "date": 1710170895862,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n 'use strict';\n \n class Animal {\n   constructor(name, health = 100) {\n-    \n+    t\n   }\n }\n \n class Herbivore extends Animal {\n"
+                },
+                {
+                    "date": 1710170909490,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n \n class Animal {\n   constructor(name, health = 100) {\n     this.name = name;\n-    this.health = he\n+    this.health = health\n   }\n }\n \n class Herbivore extends Animal {\n"
+                }
+            ],
+            "date": 1710170810948,
+            "name": "Commit-0",
+            "content": "'use strict';\n\nclass Animal {\n  construc\n}\n\nclass Herbivore extends Animal {\n  // write your code here\n}\n\nclass Carnivore extends Animal {\n  // write your code here\n}\n\nmodule.exports = {\n  Animal,\n  Herbivore,\n  Carnivore,\n};\n"
+        }
+    ]
+}
