@@ -13,8 +13,8 @@ class Animal {
 
 class Herbivore extends Animal {
   // write your code here
-  constructor() {
-    super();
+  constructor(name) {
+    super(name);
     this.hidden = false;
   }
 
