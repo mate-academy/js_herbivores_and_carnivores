@@ -33,14 +33,14 @@ class Carnivore extends Animal {
   bite(animal) {
     if (animal instanceof Carnivore || animal.hidden) {
       return;
-    } else {
-      animal.health -= 50;
     }
+
+    animal.health -= 50;
 
     if (animal.health <= 0) {
       animal.die();
     }
-  }
+ }
 }
 
 module.exports = {
