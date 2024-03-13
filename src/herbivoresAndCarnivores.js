@@ -11,9 +11,8 @@ class Animal {
 }
 
 class Herbivore extends Animal {
-  constructor(name, role = 'herbivore') {
+  constructor(name) {
     super(name);
-    this.role = role;
     this.hidden = false;
   }
 
@@ -23,9 +22,9 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  constructor(name, role = 'carnivore') {
+  constructor(name) {
     super(name);
-    this.role = role;
+    this.name = name;
   }
 
   bite(target) {
@@ -35,7 +34,7 @@ class Carnivore extends Animal {
 
     target.health -= 50;
 
-    if (target.health === 0) {
+    if (!target.health) {
       const index = Animal.alive.indexOf(target);
 
       if (index !== -1) {
