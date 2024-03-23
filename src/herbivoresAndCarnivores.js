@@ -38,7 +38,7 @@ class Carnivore extends Animal {
 
       if (herbivore.health < 1) {
         Animal.alive.splice(
-          Animal.alive.indexOf((e) => e.name === herbivore.name),
+          Animal.alive.findIndex((e) => e === herbivore),
           1,
         );
       }
