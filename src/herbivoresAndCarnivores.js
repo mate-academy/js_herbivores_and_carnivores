@@ -8,6 +8,13 @@ class Animal {
     this.innerHealthVar = 100;
     this.name = name;
   }
+  
+  set health(totalLifeDecreased) {}
+
+  get healt() {
+    return this.innerHealthVar;
+  }
+
 }
 
 class Herbivore extends Animal {
@@ -37,10 +44,6 @@ class Herbivore extends Animal {
       );
     }
   }
-
-  get health() {
-    return this.innerHealthVar;
-  }
 }
 
 class Carnivore extends Animal {
@@ -54,19 +57,7 @@ class Carnivore extends Animal {
   bite(herbivore) {
     herbivore.health -= 50;
   }
-
-  set health(totalLifeDecreased) {}
-
-  get health() {
-    return this.innerHealthVar;
-  }
 }
-
-const tiger = new Carnivore('Tiger');
-const zebra = new Herbivore('Zebra');
-
-tiger.bite(zebra);
-tiger.bite(zebra);
 
 module.exports = {
   Animal,
