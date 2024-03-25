@@ -8,13 +8,12 @@ class Animal {
     this.innerHealthVar = 100;
     this.name = name;
   }
-  
-  set health(totalLifeDecreased) {}
 
-  get healt() {
+  get health() {
     return this.innerHealthVar;
   }
 
+  set health(totalLifeDecreased) {}
 }
 
 class Herbivore extends Animal {
@@ -43,6 +42,11 @@ class Herbivore extends Animal {
         1,
       );
     }
+  }
+
+  // The prettier scripts don't accept this class without a pair getter
+  get health() {
+    return super.health;
   }
 }
 
