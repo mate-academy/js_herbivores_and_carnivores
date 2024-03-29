@@ -19,7 +19,7 @@ class Animal {
 class Herbivore extends Animal {
   // write your code here
   constructor(name) {
-    super(name)
+    super(name);
     this.hidden = false;
   }
 
@@ -31,7 +31,7 @@ class Herbivore extends Animal {
 class Carnivore extends Animal {
   // write your code here
   constructor(name) {
-    super(name)
+    super(name);
   }
 
   bite(object) {
