@@ -3,31 +3,21 @@
 class Animal {
   static alive = [];
 
-  constructor(name, health) {
+  constructor(name, health = 100, hidden = false) {
     this.name = name;
     this.health = health;
+    this.hidden = hidden;
     Animal.alive.push(this);
   }
-
 }
 
 class Herbivore extends Animal {
-  constructor(name, health) {
-    super(name, health = 100);
-    this.hidden = false;
-  }
-
   hide() {
     this.hidden = true;
   }
-
 }
 
 class Carnivore extends Animal {
-  constructor(name, health) {
-    super(name, health = 100);
-  }
-
   bite(target) {
     if (target instanceof Herbivore && !target.hidden) {
       target.health -= 50;
@@ -36,7 +26,6 @@ class Carnivore extends Animal {
       return `${this.name} cannot bite ${target.name}.`;
     }
   }
-
 }
 
 module.exports = {
