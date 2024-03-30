@@ -18,22 +18,15 @@ class Animal {
 
 class Herbivore extends Animal {
   // write your code here
-  constructor(name) {
-    super(name);
-    this.hidden = false;
-  }
+  hidden = false;
 
   hide() {
-    this.hidden = !this.hidden;
+    this.hidden = true;
   }
 }
 
 class Carnivore extends Animal {
   // write your code here
-  constructor(name) {
-    super(name);
-  }
-
   bite(object) {
     if (object instanceof Herbivore && !object.hidden) {
       object.health -= DEFAULT_DECREASE;
