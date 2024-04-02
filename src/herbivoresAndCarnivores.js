@@ -6,30 +6,31 @@ class Animal {
     this.name = name;
     this.health = health;
 
-    if (this.constructor.name !== 'Herbivore') {
-      Animal.alive.push(this);
-    }
+    Animal.alive.push(this);
   }
+
+  handleBite() {}
 }
 
 class Herbivore extends Animal {
   constructor(name, health = 100, hidden = false) {
     super(name, health);
     this.hidden = hidden;
-
-    Animal.alive.push(this);
   }
 
   hide() {
     this.hidden = !this.hidden;
+  }
 
-    Animal.alive = Animal.alive.map((objAnimal) => {
-      if (objAnimal.name === this.name) {
-        return { ...objAnimal, hidden: !objAnimal.hidden };
-      } else {
-        return objAnimal;
-      }
-    });
+  handleBite() {
+    if (this.hidden) {
+      return;
+    }
+    this.health -= 50;
+
+    if (this.health === 0) {
+      Animal.alive = Animal.alive.filter((el) => el !== this);
+    }
   }
 }
 
@@ -39,20 +40,7 @@ class Carnivore extends Animal {
   }
 
   bite(animal) {
-    if (animal.constructor.name !== 'Carnivore' && animal.hidden !== true) {
-      Animal.alive = Animal.alive
-        .map((objAnimal) => {
-          if (objAnimal === animal) {
-            if (objAnimal.health <= 50) {
-              return 'died';
-            }
-            objAnimal.health -= 50;
-          }
-
-          return objAnimal;
-        })
-        .filter((el) => el !== 'died');
-    }
+    animal.handleBite();
   }
 }
 
