@@ -25,8 +25,8 @@ class Carnivore extends Animal {
       prey.health -= 50;
     }
 
-    if (prey.health === 0) {
-      Animal.alive.splice(Animal.alive.indexOf(prey), 1);
+    if (prey.health <= 0) {
+      Animal.removeDead = Animal.alive.splice(Animal.alive.indexOf(prey), 1);
     }
   }
 }
