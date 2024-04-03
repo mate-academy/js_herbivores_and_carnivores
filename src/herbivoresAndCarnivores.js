@@ -6,6 +6,10 @@ class Animal {
     this.health = health;
     Animal.alive.push(this);
   }
+
+  static removeDead(dead) {
+    this.alive.splice(this.alive.indexOf(dead), 1);
+  }
 }
 Animal.alive = [];
 
@@ -26,7 +30,7 @@ class Carnivore extends Animal {
     }
 
     if (prey.health <= 0) {
-      Animal.removeDead = Animal.alive.splice(Animal.alive.indexOf(prey), 1);
+      Animal.removeDead(prey);
     }
   }
 }
