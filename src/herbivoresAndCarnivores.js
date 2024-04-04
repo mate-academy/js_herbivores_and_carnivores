@@ -11,6 +11,13 @@ class Animal {
 
     Animal.alive.push(this);
   }
+  static removeFromAlive(animal) {
+    const index = Animal.alive.indexOf(animal);
+
+    if (index !== -1) {
+      Animal.alive.splice(index, 1);
+    }
+  }
 }
 
 class Herbivore extends Animal {
@@ -20,28 +27,18 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    if (this.hidden === false) {
-      this.hidden = true;
-    } else {
-      this.hidden = false;
-    }
+    this.hidden = true;
   }
 }
 
 class Carnivore extends Animal {
   bite(herbivore) {
-    if (
-      herbivore instanceof Herbivore === true &&
-      herbivore.health === 50 &&
-      herbivore.hidden === false
-    ) {
-      Animal.alive.splice(Animal.alive.indexOf(herbivore), 1);
-    } else if (
-      herbivore instanceof Herbivore === true &&
-      herbivore.health === 100 &&
-      herbivore.hidden === false
-    ) {
-      herbivore.health = 50;
+    if (herbivore instanceof Herbivore && !herbivore.hidden) {
+      herbivore.health -= 50;
+
+      if (herbivore.health <= 0) {
+        Animal.alive.splice(Animal.alive.indexOf(herbivore), 1);
+      }
     }
   }
 }
