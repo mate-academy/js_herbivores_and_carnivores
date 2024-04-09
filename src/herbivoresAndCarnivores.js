@@ -9,6 +9,14 @@ class Animal {
     this.hidden = hidden;
     Animal.alive.push(this);
   }
+
+  die() {
+    const index = Animal.alive.indexOf(this);
+
+    if (index !== -1) {
+      Animal.alive.splice(index, 1);
+    }
+  }
 }
 
 class Herbivore extends Animal {
@@ -17,8 +25,14 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    if (this.hidden === false) {
+    if (!this.hidden) {
       this.hidden = true;
+    }
+  }
+
+  unhide() {
+    if (this.hidden) {
+      this.hidden = false;
     }
   }
 }
@@ -35,11 +49,7 @@ class Carnivore extends Animal {
       }
 
       if (prey.health <= 0) {
-        const index = Animal.alive.indexOf(prey);
-
-        if (index !== -1) {
-          Animal.alive.splice(index, 1);
-        }
+        prey.die();
       }
     }
 
