@@ -10,6 +10,9 @@ class Animal {
   }
 
   static deadAnimal(animal) {
+    // Variant with filter:
+    // Animal.alive = Animal.alive.filter(a => a !== animal);
+
     const idx = Animal.alive.indexOf(animal);
 
     if (idx !== -1) {
