@@ -1,19 +1,21 @@
 'use strict';
 
 class Animal {
+  static FULL_HEALTH = 100;
+  static BITE_DAMAGE = 50;
   static alive = [];
 
-  constructor(name, health) {
-    Animal.alive.push(this);
-
+  constructor(name) {
     this.name = name;
-    this.health = health || 100;
+    this.health = Animal.FULL_HEALTH;
+
+    Animal.alive.push(this);
   }
 }
 
 class Herbivore extends Animal {
-  constructor(name, health) {
-    super(name, health);
+  constructor(name) {
+    super(name);
     this.hidden = false;
   }
 
@@ -24,8 +26,8 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(herOb) {
-    if (!(herOb instanceof Carnivore) && !herOb.hidden) {
-      herOb.health -= 50;
+    if (herOb instanceof Herbivore && !herOb.hidden) {
+      herOb.health -= Animal.BITE_DAMAGE;
     }
 
     if (herOb.health <= 0) {
