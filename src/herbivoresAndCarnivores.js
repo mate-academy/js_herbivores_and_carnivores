@@ -1,13 +1,17 @@
 'use strict';
 
+const DEFAULT_HEALTH = 100;
+const LOWERED_HEALTH = 50;
+
 class Animal {
+  static alive = [];
+
   constructor(name) {
     this.name = name;
-    this.health = 100;
+    this.health = DEFAULT_HEALTH;
     Animal.alive.push(this);
   }
 }
-Animal.alive = [];
 
 class Herbivore extends Animal {
   constructor(name) {
@@ -16,18 +20,24 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    this.hidden = !this.hidden;
+    this.hidden = true;
+  }
+
+  receiveBite() {
+    if (!this.hidden) {
+      this.health -= LOWERED_HEALTH;
+
+      if (this.health <= 0) {
+        Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
+      }
+    }
   }
 }
 
 class Carnivore extends Animal {
-  bite(herbivore) {
-    if (herbivore instanceof Herbivore && !herbivore.hidden) {
-      herbivore.health -= 50;
-    }
-
-    if (herbivore.health <= 0) {
-      Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
+  bite(victim) {
+    if (victim instanceof Herbivore) {
+      victim.receiveBite();
     }
   }
 }
