@@ -1,5 +1,7 @@
 'use strict';
 
+const damage = 50;
+
 class Animal {
   static alive = [];
 
@@ -9,7 +11,7 @@ class Animal {
     Animal.alive.push(this);
   }
 
-  static deadAnimal(animal) {
+  static removeDeadAnimal(animal) {
     // Variant with filter:
     // Animal.alive = Animal.alive.filter(a => a !== animal);
 
@@ -41,10 +43,10 @@ class Carnivore extends Animal {
       return;
     }
 
-    target.health -= 50;
+    target.health -= damage;
 
     if (target.health <= 0) {
-      Animal.deadAnimal(target);
+      Animal.removeDeadAnimal(target);
     }
   }
 }
