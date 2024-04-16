@@ -1,12 +1,13 @@
 'use strict';
 
+const DEFAULT_HEALTH_POINTS = 100;
+const DAMAGE_OF_BITE = 50;
+const DEFAULT_HIDE = false;
+
 class Animal {
   static alive = [];
-  static DEFAULT_HEALTH_POINTS = 100;
-  static BITE_DAMAGE = 50;
-  static DEFAULT_STEALTH = false;
 
-  constructor(name, health = Animal.DEFAULT_HEALTH_POINTS) {
+  constructor(name, health = DEFAULT_HEALTH_POINTS) {
     this.name = name;
     this.health = health;
     Animal.alive.push(this);
@@ -14,7 +15,7 @@ class Animal {
 }
 
 class Herbivore extends Animal {
-  constructor(health, name, hidden = Animal.DEFAULT_STEALTH) {
+  constructor(health, name, hidden = DEFAULT_HIDE) {
     super(health, name);
     this.hidden = hidden;
   }
@@ -27,7 +28,7 @@ class Herbivore extends Animal {
 class Carnivore extends Animal {
   bite(targetAnimal) {
     if (targetAnimal instanceof Herbivore && !targetAnimal.hidden) {
-      targetAnimal.health -= Animal.BITE_DAMAGE;
+      targetAnimal.health -= DAMAGE_OF_BITE;
     }
 
     Animal.alive = Animal.alive.filter((aliveAnimal) => aliveAnimal.health > 0);
