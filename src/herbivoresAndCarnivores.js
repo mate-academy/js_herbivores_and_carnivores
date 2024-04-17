@@ -2,8 +2,10 @@
 
 class Animal {
   static alive = [];
+  static MAX_HEALTH = 100;
+  static MIN_HEALTH = 50;
 
-  constructor(name, health = 100) {
+  constructor(name, health = Animal.MAX_HEALTH) {
     this.name = name;
     this.health = health;
 
@@ -21,7 +23,7 @@ class Herbivore extends Animal {
 class Carnivore extends Animal {
   bite(victim) {
     if (victim instanceof Herbivore && !victim.hidden) {
-      victim.health -= 50;
+      victim.health -= Animal.MIN_HEALTH;
 
       if (victim.health <= 0) {
         Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
