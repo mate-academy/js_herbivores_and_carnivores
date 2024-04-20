@@ -4,8 +4,8 @@ class Animal {
   static alive = [];
   
   constructor(name) {
-    this.name = name,
-    this.health = 100
+    this.name = name;
+    this.health = 100;
     Animal.alive.push(this);
   }
 
