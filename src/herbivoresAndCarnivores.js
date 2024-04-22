@@ -5,7 +5,7 @@ class Animal {
 }
 
 class Herbivore extends Animal {
-  // write your code here
+  health: 100,
 }
 
 class Carnivore extends Animal {
