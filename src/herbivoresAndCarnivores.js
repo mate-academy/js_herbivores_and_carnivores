@@ -1,19 +1,36 @@
 'use strict';
 
-class Animal {
-  // write your code here
+/**
+ * @param {Object} state
+ * @param {Object[]} actions
+ *
+ * @return {Object[]}
+ */
+function transformStateWithClones(state, actions) {
+  // write code here
+  let stateCopy = { ...state };
+  const actionsList = [];
+
+  for (const action of actions) {
+    switch (action.type) {
+      case 'addProperties':
+        Object.assign(stateCopy, action.extraData);
+        break;
+
+      case 'removeProperties':
+        for (const key of action.keysToRemove) {
+          delete stateCopy[key];
+        }
+        break;
+
+      case 'clear':
+        stateCopy = {};
+        break;
+    }
+    actionsList.push({ ...stateCopy });
+  }
+
+  return actionsList;
 }
 
-class Herbivore extends Animal {
-  // write your code here
-}
-
-class Carnivore extends Animal {
-  // write your code here
-}
-
-module.exports = {
-  Animal,
-  Herbivore,
-  Carnivore,
-};
+module.exports = transformStateWithClones;
