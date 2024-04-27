@@ -24,11 +24,17 @@ class Carnivore extends Animal {
       animal.health -= 50;
 
       if (animal.health <= 0) {
-        delete Animal.alive[Animal.alive.indexOf(animal)];
+        Animal.alive.splice(Animal.alive.indexOf(animal), 1);
       }
     }
   }
 }
+
+const zebra = new Herbivore('Zebra');
+const tiger = new Carnivore('Tiger');
+
+tiger.bite(zebra);
+tiger.bite(zebra);
 
 module.exports = {
   Animal,
