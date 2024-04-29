@@ -138,7 +138,7 @@ describe('Animal', () => {
 
   it('Two of the same herbivore exist, but only one dies', () => {
     const olderZebra = new Herbivore('Zebra');
-    const yongerZebra =  new Herbivore('Zebra');
+    const yongerZebra = new Herbivore('Zebra');
     const lion = new Carnivore("Lion");
 
     lion.bite(yongerZebra);
