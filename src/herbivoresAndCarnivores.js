@@ -1,6 +1,7 @@
 'use strict';
 
 const DEFAULT_ANIMAL_HEALTH = 100;
+const BITE_DAMAGE = 50;
 
 class Animal {
   static alive = [];
@@ -28,7 +29,7 @@ class Herbivore extends Animal {
 
   receiveBite() {
     if (!this.hidden) {
-      this.health -= 50;
+      this.health -= BITE_DAMAGE;
 
       if (this.health <= 0) {
         Animal.removeDeadAnimals();
