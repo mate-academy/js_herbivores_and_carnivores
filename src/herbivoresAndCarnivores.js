@@ -11,7 +11,6 @@ class Animal {
 
   die() {
     Animal.alive = Animal.alive.filter((animal) => animal !== this);
-    process.stdout.write(this.name + ' has died.\n');
   }
 }
 
