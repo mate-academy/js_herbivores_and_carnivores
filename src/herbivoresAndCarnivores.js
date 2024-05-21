@@ -11,7 +11,13 @@ class Animal {
 
   checkHealth() {
     if (this.health <= 0) {
-      this.die();
+      this.alive = false;
+    }
+
+    const index = Animal.alive.indexOf(this);
+
+    if (index > -1) {
+      Animal.alive.splice(index, 1);
     }
   }
 }
