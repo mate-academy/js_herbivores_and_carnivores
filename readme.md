@@ -53,3 +53,17 @@ Animal.alive === [
   {name: 'Max', health: 100, hidden: true},
 ];
 ```
+Natura dobrze nadaje się do odzwierciedlania zasad programowania obiektowego.
+Wszystkie instancje klasy `Animal` muszą mieć właściwości `health` i `name`.
+Domyślnie zdrowie wynosi „100”.
+
+Utwórz klasę „Herbivore”.
+Roślinożerca ma metodę „ukryj”, która ustawia „ukrytą” właściwość bestii na wartość „true” i pomaga ukryć się przed mięsożercami.
+
+Utwórz klasę „Сarnivore”.
+Carnivore ma metodę „ugryzienia”, która zabiera obiekt roślinożerny i zmniejsza jego zdrowie o „50”. Metoda nie działa, jeśli jest to inny mięsożerca lub roślinożerca aktualnie się ukrywa.
+
+`Herbivore` i `Сarnivore` powinny rozszerzać klasę `Animal`.
+
+Wszystkie żywe zwierzęta powinny znajdować się w statycznej tablicy `Animal.alive`.
+Jeżeli zdrowie zwierzęcia spadnie lub będzie równe `0`, zwierzę umrze i powinno zostać usunięte ze statycznej tablicy `Animals.alive`.

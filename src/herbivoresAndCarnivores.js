@@ -6,18 +6,7 @@ class Animal {
   constructor(name, health = 100) {
     this.name = name;
     this.health = health;
-    this.alive = true;
     Animal.alive.push(this);
-  }
-
-  die() {
-    this.alive = false;
-
-    const index = Animal.alive.indexOf(this);
-
-    if (index > -1) {
-      Animal.alive.splice(index, 1);
-    }
   }
 
   checkHealth() {
