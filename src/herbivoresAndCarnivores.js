@@ -9,11 +9,11 @@ class Animal {
     Animal.alive.push(this);
   }
 
-  checkHealth() {
-    if (this.health <= 0) {
-      this.die();
-    }
-  }
+  // checkHealth() {
+  //   if (this.health <= 0) {
+  //     this.die();
+  //   }
+  // }
 
   die() {
     Animal.alive = Animal.alive.filter((animal) => animal !== this);
@@ -39,7 +39,7 @@ class Carnivore extends Animal {
   bite(prey) {
     if (prey instanceof Herbivore && !prey.hidden) {
       prey.health -= 50;
-      prey.checkHealth();
+      prey.die();
     }
   }
 }
