@@ -11,13 +11,7 @@ class Animal {
 
   checkHealth() {
     if (this.health <= 0) {
-      this.alive = false;
-    }
-
-    const index = Animal.alive.indexOf(this);
-
-    if (index > -1) {
-      Animal.alive.splice(index, 1);
+      Animal.alive = Animal.alive.filter((animal) => animal !== this);
     }
   }
 }
@@ -43,8 +37,6 @@ class Carnivore extends Animal {
       target.health -= 50;
       target.checkHealth();
     }
-
-    Herbivore.health = 100;
   }
 }
 
