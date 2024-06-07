@@ -20,7 +20,10 @@ class Animal {
   }
 
   getInfo() {
-    const info = { name: this.name, health: this.health };
+    const info = {
+      name: this.name,
+      health: this.health,
+    };
 
     if (this.hidden !== undefined) {
       info.hidden = this.hidden;
@@ -42,10 +45,10 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  bite(target) {
-    if (target instanceof Herbivore && !target.hidden) {
-      target.health -= 50;
-      target.checkHealth();
+  bite(prey) {
+    if (prey instanceof Herbivore && !prey.hidden) {
+      prey.health -= 50;
+      prey.checkHealth();
     }
   }
 }
