@@ -9,16 +9,6 @@ class Animal {
     Animal.alive.push(this);
   }
 
-  checkHealth() {
-    if (this.health <= 0) {
-      this.die();
-    }
-  }
-
-  die() {
-    Animal.alive = Animal.alive.filter((animal) => animal !== this);
-  }
-
   getInfo() {
     const info = {
       name: this.name,
@@ -48,7 +38,11 @@ class Carnivore extends Animal {
   bite(prey) {
     if (prey instanceof Herbivore && !prey.hidden) {
       prey.health -= 50;
-      prey.checkHealth();
+
+      // Remove the prey from the Animal.alive array if its health is 0 or less
+      if (prey.health <= 0) {
+        Animal.alive = Animal.alive.filter((animal) => animal !== prey);
+      }
     }
   }
 }
