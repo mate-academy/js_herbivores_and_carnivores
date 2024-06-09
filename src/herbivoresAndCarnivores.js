@@ -9,10 +9,10 @@ class Animal {
     Animal.alive.push(this);
   }
 
-  static get alive() {
+  get alive() {
     return this.alive;
   }
-  static set alive(aliveAnimals) {
+  set alive(aliveAnimals) {
     this.alive = aliveAnimals;
   }
 }
