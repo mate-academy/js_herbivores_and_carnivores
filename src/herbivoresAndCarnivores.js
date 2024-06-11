@@ -1,7 +1,6 @@
 'use strict';
 
 class Animal {
-  // write your code here
   static alive = [];
 
   constructor(name) {
@@ -21,7 +20,6 @@ class Animal {
 }
 
 class Herbivore extends Animal {
-  // write your code here
   constructor(name) {
     super(name);
     this.hidden = false;
@@ -33,8 +31,6 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  // write your code here
-
   bite(target) {
     if (target instanceof Herbivore && !target.hidden) {
       target.health -= 50;
