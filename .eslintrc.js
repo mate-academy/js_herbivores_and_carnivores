@@ -6,5 +6,6 @@ module.exports = {
   rules: {
     'no-proto': 0
   },
+  parser: "babel-eslint",
   plugins: ['jest']
 };
