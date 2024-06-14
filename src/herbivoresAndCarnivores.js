@@ -6,6 +6,10 @@ const DEAD_VALUE = 0;
 
 class Animal {
   static alive = [];
+  static removeDeadAnimals() {
+    Animal.alive = Animal.alive.filter((animal) => animal.health > DEAD_VALUE);
+  }
+
   constructor(name) {
     this.name = name;
     this.health = MAX_HEALTH;
@@ -32,7 +36,7 @@ class Carnivore extends Animal {
       !animal.hidden
     ) {
       animal.health -= BITE_DAMAGE;
-      Animal.alive = Animal.alive.filter((item) => item.health > DEAD_VALUE);
+      Animal.removeDeadAnimals();
     }
   }
 }
