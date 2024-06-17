@@ -9,11 +9,6 @@ class Animal {
     Animal.alive.push(this);
   }
 
-  // died() {
-  //   if (this.health <= 0) {
-  //     delete Animal.alive.this;
-  //   }
-  // }
 }
 
 class Herbivore extends Animal {
