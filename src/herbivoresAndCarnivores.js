@@ -7,12 +7,7 @@ class Animal {
   health = 100;
 
   static removeFromAlive() {
-    const liveAnimals = this.alive.filter(
-      (item) => item.health > this.MIN_HEALTH,
-    );
-
-    this.alive.length = 0;
-    this.alive.push(...liveAnimals);
+    this.alive = this.alive.filter((item) => item.health > this.MIN_HEALTH);
   }
 
   constructor(name) {
