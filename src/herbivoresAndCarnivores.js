@@ -2,12 +2,14 @@
 
 class Animal {
   static alive = [];
-  static MIN_HEALTH = 1;
+  static DEAD_VALUE = 0;
+  static MAX_HEALTH = 100;
+  static BITE_DAMAGE = 50;
 
-  health = 100;
+  health = Animal.MAX_HEALTH;
 
-  static removeFromAlive() {
-    this.alive = this.alive.filter((item) => item.health > this.MIN_HEALTH);
+  static removeDeadAnimals() {
+    this.alive = this.alive.filter((item) => item.health > this.DEAD_VALUE);
   }
 
   constructor(name) {
@@ -39,10 +41,10 @@ class Carnivore extends Animal {
       return;
     }
 
-    animal.health -= 50;
+    animal.health -= Animal.BITE_DAMAGE;
 
-    if (animal.health < Animal.MIN_HEALTH) {
-      Animal.removeFromAlive();
+    if (animal.health <= Animal.DEAD_VALUE) {
+      Animal.removeDeadAnimals();
     }
   }
 }
