@@ -4,8 +4,7 @@ class Animal {
   static alive = [];
 
   constructor(name, health = 100) {
-    this.name = name;
-    this.health = health;
+    Object.assign(this, { name, health });
     Animal.alive.push(this);
   }
 
@@ -25,10 +24,8 @@ class Herbivore extends Animal {
 class Carnivore extends Animal {
   bite(animal) {
     if (animal instanceof Herbivore && !animal.hidden) {
-      if (!(animal instanceof Carnivore)) {
-        animal.health -= 50;
-        Animal.removedAnimals();
-      }
+      animal.health -= 50;
+      Animal.removedAnimals();
     }
   }
 }
