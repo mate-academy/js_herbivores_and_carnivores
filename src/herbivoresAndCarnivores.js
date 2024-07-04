@@ -12,7 +12,7 @@ class Animal {
   die() {
     Animal.alive = Animal.alive.filter((animal) => animal !== this);
   }
-  static checkAlive() {
+  static removeDeadAnimals() {
     Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
   }
 }
@@ -40,7 +40,11 @@ class Carnivore extends Animal {
       if (animal.health <= 0) {
         animal.die();
       }
-      Animal.checkAlive();
+      Animal.removeDeadAnimals();
+    }
+
+    if (animal instanceof Carnivore) {
+      return false;
     }
   }
 }
