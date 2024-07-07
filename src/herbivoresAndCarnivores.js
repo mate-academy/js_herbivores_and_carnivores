@@ -3,7 +3,7 @@
 class Animal {
   static alive = [];
 
-  static aliveAnimals() {
+  static removeDead() {
     Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
 
     return Animal.alive;
@@ -36,7 +36,7 @@ class Carnivore extends Animal {
   bite(victim) {
     if (victim instanceof Herbivore && !victim.hidden) {
       victim.health -= 50;
-      Animal.aliveAnimals();
+      Animal.removeDead();
     }
   }
 }
