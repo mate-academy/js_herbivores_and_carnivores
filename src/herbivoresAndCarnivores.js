@@ -11,6 +11,7 @@ class Animal {
 
   decreaseHealth(amount) {
     this.health -= amount;
+
     if (this.health <= 0) {
       this.health = 0;
       this.remove();
@@ -19,6 +20,7 @@ class Animal {
 
   remove() {
     const index = Animal.alive.indexOf(this);
+
     Animal.alive.splice(index, 1);
   }
 }
