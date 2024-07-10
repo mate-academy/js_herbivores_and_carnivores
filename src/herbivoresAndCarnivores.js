@@ -1,12 +1,12 @@
 'use strict';
 
 class Animal {
-  static alive = [];
+  static _alive = [];
 
   constructor(name) {
     this.name = name;
     this.health = 100;
-    Animal.alive.push(this);
+    Animal._alive.push(this);
   }
 
   static get alive() {
