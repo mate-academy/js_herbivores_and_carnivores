@@ -10,11 +10,7 @@ class Animal {
   }
 
   die() {
-    const index = Animal.alive.indexOf(this);
-
-    if (index > -1) {
-      Animal.alive.splice(index, 1);
-    }
+    Animal.alive = Animal.alive.filter((animal) => animal !== this);
   }
 
   checkHealth() {
@@ -28,7 +24,6 @@ class Herbivore extends Animal {
   constructor(name) {
     super(name);
     this.hidden = false;
-    this.health = 100;
   }
 
   hide() {
@@ -38,7 +33,11 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(animal) {
-    if (!animal.hidden && animal instanceof Herbivore) {
+    if (
+      !animal.hidden &&
+      animal instanceof Herbivore &&
+      !(animal instanceof Carnivore)
+    ) {
       animal.health -= 50;
       animal.checkHealth();
     }
