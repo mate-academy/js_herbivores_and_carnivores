@@ -18,6 +18,7 @@ class Animal {
   takeDamage(damage) {
     this.health -= damage;
 
+    // comment
     if (this.health <= 0) {
       const index = Animal.alive.findIndex((animal) => animal === this);
 
