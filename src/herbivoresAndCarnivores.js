@@ -10,11 +10,7 @@ class Animal {
   }
 
   die() {
-    const index = Animal.alive.indexOf(this);
-
-    if (index > -1) {
-      Animal.alive.splice(index, 1);
-    }
+    Animal.alive.splice(Animal.alive.indexOf(this), 1);
   }
 
   takeDamage() {
