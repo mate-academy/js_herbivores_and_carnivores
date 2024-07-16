@@ -9,6 +9,10 @@ class Animal {
 
     Animal.alive.push(this);
   }
+
+  static removeDead() {
+    Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
+  }
 }
 
 class Herbivore extends Animal {
@@ -34,9 +38,7 @@ class Carnivore extends Animal {
         animal.health -= 50;
 
         if (animal.health <= 0) {
-          const died = Animal.alive.indexOf(animal);
-
-          Animal.alive.splice(died, 1);
+          Animal.removeDead();
         }
       }
     }
