@@ -3,48 +3,64 @@
 class Animal {
   static alive = [];
 
-  constructor(name, health = 100) {
+  health;
+  name;
+
+  constructor(name = '', health = 100) {
     this.name = name;
     this.health = health;
-    Animal.alive.push(this);
+
+    if (this.health > 0) {
+      Animal.alive.push(this);
+    }
+  }
+
+  takeDamage(damage) {
+    this.health -= damage;
+
+    if (this.health <= 0) {
+      const index = Animal.alive.findIndex((animal) => animal === this);
+
+      Animal.alive.splice(index, 1);
+    }
   }
 }
 
 class Herbivore extends Animal {
-  hidden = false;
+  hidden;
 
-  constructor(name) {
-    super(name);
+  constructor(name, health, hidden = false) {
+    super(name, health);
+
+    this.hidden = hidden;
   }
 
   hide() {
     this.hidden = true;
   }
+
+  takeDamage(damage) {
+    if (!this.hidden) {
+      super.takeDamage(damage);
+    }
+  }
 }
 
 class Carnivore extends Animal {
-  constructor(name) {
-    super(name);
+  biteStrength;
+
+  constructor(name, health, biteStrength = 50) {
+    super(name, health);
+
+    this.biteStrength = biteStrength;
   }
 
-  bite(victim) {
-    if (victim.hidden === true) {
+  bite(target) {
+    if (!(target instanceof Herbivore)) {
       return;
     }
 
-    victim.health -= 50;
-
-    const victimIndex = Animal.alive.indexOf(victim);
-
-    if (victim.health === 50) {
-      const bitedVictim = Animal.alive[victimIndex];
-
-      bitedVictim.health = 50;
-    }
-
-    if (victim.health === 0) {
-      Animal.alive.splice(victimIndex, 1);
-    }
+    target.takeDamage(this.biteStrength);
   }
 }
 
