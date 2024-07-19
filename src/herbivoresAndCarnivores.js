@@ -1,12 +1,15 @@
 'use strict';
 
+const NAME = '';
+const HEALTH = 100;
+
 class Animal {
   static alive = [];
 
   health;
   name;
 
-  constructor(name = '', health = 100) {
+  constructor(name = NAME, health = HEALTH) {
     this.name = name;
     this.health = health;
 
@@ -19,17 +22,17 @@ class Animal {
     this.health -= damage;
 
     if (this.health <= 0) {
-      const index = Animal.alive.findIndex((animal) => animal === this);
-
-      Animal.alive.splice(index, 1);
+      Animal.alive = Animal.alive.filter((animal) => animal !== this);
     }
   }
 }
 
+const HIDDEN = false;
+
 class Herbivore extends Animal {
   hidden;
 
-  constructor(name, health, hidden = false) {
+  constructor(name, health, hidden = HIDDEN) {
     super(name, health);
 
     this.hidden = hidden;
@@ -46,10 +49,12 @@ class Herbivore extends Animal {
   }
 }
 
+const BITE_STRENGTH = 50;
+
 class Carnivore extends Animal {
   biteStrength;
 
-  constructor(name, health, biteStrength = 50) {
+  constructor(name, health, biteStrength = BITE_STRENGTH) {
     super(name, health);
 
     this.biteStrength = biteStrength;
