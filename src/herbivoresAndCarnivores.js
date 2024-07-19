@@ -3,6 +3,7 @@
 class Animal {
   static alive = [];
   static INITIAL_HEALTH = 100;
+  static ZERO_HEALTH = 0;
 
   constructor(name) {
     this.name = name;
@@ -11,7 +12,9 @@ class Animal {
   }
 
   static cleanUp() {
-    Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
+    Animal.alive = Animal.alive.filter(
+      (animal) => animal.health > Animal.ZERO_HEALTH,
+    );
   }
 }
 
@@ -30,10 +33,10 @@ class Carnivore extends Animal {
   static BITE_DAMAGE = 50;
 
   bite(animal) {
-    if (animal instanceof Herbivore && !animal.hidden && animal.health > 0) {
+    if (animal instanceof Herbivore && !animal.hidden) {
       animal.health -= Carnivore.BITE_DAMAGE;
 
-      if (animal.health <= 0) {
+      if (animal.health <= Animal.ZERO_HEALTH) {
         Animal.cleanUp();
       }
     }
