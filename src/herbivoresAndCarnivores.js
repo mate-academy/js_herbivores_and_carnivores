@@ -2,10 +2,11 @@
 
 class Animal {
   static alive = [];
+  static INITIAL_HEALTH = 100;
 
   constructor(name) {
     this.name = name;
-    this.health = 100;
+    this.health = Animal.INITIAL_HEALTH;
     Animal.alive.push(this);
   }
 
@@ -26,9 +27,11 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
+  static BITE_DAMAGE = 50;
+
   bite(animal) {
     if (animal instanceof Herbivore && !animal.hidden && animal.health > 0) {
-      animal.health -= 50;
+      animal.health -= Carnivore.BITE_DAMAGE;
 
       if (animal.health <= 0) {
         Animal.cleanUp();
