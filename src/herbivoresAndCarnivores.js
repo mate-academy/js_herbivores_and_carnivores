@@ -1,71 +1,45 @@
 'use strict';
 
-const NAME = '';
-const HEALTH = 100;
-
 class Animal {
-  static alive = [];
-
-  health;
-  name;
-
-  constructor(name = NAME, health = HEALTH) {
-    this.name = name;
-    this.health = health;
-
-    if (this.health > 0) {
-      Animal.alive.push(this);
-    }
+  static nature() {
+    this.alive = this.alive.filter((dead) =>
+      dead.health !== 0);
   }
-
-  takeDamage(damage) {
-    this.health -= damage;
-
-    if (this.health <= 0) {
-      Animal.alive = Animal.alive.filter((animal) => animal !== this);
-    }
+  constructor(name, health = 100) {
+    this.health = health;
+    this.name = name;
   }
 }
-
-const HIDDEN = false;
+Animal.alive = [];
 
 class Herbivore extends Animal {
-  hidden;
-
-  constructor(name, health, hidden = HIDDEN) {
+  // write your code here
+  constructor(name, health = 100, toHide = false) {
     super(name, health);
+    this.hidden = toHide;
 
-    this.hidden = hidden;
+    Animal.alive.push(this);
   }
-
   hide() {
     this.hidden = true;
   }
-
-  takeDamage(damage) {
-    if (!this.hidden) {
-      super.takeDamage(damage);
-    }
-  }
 }
 
-const BITE_STRENGTH = 50;
-
 class Carnivore extends Animal {
-  biteStrength;
-
-  constructor(name, health, biteStrength = BITE_STRENGTH) {
+  // write your code here
+  constructor(name, health = 100) {
     super(name, health);
 
-    this.biteStrength = biteStrength;
+    Animal.alive.push(this);
   }
+  bite(mammal) {
+    if (mammal.hidden === false) {
+      mammal.health -= 50;
 
-  bite(target) {
-    if (!(target instanceof Herbivore)) {
-      return;
+      if (mammal.health === 0) {
+        Animal.nature();
+      }
     }
-
-    target.takeDamage(this.biteStrength);
   }
 }
 
