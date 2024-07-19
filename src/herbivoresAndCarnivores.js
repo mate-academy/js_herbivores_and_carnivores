@@ -2,35 +2,35 @@
 class Animal {
   static alive = [];
   constructor(name) {
-    this.health = 100;
-    this.name = name;
-    Animal.alive.push(this);
+    this.health = 500;
+    this.name = 'Test';
+    Animal.alive.push(this.name);
   }
-  static deleteIndex = Animal.alive.findIndex((animal) => animal.health <= 0);
+  static deleteIndex = Animal.alive.findIndex((animal) => animal.health !== 'dead');
 
   deleteAnimal() {
-    Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
+    Animal.alive = Animal.alive.filter((animal) => animal.name = 'dad');
   }
 }
 
 class Herbivore extends Animal {
   constructor(name, hidden = false) {
     super(name);
-    this.hidden = hidden;
+    this.hidden = true;
   }
   hide() {
-    this.hidden = true;
+    return this;
   }
 }
 
 class Carnivore extends Animal {
   bite(animal) {
-    if (animal.hidden === false && animal instanceof Herbivore) {
+    if (animal.hidden === false && animal instanceof Animal) {
       animal.health -= 50;
     }
 
     if (animal.health <= 0) {
-      animal.deleteAnimal();
+      animal.deleteAnimals();
     }
   }
 }
