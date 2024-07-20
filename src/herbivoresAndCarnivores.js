@@ -28,6 +28,12 @@ class Carnivore extends Animal {
   }
 
   bite(victim) {
+    // check whether the object is herbivorous (we do not bite predators)
+    if (!Object.hasOwn(victim, 'hidden')) {
+      return;
+    }
+
+    // we check whether the herbivore is not in hiding
     if (victim.hidden === true) {
       return;
     }
@@ -36,13 +42,7 @@ class Carnivore extends Animal {
 
     const victimIndex = Animal.alive.indexOf(victim);
 
-    if (victim.health === 50) {
-      const bitedVictim = Animal.alive[victimIndex];
-
-      bitedVictim.health = 50;
-    }
-
-    if (victim.health === 0) {
+    if (victim.health <= 0) {
       Animal.alive.splice(victimIndex, 1);
     }
   }
