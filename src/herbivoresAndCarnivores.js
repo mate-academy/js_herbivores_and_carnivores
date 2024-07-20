@@ -11,10 +11,11 @@ class Animal {
 }
 
 class Herbivore extends Animal {
-  hidden = false;
-
   constructor(name) {
+
     super(name);
+
+    this.hidden = false;
   }
 
   hide() {
@@ -24,25 +25,31 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   constructor(name) {
+
     super(name);
+
   }
 
   bite(victim) {
-    // check whether the object is herbivorous (we do not bite predators)
-    if (!Object.hasOwn(victim, 'hidden')) {
+    const HALF_HEALTH = 50;
+
+    const NO_HEALTH = 0;
+
+    // don't bite other Carnivore
+    // don't bite the Herbivore in hiding
+    // don't bite the dead Herbivore
+
+    if (victim.hidden
+      || !Object.hasOwn(victim, 'hidden')
+      || victim.health === 0) {
       return;
     }
 
-    // we check whether the herbivore is not in hiding
-    if (victim.hidden === true) {
-      return;
-    }
-
-    victim.health -= 50;
+    victim.health -= HALF_HEALTH;
 
     const victimIndex = Animal.alive.indexOf(victim);
 
-    if (victim.health <= 0) {
+    if (victim.health <= NO_HEALTH) {
       Animal.alive.splice(victimIndex, 1);
     }
   }
