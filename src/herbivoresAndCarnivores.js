@@ -2,6 +2,7 @@
 
 const INITIAL_HEALTH = 100;
 const BITE_DAMAGE = 50;
+const INITIAL_HIDDEN_STATE = false;
 
 class Animal {
   static alive = [];
@@ -17,8 +18,8 @@ class Animal {
 }
 
 class Herbivore extends Animal {
-  constructor(name, hidden = false) {
-    super(name);
+  constructor(name, health = INITIAL_HEALTH, hidden = INITIAL_HIDDEN_STATE) {
+    super(name, health);
     this.hidden = hidden;
   }
 
