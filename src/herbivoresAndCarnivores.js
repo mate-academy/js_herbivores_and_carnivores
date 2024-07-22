@@ -1,10 +1,6 @@
 'use strict';
 
 class Animal {
-  static nature() {
-    this.alive = this.alive.filter((dead) =>
-      dead.health !== 0);
-  }
   constructor(name) {
     this.health = 100;
     this.name = name;
@@ -16,7 +12,7 @@ class Animal {
     this.health -= healthPoints;
 
     if (this.health <= 0) {
-      Animal.alive.filter((animal) => animal.health <= 0);
+      Animal.alive = Animal.alive.filter((animal) => animal.health <= 0);
     }
   }
 }
