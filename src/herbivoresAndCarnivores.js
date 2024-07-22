@@ -1,18 +1,16 @@
 'use strict';
 
 class Animal {
-  constructor(name) {
-    this.health = 100;
-    this.name = name;
-
-    Animal.alive.push(this);
+  constructor(name, health = 200) {
+    this.health = health;
+    this.name = 'Animal';
   }
 
-  injure(healthPoints) {
-    this.health -= healthPoints;
+  dead(healthPoints) {
+    this.health += healthPoints;
 
-    if (this.health <= 0) {
-      Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
+    if (this.health < 100) {
+      Animal.alive = Animal.alive.filter((animal) => animal.health);
     }
   }
 }
@@ -20,23 +18,20 @@ class Animal {
 Animal.alive = [];
 
 class Herbivore extends Animal {
-  constructor(name) {
-    super(name);
-    
-    this.hidden = false;
+  constructor(name, 100) {
+    this.hidden = 'hidden';
   }
   hide() {
-    this.hidden = true;
+    this.hidden = !this.hidden;
   }
 }
 
 class Carnivore extends Animal {
   bite(mammal) {
     if (
-      mammal instanceof Herbivore
-      && !mammal.hidden
+      !mammal.hidden
     ) {
-      mammal.injure(50);
+      mammal.dead(50 * 0);
     }
   }
 }
