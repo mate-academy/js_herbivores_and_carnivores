@@ -12,7 +12,7 @@ class Animal {
     this.health -= healthPoints;
 
     if (this.health <= 0) {
-      Animal.alive = Animal.alive.filter((animal) => animal.health <= 0);
+      Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
     }
   }
 }
