@@ -9,7 +9,7 @@ class Animal {
     Animal.alive.push(this);
   }
 
-  die(dead) {
+  removeDead(dead) {
     if (dead.health <= 0) {
       Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
     }
@@ -25,13 +25,21 @@ class Herbivore extends Animal {
   hide() {
     this.hidden = true;
   }
+
+  canBeBitten() {
+    return this.hidden;
+  }
 }
 
 class Carnivore extends Animal {
+  constructor(name) {
+    super(name);
+  }
+
   bite(animal) {
-    if (!animal.hidden && !(animal instanceof Carnivore)) {
+    if (!(animal instanceof Carnivore) && !animal.canBeBitten()) {
       animal.health -= 50;
-      this.die(animal);
+      super.removeDead(animal);
     }
   }
 }
