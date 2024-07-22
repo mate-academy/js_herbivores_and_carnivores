@@ -1,5 +1,9 @@
 'use strict';
 
+const HALF_HEALTH = 50;
+
+const NO_HEALTH = 0;
+
 class Animal {
   static alive = [];
 
@@ -24,21 +28,7 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  constructor(name) {
-
-    super(name);
-
-  }
-
   bite(victim) {
-    const HALF_HEALTH = 50;
-
-    const NO_HEALTH = 0;
-
-    // don't bite other Carnivore
-    // don't bite the Herbivore in hiding
-    // don't bite the dead Herbivore
-
     if (victim.hidden
       || !Object.hasOwn(victim, 'hidden')
       || victim.health === 0) {
