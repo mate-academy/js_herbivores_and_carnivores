@@ -6,17 +6,21 @@ class Animal {
     this.name = name;
   }
 
+  get isAlive() {
+    return this.health > 0;
+  }
+
   applyDamage(healthPoints) {
     this.health -= healthPoints;
 
-    if (this.health < 0) {
-      Animal.removeDead();
+    if (this.health <= 0) {
+      Animal.cleanupDeadAnimals();
     }
   }
 }
 
 Animal.alive = [];
-Animal.removeDead = () => {
+Animal.cleanupDeadAnimals = () => {
   Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
 };
 
@@ -36,6 +40,7 @@ class Carnivore extends Animal {
     if (
       animal instanceof Herbivore
       && !animal.hidden
+      && animal.isAlive
     ) {
       animal.applyDamage(50);
     }
