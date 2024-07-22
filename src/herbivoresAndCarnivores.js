@@ -4,6 +4,8 @@ class Animal {
   constructor(name) {
     this.health = 100;
     this.name = name;
+
+    Animal.alive.push(this);
   }
 
   get isAlive() {
