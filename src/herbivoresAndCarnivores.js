@@ -1,6 +1,7 @@
 'use strict';
 
 const defoultHealth = 100;
+const biteCount = 50;
 
 class Animal {
   constructor(name, health = defoultHealth) {
@@ -29,7 +30,7 @@ class Herbivore extends Animal {
 class Carnivore extends Animal {
   bite(animal) {
     if (animal instanceof Herbivore && animal.hidden === false) {
-      animal.health -= 50;
+      animal.health -= biteCount;
 
       if (animal.health <= 0) {
         Animal.removeAnimal();
