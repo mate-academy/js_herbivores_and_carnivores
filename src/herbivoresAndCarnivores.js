@@ -33,7 +33,6 @@ class Carnivore extends Animal {
       target.health -= 50;
 
       target.checkHealth();
-    } else {
     }
   }
 }
