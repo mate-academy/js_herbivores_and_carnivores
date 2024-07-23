@@ -9,7 +9,7 @@ class Animal {
     Animal.alive.push(this);
   }
 
-  receiveDamade(damage) {
+  receiveDamage(damage) {
     this.health -= damage;
 
     if (this.health <= 0) {
@@ -32,7 +32,7 @@ class Herbivore extends Animal {
 class Carnivore extends Animal {
   bite(animal) {
     if (!animal.hidden && !(animal instanceof Carnivore)) {
-      animal.receiveDamade(50);
+      animal.receiveDamage(50);
     }
   }
 }
