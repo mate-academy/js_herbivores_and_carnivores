@@ -2,17 +2,24 @@
 
 class Animal {
   static alive = [];
-  health = 100;
   constructor(name) {
+    this.health = 100;
     this.name = name;
+
+    Animal.alive.push(this);
+  }
+
+  die(dead) {
+    if (dead.health <= 0) {
+      Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
+    }
   }
 }
 
 class Herbivore extends Animal {
-  hidden = false;
   constructor(name) {
     super(name);
-    Animal.alive.push(this);
+    this.hidden = false;
   }
 
   hide() {
@@ -21,18 +28,10 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  constructor(name) {
-    super(name);
-    Animal.alive.push(this);
-  }
-
-  bite(herbivore) {
-    if (herbivore.hidden === false && !(herbivore instanceof Carnivore)) {
-      herbivore.health -= 50;
-    }
-
-    if (herbivore.health === 0) {
-      Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
+  bite(animal) {
+    if (!animal.hidden && !(animal instanceof Carnivore)) {
+      animal.health -= 50;
+      this.die(animal);
     }
   }
 }
