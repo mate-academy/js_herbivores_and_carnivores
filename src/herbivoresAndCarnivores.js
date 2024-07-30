@@ -1,11 +1,12 @@
 'use strict';
 
-'use strict';
+const defaultHealth = 100;
+const decreaseAfterBite = 50;
 
 class Animal {
   constructor(name) {
     this.name = name;
-    this.health = 100;
+    this.health = defaultHealth;
     this.hidden = false;
 
     Animal.alive.push(this);
@@ -29,7 +30,6 @@ class Animal {
 class Herbivore extends Animal {
   constructor(name) {
     super(name);
-    this.health = 100;
     this.hidden = false;
   }
 
@@ -41,13 +41,12 @@ class Herbivore extends Animal {
 class Carnivore extends Animal {
   constructor(name) {
     super(name);
-    this.health = 100;
     this.hidden = false;
   }
 
   bite(target) {
     if (target instanceof Herbivore && !target.hidden) {
-      target.decreaseHealth(50);
+      target.decreaseHealth(decreaseAfterBite);
     }
   }
 }
