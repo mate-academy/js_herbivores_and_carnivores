@@ -5,6 +5,7 @@ class Animal {
     this.name = name;
     this.health = health;
     Animal.alive.push(this);
+    this.hidden = false;
   }
 }
 
