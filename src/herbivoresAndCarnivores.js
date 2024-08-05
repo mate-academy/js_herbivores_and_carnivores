@@ -5,7 +5,7 @@ const DAMAGE_FROM_CARNIVORE = 50;
 class Animal {
   static alive = [];
 
-  constructor(health = 100, name) {
+  constructor(name, health = 100) {
     this.health = health;
     this.name = name;
 
@@ -34,12 +34,12 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(target) {
-    if (target.hidden === false) {
+    if (target instanceof Herbivore && !target.hidden) {
       target.health -= DAMAGE_FROM_CARNIVORE;
-    }
 
-    if (target.health <= 0) {
-      target.die();
+      if (target.health <= 0) {
+        target.die();
+      }
     }
   }
 }
