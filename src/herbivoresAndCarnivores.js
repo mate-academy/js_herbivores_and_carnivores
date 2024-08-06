@@ -15,14 +15,11 @@ class Herbivore extends Animal {
   constructor(name, health = 100) {
     super(name, health);
 
-    this.name = name;
-    this.health = health;
-
     Animal.alive.push(this);
   }
 
   hide() {
-    return (this.hidden = true);
+    this.hidden = true;
   }
 }
 
@@ -43,16 +40,8 @@ class Carnivore extends Animal {
 
     animal.health -= 50;
 
-    if (animal.health === 0) {
-      const AnimalAliveNewList = [];
-
-      Animal.alive.map((item) => {
-        if (item.health > 0) {
-          AnimalAliveNewList.push(item);
-        }
-      });
-
-      Animal.alive = AnimalAliveNewList;
+    if (animal.health <= 0) {
+      Animal.alive = Animal.alive.filter((beast) => beast.health > 0);
     }
   }
 }
