@@ -10,11 +10,11 @@ class Animal {
 }
 
 class Herbivore extends Animal {
-  constructor() {
-    super();
+  constructor(name) {
+    super(name);
     this.hidden = false;
 
-    Herbivore.alive.push(this);
+    Animal.alive.push(this);
   }
 
   hide() {
@@ -23,20 +23,16 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  constructor() {
-    super();
+  constructor(name) {
+    super(name);
 
-    Carnivore.alive.push(this);
+    Animal.alive.push(this);
   }
   bite(animal) {
     if (animal instanceof Herbivore && animal.hidden === false) {
       animal.health -= 50;
 
-      if (animal.health === 0) {
-        const index = Animal.alive.indexOf(animal);
-
-        Animal.alive.splice(index, 1);
-      }
+      Animal.alive = Animal.alive.filter((animalName) => animalName.health > 0);
     }
   }
 }
