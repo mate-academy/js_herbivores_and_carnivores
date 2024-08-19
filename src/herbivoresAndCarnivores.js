@@ -25,7 +25,7 @@ class Animal {
 }
 
 class Herbivore extends Animal {
-  #hidden = false;
+  hidden = false;
 
   // eslint-disable-next-line no-useless-constructor
   constructor(name, health) {
@@ -33,11 +33,11 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    this.#hidden = !this.#hidden;
+    this.hidden = !this.hidden;
   }
 
   isHidden() {
-    return this.#hidden;
+    return this.hidden;
   }
 }
 
