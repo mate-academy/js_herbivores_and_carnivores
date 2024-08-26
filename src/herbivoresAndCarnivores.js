@@ -18,17 +18,12 @@ class Animal {
   removeFromAlive() {
     Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
   }
-
-  bite(damage) {
-    this.health -= damage;
-    this.checkHealth();
-  }
 }
 
 class Herbivore extends Animal {
-  constructor(name, health, hidden) {
-    super(name, health);
-    this.hidden = hidden || false;
+  constructor(name) {
+    super(name);
+    this.hidden = false;
   }
 
   hide() {
@@ -40,7 +35,7 @@ class Carnivore extends Animal {
   bite(herbivore) {
     if (herbivore instanceof Herbivore && !herbivore.hidden) {
       herbivore.health -= 50;
-      herbivore.checkHealth();
+      Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
     }
   }
 }
