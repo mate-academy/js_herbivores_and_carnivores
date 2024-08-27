@@ -1,5 +1,4 @@
 'use strict';
-
 class Animal {
   static alive = [];
   health = 100;
