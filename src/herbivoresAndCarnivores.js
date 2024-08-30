@@ -23,13 +23,7 @@ class Herbivore extends Animal {
   updateHealth(health) {
     this.health += health;
 
-    if (this.health <= 0) {
-      this.die();
-    }
-  }
-
-  die() {
-    Animal.alive.splice(Animal.alive.indexOf(this), 1);
+    Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
   }
 }
 
