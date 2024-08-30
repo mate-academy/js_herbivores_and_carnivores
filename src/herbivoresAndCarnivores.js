@@ -31,7 +31,7 @@ class Carnivore extends Animal {
       herbivore.health -= 50;
     }
 
-    if (herbivore.health === 0) {
+    if (herbivore.health <= 0) {
       herbivore.die();
     }
   }
