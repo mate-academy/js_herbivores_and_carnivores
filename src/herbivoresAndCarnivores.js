@@ -4,22 +4,22 @@ class Animal {
   // write your code here
   static alive = [];
 
+  constructor(name, health) {
+    this.name = name;
+    this.health = health || 100;
+  }
+
   static removeDead() {
     const aliveAnimals = this.alive.filter((animal) => animal.health > 0);
 
     this.alive = [...aliveAnimals];
   }
-
-  constructor(name, health) {
-    this.name = name;
-    this.health = health || 100;
-  }
 }
 
 class Herbivore extends Animal {
   // write your code here
-  constructor(health, name) {
-    super(health, name);
+  constructor(name, health) {
+    super(name, health);
     this.hidden = false;
     Animal.alive.push(this);
   }
@@ -31,8 +31,8 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   // write your code here
-  constructor(health, name) {
-    super(health, name);
+  constructor(name, health) {
+    super(name, health);
     Animal.alive.push(this);
   }
 
