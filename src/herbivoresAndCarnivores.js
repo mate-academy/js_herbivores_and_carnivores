@@ -22,17 +22,14 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  constructor(name, health = 100, hidden) {
-    super(name, health, hidden);
+  constructor(name, health = 100) {
+    super(name, health);
   }
-  bite(grass) {
-    if (!grass.hidden && grass instanceof Herbivore) {
-      grass.health -= 50;
-
-      if (grass.health <= 0) {
-        Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
-      }
+  bite(herbivore) {
+    if (!herbivore.hidden && herbivore instanceof Herbivore) {
+      herbivore.health -= 50;
     }
+    Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
   }
 }
 
@@ -41,4 +38,3 @@ module.exports = {
   Herbivore,
   Carnivore,
 };
-
