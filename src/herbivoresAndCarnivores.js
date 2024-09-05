@@ -17,16 +17,15 @@ class Animal {
     return Animal.alive;
   }
 
-  static removeAlive(animal) {
-    Animal.alive = Animal.alive.filter((item) => item !== animal);
+  static cleanUp() {
+    Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
   }
 }
 
 class Herbivore extends Animal {
   // write your code here
   constructor(name, health = 100, hidden = false) {
-    super(name);
-    this.health = health;
+    super(name, health);
     this.hidden = hidden;
   }
 
@@ -38,17 +37,13 @@ class Herbivore extends Animal {
 class Carnivore extends Animal {
   // write your code here
   constructor(name, health = 100) {
-    super(name);
-    this.health = health;
+    super(name, health);
   }
 
   bite(animal) {
     if (animal instanceof Herbivore && !animal.hidden) {
       animal.health -= 50;
-    }
-
-    if (animal.health <= 0) {
-      Animal.removeAlive(animal);
+      Animal.cleanUp();
     }
   }
 }
