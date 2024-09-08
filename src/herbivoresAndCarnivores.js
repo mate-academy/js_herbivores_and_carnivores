@@ -1,21 +1,7 @@
 'use strict';
 
 class Animal {
-  static alive = [];
-
-  constructor(name, health = 100) {
-    this.health = health;
-    this.name = name;
-    Animal.alive.push(this);
-  }
-
-  die() {
-    const index = Animal.alive.indexOf(this);
-
-    if (index > -1) {
-      Animal.alive.splice(index, 1);
-    }
-  }
+  // write your code here
 }
 
 class Herbivore extends Animal {
