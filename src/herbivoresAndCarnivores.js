@@ -10,17 +10,15 @@ class Animal {
   }
 
   animalHealthCheck() {
-    if (this.health <= 0) {
-      Animal.alive = Animal.alive.filter(
-        (curretAnimal) => curretAnimal !== this,
-      );
-    }
+    Animal.alive = Animal.alive.filter(
+      (curretAnimal) => curretAnimal.health > 0,
+    );
   }
 }
 
 class Herbivore extends Animal {
-  constructor(name, health, hidden = false) {
-    super(name, health);
+  constructor(name, hidden = false) {
+    super(name);
     this.hidden = hidden;
   }
 
