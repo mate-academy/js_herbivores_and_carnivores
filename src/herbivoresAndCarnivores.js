@@ -1,15 +1,40 @@
 'use strict';
 
 class Animal {
-  // write your code here
+  // linter does not allow because of Node.js and eslint versions;
+  // static alive = [];
+
+  constructor(name) {
+    this.name = name;
+    this.health = 100;
+    Animal.alive.push(this);
+  }
 }
 
+Animal.alive = [];
+
 class Herbivore extends Animal {
-  // write your code here
+  constructor(name) {
+    super(name);
+    this.hidden = false;
+    this.alive += `hidden: ${this.hidden}`;
+  }
+
+  hide() {
+    this.hidden = true;
+  }
 }
 
 class Carnivore extends Animal {
-  // write your code here
+  bite(name) {
+    if (!name.hidden && name instanceof Herbivore) {
+      name.health -= 50;
+    }
+
+    if (name.health === 0) {
+      Animal.alive = Animal.alive.filter(anim => anim.name !== name.name);
+    }
+  }
 }
 
 module.exports = {
