@@ -2,7 +2,7 @@
 
 class Animal {
   // write your code here
-}
+}ertert
 
 class Herbivore extends Animal {
   // write your code here
