@@ -11,14 +11,6 @@ class Animal {
     this.health = DEFAULT_HEALTH;
     Animal.alive.push(this);
   }
-
-  demage(amout = DEFAULT_DEMAGE) {
-    this.health -= amout;
-
-    if (this.health <= 0) {
-      Animal.alive = Animal.alive.filter((item) => item !== this);
-    }
-  }
 }
 
 class Herbivore extends Animal {
@@ -30,15 +22,21 @@ class Herbivore extends Animal {
   hide() {
     this.hidden = true;
   }
+
+  demage(amount = DEFAULT_DEMAGE) {
+    this.health -= amount;
+
+    if (this.health <= 0) {
+      Animal.alive = Animal.alive.filter((item) => item.health > 0);
+    }
+  }
 }
 
 class Carnivore extends Animal {
   bite(victim) {
-    if (victim instanceof Carnivore || victim.hidden) {
-      return;
+    if (victim instanceof Herbivore && !victim.hidden) {
+      victim.demage(DEFAULT_DEMAGE);
     }
-
-    victim.demage(DEFAULT_DEMAGE);
   }
 }
 
