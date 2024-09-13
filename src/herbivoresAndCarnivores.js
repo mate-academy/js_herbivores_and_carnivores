@@ -13,9 +13,7 @@ class Animal {
     this.health -= amout;
 
     if (this.health <= 0) {
-      const indexOfThis = Animal.alive.indexOf(this);
-
-      Animal.alive.splice(indexOfThis, 1);
+      Animal.alive = Animal.alive.filter((item) => item !== this);
     }
   }
 }
