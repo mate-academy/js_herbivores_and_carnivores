@@ -2,13 +2,6 @@
 
 class Animal {
   static alive = [];
-  static removeAnimal(animalToRemove) {
-    const animalIndex = Animal.alive.findIndex(
-      (animal) => animal === animalToRemove,
-    );
-
-    Animal.alive.splice(animalIndex, 1);
-  }
   health = 100;
   constructor(name) {
     this.name = name;
@@ -29,7 +22,7 @@ class Carnivore extends Animal {
       target.health -= 50;
 
       if (target.health <= 0) {
-        Animal.removeAnimal(target);
+        Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
       }
     }
   }
