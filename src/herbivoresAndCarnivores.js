@@ -1,8 +1,11 @@
 'use strict';
 
+const HEALTH = 100;
+const BITE = 50;
+
 class Animal {
   static alive = [];
-  constructor(name, health = 100) {
+  constructor(name, health = HEALTH) {
     this.health = health;
     this.name = name;
 
@@ -15,7 +18,7 @@ class Animal {
 }
 
 class Herbivore extends Animal {
-  constructor(name, health = 100) {
+  constructor(name, health = HEALTH) {
     super(name, health);
     this.hidden = false;
   }
@@ -28,7 +31,7 @@ class Herbivore extends Animal {
 class Carnivore extends Animal {
   bite(animal) {
     if (!animal.hidden && animal instanceof Herbivore) {
-      animal.health -= 50;
+      animal.health -= BITE;
 
       if (animal.health <= 0) {
         animal.die();
