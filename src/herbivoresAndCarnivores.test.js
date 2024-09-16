@@ -97,13 +97,13 @@ describe('Animal', () => {
     const pig = new Carnivore('Pig');
     const rabbit = new Herbivore('Rabbit');
 
-    expect(Animal.alive.includes(bear))
+    expect(Animal.alive().includes(bear))
       .toBe(true);
 
-    expect(Animal.alive.includes(pig))
+    expect(Animal.alive().includes(pig))
       .toBe(true);
 
-    expect(Animal.alive.includes(rabbit))
+    expect(Animal.alive().includes(rabbit))
       .toBe(true);
   });
 
@@ -115,10 +115,10 @@ describe('Animal', () => {
     tiger.bite(zebra);
     tiger.bite(zebra);
 
-    expect(Animal.alive.includes(zebra))
+    expect(Animal.alive().includes(zebra))
       .toBe(false);
 
-    expect(Animal.alive.includes(tiger))
+    expect(Animal.alive().includes(tiger))
       .toBe(true);
   });
 
