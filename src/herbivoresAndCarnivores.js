@@ -1,15 +1,33 @@
-'use strict';
-
 class Animal {
-  // write your code here
+  static ANIMAL_HITPOINTS = 100;
+  static BITE_POWER = 50;
+  static alive = [];
+
+  health = Animal.ANIMAL_HITPOINTS;
+  constructor(name) {
+    this.name = name;
+    Animal.alive.push(this);
+  }
 }
 
 class Herbivore extends Animal {
-  // write your code here
+  hidden = false;
+
+  hide() {
+    this.hidden = true;
+  }
 }
 
 class Carnivore extends Animal {
-  // write your code here
+  bite(target) {
+    if (target instanceof Herbivore && !target.hidden) {
+      target.health -= Animal.BITE_POWER;
+    }
+
+    if (!target.health) {
+      Animal.alive = Animal.alive.filter((animal) => animal.health);
+    }
+  }
 }
 
 module.exports = {
