@@ -23,14 +23,13 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  constructor(name, health, hidden = true) {
+  // eslint-disable-next-line no-useless-constructor
+  constructor(name, health) {
     super(name, health);
-
-    this.hidden = hidden;
   }
 
   bite(target) {
-    if (Herbivore && !target.hidden) {
+    if (target && target.hidden === false) {
       target.health -= 50;
     }
 
