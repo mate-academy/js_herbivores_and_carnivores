@@ -1,15 +1,38 @@
 'use strict';
 
+const DEFAULT_HEALTH_POINTS = 100;
+const DAMAGE_OF_BITE = 50;
+const DEFAULT_HIDE = false;
+
 class Animal {
-  // write your code here
+  static alive = [];
+
+  constructor(name, health = DEFAULT_HEALTH_POINTS) {
+    this.name = name;
+    this.health = health;
+    Animal.alive.push(this);
+  }
 }
 
 class Herbivore extends Animal {
-  // write your code here
+  constructor(health, name, hidden = DEFAULT_HIDE) {
+    super(health, name);
+    this.hidden = hidden;
+  }
+
+  hide() {
+    this.hidden = !this.hidden;
+  }
 }
 
 class Carnivore extends Animal {
-  // write your code here
+  bite(targetAnimal) {
+    if (targetAnimal instanceof Herbivore && !targetAnimal.hidden) {
+      targetAnimal.health -= DAMAGE_OF_BITE;
+    }
+
+    Animal.alive = Animal.alive.filter((aliveAnimal) => aliveAnimal.health > 0);
+  }
 }
 
 module.exports = {
