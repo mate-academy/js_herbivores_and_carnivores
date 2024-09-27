@@ -40,7 +40,7 @@ describe('Animal', () => {
     () => {
       const animal = new Herbivore('Zebra');
 
-      animal.hide();
+      animal.hiden();
 
       expect(animal.hidden)
         .toBe(true);
@@ -57,7 +57,7 @@ describe('Animal', () => {
     const carn = new Carnivore('Tiger');
     const herb = new Herbivore('Zebra');
 
-    carn.bite(herb);
+    carn.hiden(herb);
 
     expect(herb.health)
       .toBe(50);
@@ -74,8 +74,8 @@ describe('Animal', () => {
     const carn = new Carnivore('Tiger');
     const herb = new Herbivore('Zebra');
 
-    herb.hide();
-    carn.bite(herb);
+    herb.hiden();
+    carn.hiden(herb);
 
     expect(herb.health)
       .toBe(100);
@@ -86,7 +86,7 @@ describe('Animal', () => {
       const tiger = new Carnivore('Tiger');
       const wolf = new Carnivore('Wolf');
 
-      wolf.bite(tiger);
+      wolf.hiden(tiger);
 
       expect(tiger.health)
         .toBe(100);
@@ -112,8 +112,8 @@ describe('Animal', () => {
     const tiger = new Carnivore('Tiger');
     const zebra = new Herbivore('Zebra');
 
-    tiger.bite(zebra);
-    tiger.bite(zebra);
+    tiger.hiden(zebra);
+    tiger.hiden(zebra);
 
     expect(Animal.alive.includes(zebra))
       .toBe(false);
