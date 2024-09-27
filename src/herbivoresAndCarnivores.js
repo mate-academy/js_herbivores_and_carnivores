@@ -1,16 +1,40 @@
 'use strict';
 
 class Animal {
-  // write your code here
+  static alive = [];
+
+  health = 100;
+  hidden = false;
+
+  constructor(name) {
+    this.name = name;
+    Animal.alive.push(this);
+  }
 }
 
 class Herbivore extends Animal {
-  // write your code here
+  hide() {
+    this.hidden = true;
+  }
 }
 
 class Carnivore extends Animal {
-  // write your code here
+  bite(animal) {
+    if (!(animal instanceof Carnivore) && !animal.hidden) {
+      animal.health -= 50;
+
+      if (animal.health <= 0) {
+        Animal.alive.splice(Animal.alive.indexOf(animal), 1);
+      }
+    }
+  }
 }
+
+const zebra = new Herbivore('Zebra');
+const tiger = new Carnivore('Tiger');
+
+tiger.bite(zebra);
+tiger.bite(zebra);
 
 module.exports = {
   Animal,
