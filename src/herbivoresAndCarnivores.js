@@ -12,9 +12,7 @@ class Animal {
   }
 
   checkHealth() {
-    if (this.health <= 0) {
-      Animal.updateAliveList();
-    }
+    return this.health <= 0;
   }
 
   static updateAliveList() {
@@ -32,7 +30,10 @@ class Carnivore extends Animal {
   bite(target) {
     if (target instanceof Herbivore && !target.hidden) {
       target.health -= 50;
-      target.checkHealth();
+
+      if (target.checkHealth()) {
+        target.constructor.updateAliveList();
+      }
     }
   }
 }
