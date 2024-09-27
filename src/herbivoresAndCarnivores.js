@@ -18,6 +18,14 @@ class Herbivore extends Animal {
   name = this.name;
   health = this.health;
   hidden = false;
+
+  hide() {
+    if (this.hidden === false) {
+      this.hidden = true;
+    } else {
+      this.hidden = false;
+    }
+  }
 }
 
 class Carnivore extends Animal {
