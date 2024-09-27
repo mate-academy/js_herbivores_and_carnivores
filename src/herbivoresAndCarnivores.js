@@ -35,7 +35,7 @@ class Carnivore extends Animal {
       this.health -= 50;
 
       if (this.Animal.health <= 0) {
-        delete this.alive[this];
+        delete this.alive[this.name];
       }
     }
   }
