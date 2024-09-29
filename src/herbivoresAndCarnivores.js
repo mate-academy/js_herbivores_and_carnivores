@@ -5,12 +5,12 @@
 // const rabbit = new Herbivore('Max');
 
 class Animal {
-  static #alive = [];
+  static alive = [];
 
   constructor(name, health = 100) {
     this.name = name;
     this.health = health;
-    Animal.#alive.push(this);
+    Animal.alive.push(this);
   }
 }
 
@@ -35,10 +35,10 @@ class Carnivore extends Animal {
 
   bite() {
     if (this !== this.Carnivore && this.hidden !== true) {
-      this.Herbivore.health -= 50;
+      this.Herbivore.name.health -= 50;
 
-      if (this.Herbivore.health <= 0) {
-        delete Animal.alive[this.name];
+      if (this.Herbivore.name.health <= 0) {
+        delete Animal.alive.name;
       }
     }
   }
