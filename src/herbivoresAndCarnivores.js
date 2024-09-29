@@ -35,7 +35,7 @@ class Carnivore extends Animal {
 
   bite() {
     if (this !== this.Carnivore && this.hidden !== true) {
-      this.Herbivore.name.health -= 50;
+      this.health -= 50;
 
       if (this.Herbivore.name.health <= 0) {
         delete Animal.alive.name;
