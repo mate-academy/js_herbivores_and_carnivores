@@ -34,13 +34,13 @@ class Carnivore extends Animal {
   }
 
   bite() {
-    if (this !== Carnivore && this.hidden !== true) {
-      this.health -= 50;
+    // if (this !== Animal.Carnivore && this.hidden !== true) {
+      this.Carnivore.health -= 50;
 
-      if (this.Animal.health <= 0) {
+      if (this.Carnivore.health <= 0) {
         delete Animal.alive[this.name];
       }
-    }
+    // }
   }
 }
 
