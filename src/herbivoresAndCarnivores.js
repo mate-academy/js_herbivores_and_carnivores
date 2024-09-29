@@ -37,8 +37,8 @@ class Carnivore extends Animal {
     if (animal instanceof Herbivore && animal.hidden !== true) {
       animal.health -= 50;
 
-      if (this.Herbivore.health <= 0) {
-        delete Animal.alive.name;
+      if (animal.health <= 0) {
+        delete Animal.alive[animal.name];
       }
     }
   }
