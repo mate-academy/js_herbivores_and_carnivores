@@ -15,7 +15,7 @@ class Animal {
   }
 
   die() {
-    Animal.alive = Animal.alive.filter(animal => animal !== this);
+    Animal.alive = Animal.alive.filter((animal) => animal !== this);
   }
 }
 
