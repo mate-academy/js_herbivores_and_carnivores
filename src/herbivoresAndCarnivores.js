@@ -16,14 +16,11 @@ class Animal {
 
   checkDeath() {
     if (!this.isAlive()) {
-      const index = Animal.alive.indexOf(this);
-
-      if (index > -1) {
-        Animal.alive.splice(index, 1);
-      }
+      Animal.alive = Animal.alive.filter((animal) => animal !== this);
     }
   }
 }
+
 class Herbivore extends Animal {
   hide() {
     this.hidden = true;
