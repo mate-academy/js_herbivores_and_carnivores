@@ -59,7 +59,7 @@ describe('Animal', () => {
 
     carn.bite(herb);
 
-    expect(herb.health)
+    expect(herb.healthLevel)
       .toBe(50);
   });
 
@@ -77,7 +77,7 @@ describe('Animal', () => {
     herb.hide();
     carn.bite(herb);
 
-    expect(herb.health)
+    expect(herb.healthLevel)
       .toBe(100);
   });
 
@@ -88,7 +88,7 @@ describe('Animal', () => {
 
       wolf.bite(tiger);
 
-      expect(tiger.health)
+      expect(tiger.healthLevel)
         .toBe(100);
     });
 
