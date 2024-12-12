@@ -27,7 +27,7 @@ class Carnivore extends Animal {
     if (herbivore instanceof Herbivore && herbivore.hidden === false) {
       herbivore.health -= 50;
 
-      if (herbivore.health <= 0 && herbivore instanceof Herbivore) {
+      if (herbivore.health <= 0) {
         Animal.alive = Animal.alive.filter((zvir) => zvir.health > 0);
       }
     }
