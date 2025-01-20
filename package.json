@@ -26,5 +26,10 @@
   },
   "mateAcademy": {
     "projectType": "javascript"
+  },
+  "dependencies": {
+    "-": "0.0.1",
+    "g": "^2.0.1",
+    "npm": "^11.0.0"
   }
 }
