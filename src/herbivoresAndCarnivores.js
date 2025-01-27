@@ -31,12 +31,10 @@ class Herbivore extends Animal {
 class Carnivore extends Animal {
   bite(victim) {
     // Проверяем, является ли жертва хищником или спряталась
-    if (victim instanceof Carnivore || victim.hidden) {
-      // victim.hidden === true
-      return;
+    if (victim instanceof Herbivore && !victim.hidden) {
+      // victim.hidden === false
+      victim.health -= 50;
     }
-
-    victim.health -= 50;
 
     // Обновляем массив живых животных, если жертва умерла
     Animal.updateAlive();
