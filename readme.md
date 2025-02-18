@@ -1,55 +1,31 @@
-# Herbivores and Сarnivores
+# Herbivores and Carnivores
 
-**Read [the guideline](https://github.com/mate-academy/js_task-guideline/blob/master/README.md) before start**
+## 🎮 About the Project
+This project demonstrates Object-Oriented Programming (OOP) principles through a simple ecosystem of animals. The `Animal` class serves as the base, with `Herbivore` and `Carnivore` classes extending its functionality. 
 
-# Task description:
+- Each animal has `health` (default: `100`) and a `name`.
+- All living animals are stored in the static `Animal.alive` array.
+- If an animal’s health drops to `0` or below, it is removed from `Animal.alive`.
 
-Nature is well suited to reflect the principles of Object Oriented Programming.
-All instances of the `Animal` class must have properties `health` and a `name`.
-Health is `100` by default.
+### Herbivore  
+- Has a `hide` method that sets `hidden` to `true`, allowing it to avoid attacks from carnivores.
 
-Create a `Herbivore` class.
-Herbivore has a method of `hide`, which sets the `hidden` property of the beast to the value of `true`, and helps to hide from carnivores.
+### Carnivore  
+- Has a `bite` method that reduces a herbivore’s `health` by `50`.
+- Cannot attack another carnivore or a hidden herbivore.
 
-Create a `Сarnivore` class.
-Carnivore has a `bite` method, which takes a herbivore object and decreases the object's health by `50`. The method does not work if it is another сarnivore, or the herbivore is currently hiding.
+## 🚀 Tech Stack
+- **JavaScript** (Class-based object-oriented implementation)
 
-`Herbivore` and `Сarnivore` should extend an `Animal` class.
+## 🛠️ Tools & Dependencies
+- **ESLint** – Ensuring code quality
+- **Prettier** – Code formatting for readability
+- **Jest** – Unit testing framework
 
-All alive animals should be in the static `Animal.alive` array.
-If the health of the animal becomes less than or equal to `0`, the beast dies and it should be removed from the static array `Animals.alive`.
+## 📌 Features
+✅ Demonstrates Object-Oriented Programming principles  
+✅ Implements class inheritance with `Animal`, `Herbivore`, and `Carnivore`  
+✅ Tracks all living animals dynamically  
 
-Example:
-```js
-const deer = new Herbivore('Bembi');
-const panther = new Carnivore('Bagira');
-const lion = new Carnivore('King');
-const rabbit = new Herbivore('Max');
-
-Animal.alive === [
-  {name: 'Bembi', health: 100, hidden: false},
-  {name: 'Bagira', health: 100},
-  {name: 'King', health: 100},
-  {name: 'Max', health: 100, hidden: false},
-];
-
-lion.bite(deer);
-panther.bite(lion);
-
-Animal.alive === [
-  {name: 'Bembi', health: 50},
-  {name: 'Bagira', health: 100},
-  {name: 'King', health: 100},
-  {name: 'Max', health: 100},
-];
-
-panther.bite(deer);
-rabbit.hide();
-panther.bite(rabbit);
-
-Animal.alive === [
-  {name: 'Bagira', health: 100},
-  {name: 'King', health: 100},
-  {name: 'Max', health: 100, hidden: true},
-];
-```
+## 📜 License
+This project is forked from 💻 [Mate Academy](https://github.com/mate-academy/js_herbivores_and_carnivores)

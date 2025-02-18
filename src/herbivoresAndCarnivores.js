@@ -1,15 +1,46 @@
 'use strict';
 
 class Animal {
-  // write your code here
+  static alive = [];
+  static INITIAL_HEALTH = 100;
+  static ZERO_HEALTH = 0;
+
+  constructor(name) {
+    this.name = name;
+    this.health = Animal.INITIAL_HEALTH;
+    Animal.alive.push(this);
+  }
+
+  static cleanUp() {
+    Animal.alive = Animal.alive.filter(
+      (animal) => animal.health > Animal.ZERO_HEALTH,
+    );
+  }
 }
 
 class Herbivore extends Animal {
-  // write your code here
+  constructor(name) {
+    super(name);
+    this.hidden = false;
+  }
+
+  hide() {
+    this.hidden = true;
+  }
 }
 
 class Carnivore extends Animal {
-  // write your code here
+  static BITE_DAMAGE = 50;
+
+  bite(animal) {
+    if (animal instanceof Herbivore && !animal.hidden) {
+      animal.health -= Carnivore.BITE_DAMAGE;
+
+      if (animal.health <= Animal.ZERO_HEALTH) {
+        Animal.cleanUp();
+      }
+    }
+  }
 }
 
 module.exports = {
