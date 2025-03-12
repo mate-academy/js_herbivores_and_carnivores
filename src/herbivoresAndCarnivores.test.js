@@ -153,4 +153,6 @@ describe('Animal', () => {
     expect(Animal.alive.includes(yongerZebra))
       .toBe(false);
   });
+
+
 });
