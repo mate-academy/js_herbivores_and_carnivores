@@ -2,7 +2,7 @@
 
 **Read [the guideline](https://github.com/mate-academy/js_task-guideline/blob/master/README.md) before start**
 
-# Task description:
+- Task description:
 
 Nature is well suited to reflect the principles of Object Oriented Programming.
 All instances of the `Animal` class must have properties `health` and a `name`.
@@ -20,6 +20,7 @@ All alive animals should be in the static `Animal.alive` array.
 If the health of the animal becomes less than or equal to `0`, the beast dies and it should be removed from the static array `Animals.alive`.
 
 Example:
+
 ```js
 const deer = new Herbivore('Bembi');
 const panther = new Carnivore('Bagira');
