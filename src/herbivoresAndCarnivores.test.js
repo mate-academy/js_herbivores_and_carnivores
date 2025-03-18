@@ -34,10 +34,9 @@ describe('Animal', () => {
 
       expect(carn)
         .toHaveProperty('health', 100);
-    }
-  );
+    });
 
-  it(`Herbivore should have 'hide' method which inverts 'hidden' property`,
+  it(`Herbivore should have 'hide' method which sets 'hidden' property to true`,
     () => {
       const animal = new Herbivore('Zebra');
 
@@ -45,8 +44,7 @@ describe('Animal', () => {
 
       expect(animal.hidden)
         .toBe(true);
-    }
-  );
+    });
 
   it(`Herbivores 'hide' method should be inherited`, () => {
     const animal = new Herbivore('Zebra');
@@ -92,8 +90,7 @@ describe('Animal', () => {
 
       expect(tiger.health)
         .toBe(100);
-    }
-  );
+    });
 
   it(`Carnivores and Herbivores should be in 'Animal.alive' array`, () => {
     const bear = new Carnivore('Bear');
@@ -123,5 +120,37 @@ describe('Animal', () => {
 
     expect(Animal.alive.includes(tiger))
       .toBe(true);
+  });
+
+  it(`Herbivores should be removed from 'Animal.alive' array, when their health is 0 (but Zebra is not the last defined animal)`, () => {
+    const zebra = new Herbivore('Zebra');
+    const tiger = new Carnivore('Tiger');
+
+    tiger.bite(zebra);
+    tiger.bite(zebra);
+
+    expect(Animal.alive.includes(zebra))
+      .toBe(false);
+
+    expect(Animal.alive.includes(tiger))
+      .toBe(true);
+  });
+
+  it('Two of the same herbivore exist, but only one dies', () => {
+    const olderZebra = new Herbivore('Zebra');
+    const yongerZebra =  new Herbivore('Zebra');
+    const lion = new Carnivore("Lion");
+
+    lion.bite(yongerZebra);
+    lion.bite(yongerZebra);
+
+    expect(Animal.alive.includes(olderZebra))
+      .toBe(true);
+
+    expect(Animal.alive.includes(lion))
+      .toBe(true);
+
+    expect(Animal.alive.includes(yongerZebra))
+      .toBe(false);
   });
 });
