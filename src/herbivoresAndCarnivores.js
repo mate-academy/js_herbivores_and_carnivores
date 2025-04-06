@@ -10,12 +10,11 @@ class Animal {
 
   static alive = []; // Статичний масив живих тварин
 
+  // eslint-disable-next-line max-len
+  // Оновлений метод die, який використовує filter для видалення тварини з масиву
   die() {
-    const index = Animal.alive.indexOf(this);
-
-    if (index !== -1) {
-      Animal.alive.splice(index, 1); // Видаляємо тварину з масиву живих тварин
-    }
+    // eslint-disable-next-line max-len
+    Animal.alive = Animal.alive.filter((animal) => animal !== this); // Використовуємо filter для видалення тварини
   }
 }
 
