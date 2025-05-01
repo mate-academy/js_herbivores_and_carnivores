@@ -9,9 +9,7 @@ class Animal {
   }
 
   remove() {
-    if (this.health <= 0) {
-      Animal.alive = Animal.alive.filter((animal) => animal !== this);
-    }
+    Animal.alive = Animal.alive.filter((animal) => animal !== this);
   }
 }
 
@@ -36,7 +34,10 @@ class Carnivore extends Animal {
   bite(victim) {
     if (!(victim instanceof Carnivore) && !victim.hidden) {
       victim.health -= 50;
-      victim.remove();
+
+      if (victim.health <= 0) {
+        victim.remove();
+      }
     }
   }
 }
