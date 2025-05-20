@@ -1,6 +1,8 @@
 'use strict';
 
 class Animal {
+  static active = [];
+
   constructor(name, health) {
     if (typeof name !== 'string' || name.trim().length === 0) {
       throw new Error('Invalid name');
@@ -8,6 +10,8 @@ class Animal {
 
     this.health = Number.isFinite(health) ? health : 100;
     this.name = name;
+
+    Animal.active.push(this);
   }
 }
 
@@ -26,6 +30,10 @@ class Carnivore extends Animal {
   bite(herbivore) {
     if (herbivore instanceof Herbivore && !herbivore.hidden) {
       herbivore.health -= 50;
+    }
+
+    if (herbivore.hidden <= 0) {
+      Animal.active.filter((a) => a !== herbivore);
     }
   }
 }
