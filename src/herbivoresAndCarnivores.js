@@ -1,7 +1,7 @@
 'use strict';
 
 class Animal {
-  static active = [];
+  static alive = [];
 
   constructor(name, health) {
     if (typeof name !== 'string' || name.trim().length === 0) {
@@ -11,7 +11,7 @@ class Animal {
     this.health = Number.isFinite(health) ? health : 100;
     this.name = name;
 
-    Animal.active.push(this);
+    Animal.alive.push(this);
   }
 }
 
@@ -32,8 +32,8 @@ class Carnivore extends Animal {
       herbivore.health -= 50;
     }
 
-    if (herbivore.hidden <= 0) {
-      Animal.active.filter((a) => a !== herbivore);
+    if (herbivore.health <= 0) {
+      Animal.alive = Animal.alive.filter((a) => a !== herbivore);
     }
   }
 }
