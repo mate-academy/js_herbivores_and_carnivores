@@ -1,7 +1,5 @@
 'use strict';
 
-'use strict';
-
 class Animal {
   static alive = [];
 
@@ -23,7 +21,7 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    this.hidden = !this.hidden;
+    this.hidden = true;
   }
 }
 
