@@ -1,19 +1,13 @@
-'use strict';
+const { Herbivore, Carnivore, Animal } = require('./animal');
 
-class Animal {
-  // write your code here
-}
+test('Carnivore attacks and kills Herbivore', () => {
+  const rabbit = new Herbivore('Max');
+  const lion = new Carnivore('Simba');
 
-class Herbivore extends Animal {
-  // write your code here
-}
+  lion.attack(rabbit);
+  expect(rabbit.health).toBe(50);
 
-class Carnivore extends Animal {
-  // write your code here
-}
-
-module.exports = {
-  Animal,
-  Herbivore,
-  Carnivore,
-};
+  lion.attack(rabbit);
+  expect(rabbit.health).toBe(0);
+  expect(Animal.alive.includes(rabbit)).toBe(false);
+});
