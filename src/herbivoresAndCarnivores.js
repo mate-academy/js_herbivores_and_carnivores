@@ -27,24 +27,24 @@ class Carnivore extends Animal {
     super(name);
   }
 
-  bite(target) {
-    if (target instanceof Carnivore) {
-      return;
-    }
+bite(target) {
+  if (!(target instanceof Herbivore)) {
+    return;
+  }
 
-    if (target.hidden) {
-      return;
-    }
+  if (target.hidden) {
+    return;
+  }
 
-    target.health -= 50;
+  target.health -= 50;
 
-    if (target.health <= 0) {
-      const index = Animal.alive.indexOf(target);
-      if (index !== -1) {
-        Animal.alive.splice(index, 1);
-      }
+  if (target.health <= 0) {
+    const index = Animal.alive.indexOf(target);
+    if (index !== -1) {
+      Animal.alive.splice(index, 1);
     }
   }
+}
 }
 
 module.exports = {
