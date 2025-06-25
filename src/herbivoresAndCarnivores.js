@@ -10,7 +10,7 @@ class Animal {
   }
 
   static removeDead() {
-    Animal.alive = Animal.alive.filter(animal => animal.health > 0);
+    Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
   }
 }
 
@@ -26,14 +26,16 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  constructor(name) {
-    super(name);
-  }
-
   bite(target) {
-    if (!(target instanceof Herbivore)) return;
-    if (target.hidden) return;
+    if (!(target instanceof Herbivore)) {
+      return;
+    }
+
+    if (target.hidden) {
+      return;
+    }
     target.health -= 50;
+
     if (target.health <= 0) {
       Animal.removeDead();
     }
@@ -45,4 +47,3 @@ module.exports = {
   Herbivore,
   Carnivore,
 };
-
