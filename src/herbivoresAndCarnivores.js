@@ -3,11 +3,15 @@
 class Animal {
   // write your code here
   health = 100;
-  static alive = [];
+  static all = [];
+
+  static get alive() {
+    return Animal.all.filter((x) => x.health > 0);
+  }
 
   constructor(name) {
     this.name = name;
-    Animal.alive.push(this);
+    Animal.all.push(this);
   }
 }
 
@@ -25,14 +29,8 @@ class Carnivore extends Animal {
   // write your code here
 
   bite(herb) {
-    if (herb.hidden === false) {
+    if (herb.hidden === false && herb instanceof Herbivore) {
       herb.health -= 50;
-    }
-
-    if (herb.health <= 0) {
-      const kill = Animal.alive.indexOf(herb);
-
-      delete Animal.alive[kill];
     }
   }
 }
