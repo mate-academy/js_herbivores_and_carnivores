@@ -3,17 +3,15 @@
 class Animal {
   static alive = [];
 
-  constructor(health = 100, name) {
-    this.health = health;
+  constructor(name, health = 100) {
     this.name = name;
+    this.health = health;
     Animal.alive.push(this);
   }
 
-  takeDamage(amount) {
-    this.health -= amount;
-
-    if (this.health <= 0) {
-      Animal.alive = Animal.alive.filter((animal) => animal !== this);
+  static removeIfDead(animal) {
+    if (animal.health <= 0) {
+      Animal.alive = Animal.alive.filter((a) => a !== animal);
     }
   }
 }
@@ -38,8 +36,8 @@ class Carnivore extends Animal {
     if (target.hidden) {
       return;
     }
-
-    target.takeDamage(50);
+    target.health -= 50;
+    Animal.removeIfDead(target);
   }
 }
 
