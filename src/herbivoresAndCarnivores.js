@@ -7,13 +7,6 @@ class Animal {
     this.name = name;
     Animal.alive.push(this);
   }
-  deleteAnimal(animal) {
-    for (let index = 0; index < animal.length; index++) {
-      if (animal[index].health <= 0) {
-        animal.splice(index, 1);
-      }
-    }
-  }
 }
 
 class Herbivore extends Animal {
@@ -28,7 +21,10 @@ class Carnivore extends Animal {
   bite(herbivoreAnimal) {
     if (herbivoreAnimal instanceof Herbivore && !herbivoreAnimal.hidden) {
       herbivoreAnimal.health -= 50;
-      super.deleteAnimal(Carnivore.alive);
+
+      if (herbivoreAnimal.health <= 0) {
+        Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
+      }
     }
   }
 }
