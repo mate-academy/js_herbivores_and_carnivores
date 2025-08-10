@@ -3,7 +3,7 @@
 class Animal {
   static alive = [];
 
-  constructor(name = "Unnamed") {
+  constructor(name = 'Unnamed') {
     this.name = name;
     this.health = 100;
     Animal.alive.push(this);
@@ -12,7 +12,7 @@ class Animal {
   // Метод для перевірки, чи тварина жива
   static removeIfDead(animal) {
     if (animal.health <= 0) {
-      Animal.alive = Animal.alive.filter(a => a !== animal);
+      Animal.alive = Animal.alive.filter((a) => a !== animal);
     }
   }
 }
