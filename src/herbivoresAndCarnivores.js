@@ -3,6 +3,7 @@
 class Animal {
   constructor(name) {
     this.name = name;
+    this.health = 100;
     // Track every alive animal instance
     Animal.alive.push(this);
   }
@@ -14,39 +15,19 @@ Animal.alive = [];
 class Herbivore extends Animal {
   constructor(name) {
     super(name);
-    this.health = 100;
     this.hidden = false;
   }
 
   hide() {
-    this.hidden = !this.hidden;
+    this.hidden = true;
   }
 }
 
 class Carnivore extends Animal {
-  constructor(name) {
-    super(name);
-    this.health = 100;
-  }
-
   bite(target) {
-    // Only affect herbivores that are not hidden
-    if (!(target instanceof Herbivore)) {
-      return;
-    }
-
-    if (target.hidden === true) {
-      return;
-    }
-
-    target.health = Math.max(0, target.health - 50);
-
-    if (target.health === 0) {
-      const indexInAlive = Animal.alive.indexOf(target);
-
-      if (indexInAlive !== -1) {
-        Animal.alive.splice(indexInAlive, 1);
-      }
+    if (target instanceof Herbivore && !target.hidden) {
+      target.health = Math.max(0, target.health - 50);
+      Animal.alive = Animal.alive.filter((a) => a.health > 0);
     }
   }
 }
