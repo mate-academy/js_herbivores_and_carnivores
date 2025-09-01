@@ -7,7 +7,9 @@ class Animal {
     this.health = health;
     this.name = name;
 
-    Animal.alive.push(this); // add instance to alive array
+    if (this.health > 0) {
+      Animal.alive.push(this); // add instance to alive array
+    }
   }
 }
 
@@ -33,9 +35,8 @@ class Carnivore extends Animal {
     }
 
     if (prey.health <= 0) {
-      // prey dies
-      Animal.alive = Animal.alive.filter((animal) => animal !== prey);
-      // remove from alive array
+      Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
+      // remove prey from alive array if health is 0 or less
     }
   }
 }
