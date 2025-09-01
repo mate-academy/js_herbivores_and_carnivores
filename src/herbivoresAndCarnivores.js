@@ -7,7 +7,7 @@ class Animal {
     this.health = health;
     this.name = name;
 
-    Animal.alive.push(this);
+    Animal.alive.push(this); // add instance to alive array
   }
 }
 
@@ -30,16 +30,12 @@ class Carnivore extends Animal {
   bite(prey) {
     if (prey instanceof Herbivore && !prey.hidden) {
       prey.health -= 50;
-    } else if (prey instanceof Carnivore) {
-      return;
     }
 
     if (prey.health <= 0) {
-      const preyIndex = Animal.alive.indexOf(prey);
-
-      if (preyIndex > -1) {
-        Animal.alive.splice(preyIndex, 1);
-      }
+      // prey dies
+      Animal.alive = Animal.alive.filter((animal) => animal !== prey);
+      // remove from alive array
     }
   }
 }
