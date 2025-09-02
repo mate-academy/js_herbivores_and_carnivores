@@ -8,7 +8,7 @@ Nature is well suited to reflect the principles of Object Oriented Programming.
 All instances of the `Animal` class must have properties `health` and a `name`.
 Health is `100` by default.
 
-Create a `Herbivore` class.
+Create a `Herbivore` class. 
 Herbivore has a method of `hide`, which sets the `hidden` property of the beast to the value of `true`, and helps to hide from carnivores.
 
 Create a `Сarnivore` class.
