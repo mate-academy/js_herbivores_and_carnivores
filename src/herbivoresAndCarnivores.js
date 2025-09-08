@@ -5,15 +5,15 @@ class Animal {
     this.name = name;
     this.health = health;
 
-    Animal.alive.push(this);
+    if (this.health > 0) {
+      Animal.alive.push(this);
+    }
   }
 
   static alive = [];
 
-  static deleteAnimal(obj) {
-    const i = Animal.alive.indexOf(obj);
-
-    return Animal.alive.splice(i, 1);
+  static deleteAnimal() {
+    Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
   }
 }
 
@@ -30,12 +30,12 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(herbivore) {
-    if (herbivore.hidden !== true && herbivore instanceof Herbivore) {
+    if (herbivore instanceof Herbivore && herbivore.hidden !== true) {
       herbivore.health -= 50;
     }
 
-    if (herbivore.health <= 0) {
-      Animal.deleteAnimal(herbivore);
+    if (herbivore instanceof Herbivore && herbivore.health <= 0) {
+      Animal.deleteAnimal();
     }
   }
 }
