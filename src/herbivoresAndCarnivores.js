@@ -26,11 +26,7 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(victim) {
-    if (!(victim instanceof Herbivore)) {
-      return;
-    }
-
-    if (victim.hidden) {
+    if (!(victim instanceof Herbivore) || victim.hidden) {
       return;
     }
 
@@ -40,7 +36,6 @@ class Carnivore extends Animal {
       victim.die();
     }
   }
-  // write your code here
 }
 
 module.exports = {
