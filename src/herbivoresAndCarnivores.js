@@ -9,8 +9,8 @@ class Animal {
     Animal.alive.push(this);
   }
 
-  static die(animal) {
-    Animal.alive.splice(Animal.alive.indexOf(animal), 1);
+  static die(deadAnimal) {
+    Animal.alive = Animal.alive.filter((animal) => animal !== deadAnimal);
   }
 }
 
