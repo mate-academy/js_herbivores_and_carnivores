@@ -8,7 +8,7 @@ class Animal {
     Animal.alive.push(this);
   }
   alive() {
-    return this.alive;
+    return Animal.alive;
   }
   die() {
     Animal.alive = Animal.alive.filter((animal) => animal !== this);
