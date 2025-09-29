@@ -13,7 +13,7 @@ class Animal {
 
   static removeIfDead(animal) {
     if (animal.health <= 0) {
-      Animal.alive = Animal.alive.filter((a) => a !== animal);
+      Animal.alive = Animal.alive.filter((a) => a.health > 0);
     }
   }
 }
