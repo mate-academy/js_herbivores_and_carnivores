@@ -9,7 +9,6 @@ class Animal {
     Animal.alive.push(this);
   }
 }
-
 class Herbivore extends Animal {
   constructor(name) {
     super(name);
@@ -20,7 +19,6 @@ class Herbivore extends Animal {
     this.hidden = true;
   }
 }
-
 class Carnivore extends Animal {
   bite(target) {
     if (target === undefined || !Animal.alive.includes(target)) {
@@ -37,13 +35,7 @@ class Carnivore extends Animal {
 
     target.health -= 50;
 
-    if (target.health <= 0) {
-      const index = Animal.alive.findIndex((t) => t === target);
-
-      if (index !== -1) {
-        Animal.alive.splice(index, 1);
-      }
-    }
+    Animal.alive = Animal.alive.filter((a) => a.health > 0);
   }
 }
 
