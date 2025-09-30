@@ -1,56 +1,72 @@
 'use strict';
 
-const ANIMAL_ALIVE = [];
 
 class Animal {
-  constructor(health = 100, name) {
-this.health = health;
-this.name = name;
+  static alive = [];
 
-if (this.health > 0) {
-  ANIMAL_ALIVE.push(this)
-}
-isAlive() {
-  return this.health > 0;
-}
+  constructor(name, health = 100) {
+    this.health = health;
+    this.name = name;
 
+    if (this.health > 0) {
+      Animal.alive.push(this);
+    }
+  }
+  
+  isAlive() {
+    return this.health > 0;
+  }
+
+  static removeDead(animal) {
+    const index = Animal.alive.indexOf(animal);
+
+    if (index > -1) {
+      Animal.alive.splice(index, 1);
+    }
   }
 }
 
 class Herbivore extends Animal {
   constructor(name, health) {
-super(name, health);
+    super(name, health);
+    this.hidden = false;
+  }
 
-    hide() {
-      return this.hidden = true;
-    }
+  hide() {
+    this.hidden = true;
+
+    return this.hidden;
   }
 }
 
 class Carnivore extends Animal {
-   constructor(name, health) {
-super(name);
+    constructor(name, health) {
+    super(name, health);
+    }
+    
+  bite(target) {
+    if (target instanceof Carnivore) {
+      return;
+    }
 
-bite(targetHerbivore) {
-  if (targetHerbivore) {
- if (targetHerbivore.hidden === true) {
-  const demage = 50;
-  targetHerbivore.health - 50;
+    if (target.hidden === true) {
+      return;
+    }
+
+    if (target.health <= 0) {
+      return;
+    }
+
+    const damage = 50;
+
+    target.health -= damage;
+
+    if (target.health <= 0) {
+      target.health = 0;
+      Animal.removeDead(target);
+    }
   }
- if (targetHerbivore.health <= 0) {
-        targetHerbivore.health = 0;
-const index = ANIMAL_ALIVE.indexOf(targetHerbivore);
-        if (index > -1) {
-          ANIMAL_ALIVE.splice(index, 1);
-  }
- 
 }
-return targetHerbivore.health;
-}
-}   
-        }
-      }
-      
 
 module.exports = {
   Animal,
