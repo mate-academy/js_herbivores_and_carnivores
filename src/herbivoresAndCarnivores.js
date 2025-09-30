@@ -1,5 +1,7 @@
 'use strict';
 
+'use strict';
+
 class Animal {
   static alive = [];
 
@@ -7,17 +9,13 @@ class Animal {
     this.name = name;
     this.health = health;
 
-    if (this.isAlive()) {
+    if (this.health > 0) {
       Animal.alive.push(this);
     }
   }
 
   isAlive() {
     return this.health > 0;
-  }
-
-  static removeDead(animal) {
-    Animal.alive = Animal.alive.filter(a => a.isAlive());
   }
 }
 
@@ -29,25 +27,24 @@ class Herbivore extends Animal {
 
   hide() {
     this.hidden = true;
-    return this; 
   }
 }
 
 class Carnivore extends Animal {
   bite(target) {
-    if (!(target instanceof Animal)) return;
-    if (target instanceof Carnivore) return;
-    if (!target.isAlive()) return;
-    if (target.hidden) return;
+    if (target instanceof Herbivore && !target.hidden) {
+      target.health -= 50;
 
-    const damage = 50;
-    target.health -= damage;
-
-    if (target.health <= 0) {
-      target.health = 0;
-      Animal.removeDead(target);
+      if (target.health <= 0) {
+        target.health = 0; // clamp to 0
+        Animal.alive = Animal.alive.filter(a => a.health > 0);
+      }
     }
   }
 }
 
-module.exports = { Animal, Herbivore, Carnivore };
+module.exports = {
+  Animal,
+  Herbivore,
+  Carnivore,
+};
