@@ -14,13 +14,9 @@ class Animal {
     if (this.health <= 0) {
       this.health = 0;
 
-      const index = Animal.alive.indexOf(this);
+      Animal.alive = Animal.alive.filter((a) => a.health > 0);
 
-      if (index > -1) {
-        Animal.alive.splice(index, 1);
-
-        return `\n☠️ ${this.name} death`;
-      }
+      return `\n☠️ ${this.name} death`;
     }
 
     return null;
@@ -42,22 +38,26 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(target) {
-    if (!(target instanceof Herbivore)) {
-      return `\n⚠️ ${this.name} не може вкусити ${target.name}: це не травоїдна тварина.`;
+    let resultMessage;
+
+    if (target instanceof Herbivore && !target.hidden) {
+      target.health -= 50;
+      resultMessage = `\n💥 ${this.name} кусає ${target.name}. Здоров'я ${target.name}: ${target.health}`;
+
+      const deathMessage = target._checkHealth();
+
+      return deathMessage || resultMessage;
+    } else {
+      if (!(target instanceof Herbivore)) {
+        return `\n⚠️ ${this.name} не може вкусити ${target.name}: це не травоїдна тварина.`;
+      }
+
+      if (target.hidden) {
+        return `\n❌ ${this.name} не зміг знайти ${target.name}: вона ховається.`;
+      }
     }
 
-    if (target.hidden) {
-      return `\n❌ ${this.name} не зміг знайти ${target.name}: вона ховається.`;
-    }
-
-    target.health -= 50;
-
-    const deathMessage = target._checkHealth();
-
-    return (
-      deathMessage ||
-      `\n💥 ${this.name} кусає ${target.name}. Здоров'я ${target.name}: ${target.health}`
-    );
+    return resultMessage;
   }
 }
 
