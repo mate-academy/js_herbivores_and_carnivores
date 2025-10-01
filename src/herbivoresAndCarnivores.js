@@ -12,7 +12,10 @@ class Animal {
 
   dano(valor) {
     this.health = this.health - valor;
-    Animal.alive = Animal.alive.filter((a) => a !== this);
+
+    if (this.health <= 0) {
+      Animal.alive = Animal.alive.filter((a) => a !== this);
+    }
   }
 }
 
