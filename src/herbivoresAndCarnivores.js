@@ -3,44 +3,33 @@
 class Animal {
   static alive = [];
 
-  constructor(name) {
+  constructor(name, health = 100) {
+    this.health = health;
     this.name = name;
-    this.health = 100;
 
-    // adiciona no array de vivos
     Animal.alive.push(this);
   }
 
-  die() {
-    // remove apenas esta instância de alive
-    const idx = Animal.alive.indexOf(this);
-
-    if (idx !== -1) {
-      Animal.alive.splice(idx, 1);
-    }
+  dano(valor) {
+    this.health = this.health - valor;
+    Animal.alive = Animal.alive.filter((a) => a !== this);
   }
 }
 
 class Herbivore extends Animal {
-  constructor(name) {
+  constructor(name, hidden = false) {
     super(name);
-    this.hidden = false;
+    this.hidden = hidden;
   }
-
   hide() {
     this.hidden = true;
   }
 }
 
 class Carnivore extends Animal {
-  bite(animal) {
-    // só morde herbívoros não escondidos
-    if (animal instanceof Herbivore && !animal.hidden) {
-      animal.health -= 50;
-
-      if (animal.health <= 0) {
-        animal.die();
-      }
+  bite(presa) {
+    if (presa instanceof Herbivore && !presa.hidden) {
+      presa.dano(50);
     }
   }
 }
