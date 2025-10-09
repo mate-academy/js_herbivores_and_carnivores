@@ -6,7 +6,10 @@ class Animal {
   constructor(name, health = 100) {
     this.name = name;
     this.health = health;
-    Animal.alive.push(this);
+
+    if (this.health > 0) {
+      Animal.alive.push(this);
+    }
   }
 
   _takeDamage(amount) {
