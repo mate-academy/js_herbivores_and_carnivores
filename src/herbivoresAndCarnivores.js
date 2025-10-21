@@ -6,30 +6,29 @@ class Animal {
   constructor(name) {
     this.name = name;
     this.health = 100;
-    this.hidden = false;
     Animal.alive.push(this);
   }
 }
 
 class Herbivore extends Animal {
+  constructor(name) {
+    super(name);
+    this.hidden = false;
+  }
+
   hide() {
-    this.hidden = !this.hidden;
+    this.hidden = true; // zawsze ustawia hidden na true, nie toggle
   }
 }
 
 class Carnivore extends Animal {
   bite(target) {
-    if (!(target instanceof Herbivore)) return;
-    if (target.hidden) return;
+    // pojedynczy warunek sprawdzający, czy target jest Herbivore i nie ukryty
+    if (!(target instanceof Herbivore) || target.hidden) return;
 
     target.health -= 50;
-    if (target.health <= 0) {
-      target.health = 0;
-      const index = Animal.alive.indexOf(target);
-      if (index > -1) {
-        Animal.alive.splice(index, 1);
-      }
-    }
+    // usuwanie martwych zwierząt przy użyciu filter
+    Animal.alive = Animal.alive.filter(a => a.health > 0);
   }
 }
 
@@ -38,3 +37,4 @@ module.exports = {
   Herbivore,
   Carnivore,
 };
+
