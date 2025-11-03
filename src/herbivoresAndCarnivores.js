@@ -10,13 +10,11 @@ class Animal {
   }
 
   checkHealth() {
-    if (this.health <= 0) {
-      const index = Animal.alive.indexOf(this);
+    const aliveAnimals = Animal.alive.filter((notDead) => {
+      return notDead.health > 0;
+    });
 
-      if (index > -1) {
-        Animal.alive.splice(index, 1);
-      }
-    }
+    Animal.alive = aliveAnimals;
   }
 }
 
