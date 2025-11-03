@@ -1,7 +1,7 @@
 'use strict';
 
 class Animal {
-  static alive = [];
+  static alive = []; // масив усіх живих тварин
 
   constructor(name) {
     this.name = name;
@@ -10,6 +10,7 @@ class Animal {
   }
 }
 
+// Клас травоїдних тварин
 class Herbivore extends Animal {
   constructor(name) {
     super(name);
@@ -17,18 +18,21 @@ class Herbivore extends Animal {
   }
 
   hide() {
-    this.hidden = !this.hidden;
+    this.hidden = true;
   }
 }
 
+// Клас хижаків
 class Carnivore extends Animal {
   bite(target) {
+    // кусаємо тільки травоїдних, які не сховалися
     if (!(target instanceof Herbivore) || target.hidden) {
       return;
     }
 
     target.health -= 50;
 
+    // якщо здоров'я впало до 0 або нижче — видаляємо зі списку живих
     if (target.health <= 0) {
       Animal.alive = Animal.alive.filter((animal) => animal !== target);
     }
