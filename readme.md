@@ -2,6 +2,11 @@
 
 **Read [the guideline](https://github.com/mate-academy/js_task-guideline/blob/master/README.md) before start**
 
+❗️ Replace `<your_account>` with your Github username and copy the links to `Pull Request` description:
+
+- [DEMO LINK](https://joselangoni.github.io/js_herbivores_and_carnivores/)
+- [TEST REPORT LINK](https://joselangoni.github.io/js_herbivores_and_carnivores/report/html_report/)
+
 # Task description:
 
 Nature is well suited to reflect the principles of Object Oriented Programming.
@@ -20,36 +25,40 @@ All alive animals should be in the static `Animal.alive` array.
 If the health of the animal becomes less than or equal to `0`, the beast dies and it should be removed from the static array `Animals.alive`.
 
 Example:
+
 ```js
 const deer = new Herbivore('Bembi');
 const panther = new Carnivore('Bagira');
 const lion = new Carnivore('King');
 const rabbit = new Herbivore('Max');
 
-Animal.alive === [
-  {name: 'Bembi', health: 100, hidden: false},
-  {name: 'Bagira', health: 100},
-  {name: 'King', health: 100},
-  {name: 'Max', health: 100, hidden: false},
-];
+Animal.alive ===
+  [
+    { name: 'Bembi', health: 100, hidden: false },
+    { name: 'Bagira', health: 100 },
+    { name: 'King', health: 100 },
+    { name: 'Max', health: 100, hidden: false },
+  ];
 
 lion.bite(deer);
 panther.bite(lion);
 
-Animal.alive === [
-  {name: 'Bembi', health: 50},
-  {name: 'Bagira', health: 100},
-  {name: 'King', health: 100},
-  {name: 'Max', health: 100},
-];
+Animal.alive ===
+  [
+    { name: 'Bembi', health: 50 },
+    { name: 'Bagira', health: 100 },
+    { name: 'King', health: 100 },
+    { name: 'Max', health: 100 },
+  ];
 
 panther.bite(deer);
 rabbit.hide();
 panther.bite(rabbit);
 
-Animal.alive === [
-  {name: 'Bagira', health: 100},
-  {name: 'King', health: 100},
-  {name: 'Max', health: 100, hidden: true},
-];
+Animal.alive ===
+  [
+    { name: 'Bagira', health: 100 },
+    { name: 'King', health: 100 },
+    { name: 'Max', health: 100, hidden: true },
+  ];
 ```
