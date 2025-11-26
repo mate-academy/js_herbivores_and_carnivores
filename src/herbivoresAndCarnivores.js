@@ -17,7 +17,7 @@ class Animal {
     this._health = value;
 
     if (value <= 0) {
-      const index = Animal.alive.indexOf(this);
+      const index = Animal.alive.filter((animal) => animal !== this);
 
       if (index !== -1) {
         Animal.alive.splice(index, 1);
