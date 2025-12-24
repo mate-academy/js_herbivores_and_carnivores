@@ -14,22 +14,10 @@ class Herbivore extends Animal {
   constructor(name, health = 100) {
     super(name, health);
     this.hidden = false;
-
-    Animal.alive.forEach((item) => {
-      if (item === this) {
-        item.hidden = false;
-      }
-    });
   }
 
   hide() {
-    this.hidden = !this.hidden;
-
-    Animal.alive.forEach((item) => {
-      if (item === this) {
-        item.hidden = this.hidden;
-      }
-    });
+    this.hidden = true;
   }
 }
 
