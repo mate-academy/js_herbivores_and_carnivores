@@ -9,7 +9,7 @@ class Animal {
     this.health = health;
     Animal.alive.push(this);
   }
-//y
+  // y
   die() {
     Animal.alive = Animal.alive.filter((animal) => animal !== this);
   }

@@ -2,6 +2,10 @@
 
 const { Animal, Herbivore, Carnivore } = require('./herbivoresAndCarnivores');
 
+beforeEach(() => {
+  Animal.alive = [];
+});
+
 describe('Animal', () => {
   it('Herbivore can be used as a constructor', () => {
     const animal = new Herbivore('Zebra');
