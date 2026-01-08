@@ -9,11 +9,7 @@ class Animal {
   }
 
   die() {
-    const idx = Animal.alive.indexOf(this);
-
-    if (idx !== -1) {
-      Animal.alive.splice(idx, 1);
-    }
+    Animal.alive = Animal.alive.filter((animal) => animal !== this);
   }
 }
 
