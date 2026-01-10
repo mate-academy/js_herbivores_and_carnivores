@@ -44,6 +44,8 @@ class Carnivore extends Animal {
   }
 }
 
+Animal.alive = [];
+
 module.exports = {
   Animal,
   Herbivore,
