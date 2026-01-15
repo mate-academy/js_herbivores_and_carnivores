@@ -8,7 +8,7 @@ class Organism {
     this.radius = type === 'herbivore' ? 5 : 8;
     this.speed = type === 'herbivore' ? 2 : 2.5;
     this.energy = 100;
-    this.color = type === 'herbivore' ? '#4CAF50' : '#F44336';
+    this.color = type === 'herbivore' ? '#4CAF50' : '#F44336'; //teste
   }
 
   move(canvasWidth, canvasHeight) {
