@@ -1,6 +1,10 @@
 'use strict';
 
-const { Animal, Herbivore, Carnivore } = require('./herbivoresAndCarnivores');
+const {
+  Animal,
+  Herbivore,
+  Carnivore,
+} = require('./herbivoresAndCarnivores').default;
 
 describe('Animal', () => {
   it('Herbivore can be used as a constructor', () => {
