@@ -10,12 +10,14 @@ class Animal {
 }
 
 class Herbivore extends Animal {
+  hidden = false;
 
+  hide() {
+    this.hidden = true;
+  }
 }
 
-class Carnivore extends Animal {
-
-}
+class Carnivore extends Animal {}
 
 module.exports = {
   Animal,
