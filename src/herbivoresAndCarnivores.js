@@ -17,7 +17,19 @@ class Herbivore extends Animal {
   }
 }
 
-class Carnivore extends Animal {}
+class Carnivore extends Animal {
+  bite(target) {
+    if (target instanceof Carnivore) {
+      return;
+    }
+
+    if (target instanceof Herbivore && target.hidden === true) {
+      return;
+    }
+
+    target.health -= 50;
+  }
+}
 
 module.exports = {
   Animal,
