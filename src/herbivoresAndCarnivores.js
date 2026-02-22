@@ -2,8 +2,8 @@
 
 class Animal {
   constructor(name, health = 100) {
-    this.health = health;
     this.name = name;
+    this.health = health;
     Animal.alive.push(this);
   }
 }
@@ -27,11 +27,10 @@ class Carnivore extends Animal {
   }
 
   bite(animal) {
-    if (animal.hidden === false && animal instanceof Herbivore) {
+    if (!animal.hidden && animal instanceof Herbivore) {
       animal.health -= 50;
       if (animal.health <= 0) {
-        let del = Animal.alive.indexOf(animal);
-        Animal.alive.splice(del, 1);
+        Animal.alive = Animal.alive.filter(a => a.health > 0);
       }
     }
   }
