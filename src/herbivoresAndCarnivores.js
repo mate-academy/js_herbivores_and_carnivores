@@ -11,13 +11,9 @@ class Animal {
 
   set health(value) {
     this._health = value;
-
     if (this._health <= 0) {
-      const index = Animal.alive.indexOf(this);
-
-      if (index !== -1) {
-        Animal.alive.splice(index, 1);
-      }
+      // Refactored to use filter as requested by the mentor
+      Animal.alive = Animal.alive.filter((beast) => beast !== this);
     }
   }
 
