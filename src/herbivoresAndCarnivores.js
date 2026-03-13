@@ -22,7 +22,7 @@ class Animal {
 }
 
 class Herbivore extends Animal {
-  cconstructor(name, health = 100, hidden = false) {
+  constructor(name, health = 100, hidden = false) {
     super(name, health);
     this.hidden = hidden;
   }
