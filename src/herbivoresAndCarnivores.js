@@ -10,13 +10,7 @@ class Animal {
   }
   checkLifeStatus() {
     if (this.health <= 0) {
-      // Шукаємо, під яким номером (індексом) ця тварина в списку
-      const index = Animal.alive.indexOf(this);
-      // Якщо знайшли (індекс не -1), то видаляємо 1 елемент за цим індексом
-
-      if (index !== -1) {
-        Animal.alive.splice(index, 1);
-      }
+      Animal.alive = Animal.alive.filter(animal => animal !== this);
     }
   }
 }
