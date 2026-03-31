@@ -17,9 +17,7 @@ class Animal {
     this._health = value;
 
     if (value <= 0) {
-      const indexDelete = Animal.alive.indexOf(this);
-
-      Animal.alive.splice(indexDelete, 1);
+      Animal.alive = Animal.alive.filter((animal) => animal !== this);
     }
   }
 }
