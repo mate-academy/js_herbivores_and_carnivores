@@ -28,13 +28,12 @@ class Carnivore extends Animal {
       animal.health -= 50;
     }
 
-    if (animal instanceof Carnivore) {
-      animal.health -= 50;
-    }
+    // if (animal instanceof Carnivore) {
+    //   animal.health -= 50;
+    // }
 
     if (animal.health <= 0) {
-      const filteredAnimals = Animal.alive.filter(
-        (item) => item !== animal);
+      const filteredAnimals = Animal.alive.filter((item) => item !== animal);
 
       Animal.alive = filteredAnimals;
     }
