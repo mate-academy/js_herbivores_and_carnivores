@@ -10,9 +10,7 @@ class Animal {
   }
 
   static removeAnimal(animal) {
-    const index = Animal.alive.indexOf(animal);
-
-    Animal.alive.splice(index, 1);
+    Animal.alive = Animal.alive.filter((item) => item !== animal);
   }
 }
 
@@ -28,10 +26,6 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  // constructor(name) {
-  //   super(name);
-  // }
-
   bite(animal) {
     if (!animal.hidden && !(animal instanceof Carnivore)) {
       animal.health -= 50;
