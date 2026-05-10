@@ -9,7 +9,7 @@ class Animal {
 
     Animal.alive.push(this);
   }
-  _checkLifeStatus() {
+  checkLifeStatus() {
     if (this.health <= 0) {
       const index = Animal.alive.indexOf(this);
 
