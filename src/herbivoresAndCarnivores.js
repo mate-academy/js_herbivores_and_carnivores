@@ -11,11 +11,7 @@ class Animal {
   }
   checkLifeStatus() {
     if (this.health <= 0) {
-      const index = Animal.alive.indexOf(this);
-
-      if (index !== -1) {
-        Animal.alive.splice(index, 1);
-      }
+      Animal.alive = Animal.alive.filter((animal) => animal !== this);
     }
   }
 }
