@@ -39,10 +39,8 @@ class Carnivore extends Animal {
 
     // Якщо тварина померла
     if (animal.health <= 0) {
-      const index = Animal.alive.indexOf(animal);
-
-      if (index !== -1) {
-        Animal.alive.splice(index, 1);
+      if (animal.health <= 0) {
+        Animal.alive = Animal.alive.filter((a) => a !== animal);
       }
     }
   }
