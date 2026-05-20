@@ -20,9 +20,10 @@ class Herbivore extends Animal {
   hide() {
     this.hidden = true;
   }
-};
+}
 
 class Carnivore extends Animal {
+  // eslint-disable-next-line no-useless-constructor
   constructor(name) {
     super(name);
   }
