@@ -32,13 +32,13 @@ class Carnivore extends Animal {
     Animal.alive.push(this);
   }
 
-  bite(herbivore) {
-    if (herbivore.hidden === false && Animal.alive.includes(herbivore)) {
-      herbivore.health -= 50;
+  bite(target) {
+    if ((target instanceof Herbivore) && !target.hidden) {
+      target.health -= 50;
     }
 
-    if (herbivore.health <= 0) {
-      delete Animal.alive[Animal.alive.indexOf(herbivore)];
+    if (target.health <= 0) {
+      delete Animal.alive[Animal.alive.indexOf(target)];
     }
   }
 }
