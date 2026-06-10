@@ -15,9 +15,7 @@ class Animal {
     this._health = newValue;
 
     if (this._health <= 0) {
-      const deadAnimal = Animal.alive.findIndex((beast) => beast === this);
-
-      Animal.alive.splice(deadAnimal, 1);
+      Animal.alive = Animal.alive.filter((beast) => beast !== this);
     }
   }
 }
@@ -34,11 +32,6 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  constructor(name) {
-    super(name);
-    this.name = name;
-  }
-
   bite(animal) {
     if (animal instanceof Carnivore || animal.hidden === true) {
       return;
