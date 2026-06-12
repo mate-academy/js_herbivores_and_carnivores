@@ -6,6 +6,7 @@ class Animal {
   constructor(name, health = 100) {
     this.name = name;
     this.health = health;
+    this.hidden = false;
 
     Animal.alive.push(this);
   }
@@ -18,10 +19,11 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-   bite(animal) {
+  bite(animal) {
     if (!(animal instanceof Herbivore)) {
       return;
     }
+
     if (animal.hidden) {
       return;
     }
@@ -30,6 +32,7 @@ class Carnivore extends Animal {
 
     if (animal.health <= 0) {
       const index = Animal.alive.indexOf(animal);
+
       if (index !== -1) {
         Animal.alive.splice(index, 1);
       }
