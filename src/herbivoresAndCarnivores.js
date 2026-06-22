@@ -1,6 +1,6 @@
 'use strict';
 
-export class Animal {
+class Animal {
   static alive = [];
 
   /**
@@ -13,7 +13,6 @@ export class Animal {
     Animal.alive.push(this);
   }
 
-  // Допоміжний метод для перевірки здоров'я та видалення зі списку живих
   checkLife() {
     if (this.health <= 0) {
       Animal.alive = Animal.alive.filter((animal) => animal !== this);
@@ -21,7 +20,7 @@ export class Animal {
   }
 }
 
-export class Herbivore extends Animal {
+class Herbivore extends Animal {
   /**
    * @param {string} name
    */
@@ -35,7 +34,7 @@ export class Herbivore extends Animal {
   }
 }
 
-export class Carnivore extends Animal {
+class Carnivore extends Animal {
   /**
    * @param {Animal} target
    */
@@ -45,7 +44,12 @@ export class Carnivore extends Animal {
     }
 
     target.health -= 50;
-
     target.checkLife();
   }
 }
+
+module.exports = {
+  Animal,
+  Herbivore,
+  Carnivore,
+};
