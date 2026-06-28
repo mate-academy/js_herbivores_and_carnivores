@@ -26,5 +26,9 @@
   },
   "mateAcademy": {
     "projectType": "javascript"
+  },
+  "keywords": [],
+  "dependencies": {
+    "mate-scripts": "^0.0.1"
   }
 }
