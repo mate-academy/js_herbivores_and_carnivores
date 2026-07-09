@@ -11,11 +11,7 @@ class Animal {
 
   dieIfNeeded() {
     if (this.health <= 0) {
-      const idx = Animal.alive.indexOf(this);
-
-      if (idx !== -1) {
-        Animal.alive.splice(idx, 1);
-      }
+      Animal.alive = Animal.alive.filter((a) => a.health > 0);
     }
   }
 }
@@ -33,17 +29,7 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(target) {
-    // do nothing if target is a carnivore
-    if (target instanceof Carnivore) {
-      return;
-    }
-
-    // if target is hiding, bite has no effect
-    if (target.hidden) {
-      return;
-    }
-
-    if (typeof target.health === 'number') {
+    if (target instanceof Herbivore && !target.hidden) {
       target.health -= 50;
       target.dieIfNeeded();
     }
