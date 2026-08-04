@@ -11,11 +11,7 @@ class Animal {
 
   _updateStatus() {
     if (this.health <= 0) {
-      const index = Animal.alive.indexOf(this);
-
-      if (index !== -1) {
-        Animal.alive.splice(index, 1);
-      }
+      Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
     }
   }
 }
@@ -32,8 +28,6 @@ class Herbivore extends Animal {
 }
 
 class Carnivore extends Animal {
-  // Конструктор видалено, оскільки він повністю повторював батьківський
-
   /**
    * @param {Animal} target
    */
