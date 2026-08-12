@@ -2,11 +2,20 @@
 
 class Animal {
   static alive = [];
+  static emptyslots = [];
   constructor(name, health = 100) {
     this.name = name;
     this._health = health;
     this.isalive = true;
-    Animal.alive.push(this);
+
+    if (Animal.emptyslots.length === 0) {
+      this.index = Animal.alive.push(this) - 1;
+    } else {
+      const index = Animal.emptyslots.pop();
+
+      this.index = index;
+      Animal.alive[index] = this;
+    }
   }
 
   get health() {
@@ -18,11 +27,15 @@ class Animal {
 
     if (this._health <= 0) {
       this.isalive = false;
-      Animal.alive = Animal.alive.filter((animal) => animal.isalive);
+      this.die();
     }
   }
   getHeart(value) {
     this.health -= value;
+  }
+  die() {
+    Animal.alive[this.index] = null;
+    Animal.emptyslots.push(this.index);
   }
 }
 
