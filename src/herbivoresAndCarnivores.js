@@ -18,9 +18,7 @@ class Animal {
     this._health = value;
 
     if (this._health <= 0) {
-      const index = Animal.alive.indexOf(this);
-
-      Animal.alive.splice(index, 1);
+      Animal.alive = Animal.alive.filter((animal) => animal.health > 0);
     }
   }
 }
@@ -30,7 +28,7 @@ class Herbivore extends Animal {
   hidden = false;
 
   hide() {
-    this.hidden = !this.hidden;
+    this.hidden = true;
   }
 }
 
